@@ -1,0 +1,13 @@
+.content {
+    max-width: 600px;
+    margin: 0 auto;
+
+    &__title {
+        color: brown
+    }
+
+    &__descritpion {
+        text-transform: uppercase;
+    }
+
+}

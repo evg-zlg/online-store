@@ -43,8 +43,11 @@
     ]
   },
   "devDependencies": {
+    "axios": "^1.2.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.1"
+    "prettier": "^2.8.1",
+    "react-router-dom": "^6.4.5",
+    "sass": "^1.56.2"
   }
 }
