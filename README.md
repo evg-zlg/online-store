@@ -7,6 +7,7 @@
  - Карина Гусева (github: karinaguseva, discord: Carinaguseva#3582) 
  - Евгений Залогин (github: evg-zlg, discord: Evgeny#8373)
 #### 5. В качестве контента для магазина используем товары и другую информацию этой группы: https://vk.com/sekreta_ecodecor
+#### 6. [Пример приложения из ТЗ](https://online-store-rs.netlify.app/)
 ## Процесс разработки
 #### Управление задачами
 В качестве инструмента управления задачами используем **trello**.
