@@ -13,12 +13,12 @@
 В качестве инструмента управления задачами используем **trello**.
 [Ссылка-приглашение для подключения к рабочему пространству](https://trello.com/invite/onlinestore186/ATTIe2d29130fd5a16804a56caa553aa0b5e34E83E0D)
 #### Работа с git
-Работаем по git flow.
-В этом репозитории для разработки используется ветка develop. 
-Для каждой feat или fix создаём свою ветку от ветки develop, например, feat/add-button.
-После завершении работы над feat или fix заводим Pull Requets в ветку develop, **обязательно указываем в ревьюверах второго разрабочтика**. 
-После проверки ревьювером - мерж в develop.
-[Видео с вебинара школы](https://www.youtube.com/watch?v=35f-XI3bkWA), в котором рассказан и показан процесс. 
+- Работаем по git flow.
+- В этом репозитории для разработки используется ветка develop. 
+- Для каждой feat или fix создаём свою ветку от ветки develop, например, feat/add-button.
+- После завершении работы над feat или fix заводим Pull Requets в ветку develop, **обязательно указываем в ревьюверах второго разрабочтика**. 
+- После проверки ревьювером - мерж в develop.
+- [Видео с вебинара школы](https://www.youtube.com/watch?v=35f-XI3bkWA), в котором рассказан и показан процесс. 
 ## Полезные ссылки
  - [React и TypeScript - Быстрый Курс [2022]](https://www.youtube.com/watch?v=92qcfeWxtnY) от Владилена Минина
  - [React TypeScript ПОЛНЫЙ КУРС 2021. Props, Events, Router, Hooks, Requests](https://www.youtube.com/watch?v=92qcfeWxtnY) от UlbiTV
