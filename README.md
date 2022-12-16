@@ -1,4 +1,4 @@
-# Репозиторий совместного овыполнения командного таска online-store
+# Репозиторий командного таска online-store
 ## Вводные
 #### 1. [Ссылка на задание](https://github.com/rolling-scopes-school/tasks/tree/master/tasks/online-store-team)
 #### 2. Deadline: **09.01.2023**
