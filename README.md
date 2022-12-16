@@ -22,3 +22,4 @@
 ## Полезные ссылки
  - [React и TypeScript - Быстрый Курс [2022]](https://www.youtube.com/watch?v=OJ16BaPC6VI) от Владилена Минина
  - [React TypeScript ПОЛНЫЙ КУРС 2021. Props, Events, Router, Hooks, Requests](https://www.youtube.com/watch?v=92qcfeWxtnY) от UlbiTV
+ - [React + TypeScript + ESLint + Prettier Full Setup](https://dev.to/suchintan/reacttypescripteslint-prettier-full-setup-p7j)
