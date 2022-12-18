@@ -28,6 +28,7 @@
         "@typescript-eslint/no-explicit-any": "warn",
         "react/react-in-jsx-scope": ["off"],
         "react/jsx-uses-react": ["off"],
+        // "prettier/prettier": "error",
         "react/jsx-props-no-spreading": ["warn"],
         "react/no-unescaped-entities": ["off"], 
         "linebreak-style": 0
