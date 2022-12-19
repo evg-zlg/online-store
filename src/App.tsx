@@ -9,14 +9,14 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <div className="content">
+      <main className="main">
         <Routes>
           <Route path={'/'} element={<ProductsPage />}></Route>
         </Routes>
         <Routes>
           <Route path={'/item/:id'} element={<ProductItem />}></Route>
         </Routes>
-      </div>
+      </main>
       <Footer />
     </BrowserRouter>
   )
