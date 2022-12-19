@@ -1,8 +1,6 @@
 import './productsPage.scss'
-// import  { IProduct }  from '../../types';
 import { products } from '../../data/data'
 import { ProductCard } from '../productCard/productCard'
-import { NavLink } from 'react-router-dom'
 
 export default function ProductsPage() {
   return (
