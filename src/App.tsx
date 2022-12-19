@@ -1,12 +1,17 @@
 import './App.scss'
 import ProductsPage from './components/productsPage/productsPage'
+import Header from './components/header/header'
+import Footer from './components/footer/footer'
 
 function App() {
   return (
-    <div className="content">
-      <h1 className="content__title">Hello online-store</h1>
-      <ProductsPage />
-    </div>
+    <>
+      <Header />
+      <div className="content">
+        <ProductsPage />
+      </div>
+      <Footer />
+    </>
   )
 }
 
