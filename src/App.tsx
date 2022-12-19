@@ -1,12 +1,13 @@
-import './App.scss';
+import './App.scss'
+import ProductsPage from './components/productsPage/productsPage'
 
 function App() {
   return (
     <div className="content">
       <h1 className="content__title">Hello online-store</h1>
-      <p className="content__descript">Lorem ipsum dolor sit amet.</p>
+      <ProductsPage />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
