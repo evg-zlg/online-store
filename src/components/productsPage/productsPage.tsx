@@ -1,13 +1,14 @@
 import './productsPage.scss'
 // import  { IProduct }  from '../../types';
 import { products } from '../../data/data'
+import { ProductCard } from '../productCard/productCard'
 
 export default function ProductsPage() {
   return (
     <>
       <h2>products:</h2>
       {products.map((product) => {
-        <p>{product.id}</p>
+        return <ProductCard product={ product }/>
       })}
     </>
   )
