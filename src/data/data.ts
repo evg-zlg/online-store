@@ -9,7 +9,7 @@ export const products = [
                   Диаметр часов 30,5см., ( с декоративным оплетением - 54 см.)`,
     price: 3300,
     images: [
-      './images/azhur-1.jpg',
+      'images/azhur-1.jpg',
       './images/azhur-2.jpg',
       './images/azhur-3.jpg',
     ],
