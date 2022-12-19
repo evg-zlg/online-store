@@ -13,14 +13,12 @@ export function ProductItem() {
       <h2>Страница товара {product.name}</h2>
       {product.images.map((img) => {
         return (
-          <>
-            <img
-              className="img"
-              key={img}
-              alt={product.name}
-              src={require('../../data' + img.slice(1))}
-            ></img>
-          </>
+          <img
+            key={img}
+            className="img"
+            alt={product.name}
+            src={require('../../data' + img.slice(1))}
+          ></img>
         )
       })}
     </>
