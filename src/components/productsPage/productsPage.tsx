@@ -1,5 +1,4 @@
 import './productsPage.scss'
-// import  { IProduct }  from '../../types';
 import { products } from '../../data/data'
 import { ProductCard } from '../productCard/productCard'
 
