@@ -8,8 +8,12 @@ export const products = [
                   Посмотреть видеоклип с часами можно по ссылке https://vk.com/clip-211355847_456239030
                   Диаметр часов 30,5см., ( с декоративным оплетением - 54 см.)`,
     price: 3300,
-    images: ['azhur-1.jpg', 'azhur-2.jpg', 'azhur-3.jpg'],
-    count: 1
+    images: [
+      './images/azhur-1.jpg',
+      './images/azhur-2.jpg',
+      './images/azhur-3.jpg',
+    ],
+    count: 1,
   },
   {
     id: 2,
@@ -22,8 +26,12 @@ export const products = [
                   Изделие под заказ. Срок изготовления 2-7 дней в зависимости от текущей занятости.
                   Цена указана за гирлянду из 6 звёздочек.)`,
     price: 600,
-    images: ['garland-of-stars-1.jpg', 'garland-of-stars-2.jpg', 'garland-of-stars-3.jpg'],
-    count: 0
+    images: [
+      './images/garland-of-stars-1.jpg',
+      './images/garland-of-stars-2.jpg',
+      './images/garland-of-stars-3.jpg',
+    ],
+    count: 0,
   },
   {
     id: 3,
@@ -44,7 +52,12 @@ export const products = [
                   Как правильно выбрать диаметр?
                   Размер плейсмата подбирается в зависимости от диаметра тарелки. Просто добавьте от 3 до 5-10 см к диаметру самой большой тарелки, которую вы планируете использовать вместе с плейсматом.`,
     price: 540,
-    images: ['placemat-1.jpg', 'placemat-2.jpg', 'placemat-3.jpg', 'placemat-4.jpg'],
-    count: 4
+    images: [
+      './images/placemat-1.jpg',
+      './images/placemat-2.jpg',
+      './images/placemat-3.jpg',
+      './images/placemat-4.jpg',
+    ],
+    count: 4,
   },
 ]
