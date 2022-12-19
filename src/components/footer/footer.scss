@@ -1,0 +1,41 @@
+.footer{
+    width: 100%;
+    background-color: rgb(57,62,69);
+    user-select: none;
+
+    &__container{
+        max-width: 1080px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    &__rss{
+        background-image: url('./rs-icon.svg');
+        width: 100px;
+        height: 80px;
+        background-size: 100px 80px;
+        background-repeat: no-repeat;
+        cursor: pointer; 
+    }
+}
+
+.gitHub{
+    display: flex;
+    &__evg{
+        background-image: url('./github-icon-Evg.svg');
+        width: 50px;
+        height: 50px;
+        background-size: 50px 50px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+    &__kar{
+        background-image: url('./github-icon-Kar.svg');
+        width: 50px;
+        height: 50px;
+        background-size: 50px 50px;
+        background-repeat: no-repeat;
+        cursor: pointer; 
+    }
+}
