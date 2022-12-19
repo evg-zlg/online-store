@@ -1,0 +1,74 @@
+.header{
+  width: 100%;
+  border-bottom: 2px solid rgb(137,144,148);
+  margin-bottom: 20px;
+
+  &__container{
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo{
+    margin: 10px 0;
+    background-image: url('./logo-sekreta.png');
+    width: 80px;
+    height: 80px;
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+}
+
+.basket{
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &__price,
+    &__count{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      border: 2px solid rgb(137,144,148);
+      color: rgb(137,144,148);
+    }
+
+    // active styles for price and count
+    &__price--active,
+    &__count--active{
+      background-color: rgb(194,212,78);
+      color: rgb(255, 255, 255);
+    }
+
+    &__price{
+      width: 100px;
+      height: 30px;
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+
+    &__count{
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      right: 0;
+      top: 0;
+    }
+
+    &__img{
+      background-image: url('./basket.png');
+      width: 50px;
+      height: 50px;
+      background-size: 50px 50px;
+      background-repeat: no-repeat;
+    }
+}
+
+.total__price{
+    margin-left: 10px;
+}
