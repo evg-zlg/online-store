@@ -6,7 +6,6 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const imgLink = '../../data/images' + product.images[0]
   return (
     <div className="card">
       <h2 className="card__title">{product.name}</h2>
@@ -16,9 +15,9 @@ export function ProductCard({ product }: ProductCardProps) {
         src={product.images[0]}
         alt={product.name}
       ></img>
-      <p className="card__description">{product.description}</p>
-      <p className="card__count">{product.count}</p>
-      <button className="card__btn btn">bay</button>
+      {/* <p className="card__description">{product.description}</p> */}
+      <p className="card__count">Остаток: {product.count}</p>
+      <button className="card__btn btn">buy</button>
     </div>
   )
 }
