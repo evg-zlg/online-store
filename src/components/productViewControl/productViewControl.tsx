@@ -10,7 +10,6 @@ export const ProductViewControl: React.FC<IProductViewControlProps> = ({
   className,
   onClick,
 }: IProductViewControlProps) => {
-  let whoClicked = 'listBtn'
   function listBtnClickHandler() {
     onClick('listBtn')
   }
