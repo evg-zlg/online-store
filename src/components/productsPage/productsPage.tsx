@@ -4,9 +4,9 @@ import { ProductCard } from '../productCard/productCard'
 
 export default function ProductsPage() {
   return (
-    <section className="product-page">
-      <aside className="product-page__filter">панель</aside>
-      <main className="product-page__products">
+    <section className="products-page">
+      <aside className="products-page__filter">панель</aside>
+      <main className="products-page__products">
         {products.map((product) => {
           return <ProductCard key={product.id} product={product} />
         })}
