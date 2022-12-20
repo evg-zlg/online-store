@@ -1,10 +1,13 @@
 import './header.scss'
+import { NavLink } from 'react-router-dom'
 
 export default function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <div className="header__logo"></div>
+        <NavLink to="/">
+          <div className="header__logo"></div>
+        </NavLink>
         <div className="header__basket basket">
           <div className="basket__price total">
             Total:
