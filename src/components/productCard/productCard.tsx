@@ -12,7 +12,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="card">
       <h2 className="card__title">{product.name}</h2>
-      <p className="card__category">{product.category}</p>
+      {/* <p className="card__category">{product.category}</p> */}
       <img
         className="card__img"
         src={product.images[0]}
