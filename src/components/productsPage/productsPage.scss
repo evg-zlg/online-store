@@ -8,9 +8,20 @@
     border: 1px solid brown;
   }
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  // &__view-control {
+    
+  // }
+  
   &__products {
     flex: 1 1 auto;
     display: flex;
+    justify-content: space-around;
     gap: 10px;
     flex-wrap: wrap;
   }

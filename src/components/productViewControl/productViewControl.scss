@@ -1,0 +1,49 @@
+.view-control {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &__select {
+    border: none;
+    outline: none;
+    background-color: rgb(241, 241, 241);
+    padding: 8px 5px;
+    cursor: pointer;
+  }
+
+
+  &__found {
+    font-weight: 500;
+  }
+
+  // &__count {
+    
+  // }
+
+  &__views {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__list-btn, 
+  &__grid-btn {
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    background-color: unset;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    
+  }
+  &__list-btn {
+    background-image: url('./list-btn-icon.png');
+  }
+  &__grid-btn {
+    background-image: url('./grid-btn-icon.png');
+  }
+
+}
