@@ -24,21 +24,22 @@
   }
 
   &__info{
-    width: 35%;
+    width: 49%;
   }
 }
 
 .images{
-  width: 64%;
+  width: 49%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: flex-start;
 
   &__main{
     display: block;
-    max-height: 500px;
-    max-width: 410px;
+    height: 500px;
+    width: 450px;
     object-fit: scale-down;
+    object-position: center top;
   }
 }
 
@@ -46,7 +47,8 @@
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-  width: 20%;
+  width: 10%;
+  margin-right: 5%;
 
   &__img{
     width: 100%;
@@ -64,7 +66,7 @@
 .info{
   &__title{
     color: rgb(90,107,71);
-    text-align: center;
+    text-align: start;
     margin-bottom: 10px;
   }
 
