@@ -8,7 +8,6 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  console.log(product.images[0])
   return (
     <div className="card">
       <NavLink className="card__link-title" to={'/item/' + product.id}>
