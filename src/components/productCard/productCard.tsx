@@ -11,8 +11,9 @@ export function ProductCard({ product }: ProductCardProps) {
   console.log(product.images[0])
   return (
     <div className="card">
-      <h2 className="card__title">{product.name}</h2>
-      {/* <p className="card__category">{product.category}</p> */}
+      <NavLink className="card__link-title" to={'/item/' + product.id}>
+        <h2 className="card__title">{product.name}</h2>
+      </NavLink>
       <img
         className="card__img"
         src={product.images[0]}
