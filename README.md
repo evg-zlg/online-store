@@ -24,3 +24,4 @@
  - [React TypeScript ПОЛНЫЙ КУРС 2021. Props, Events, Router, Hooks, Requests](https://www.youtube.com/watch?v=92qcfeWxtnY) от UlbiTV
  - [React + TypeScript + ESLint + Prettier Full Setup](https://dev.to/suchintan/reacttypescripteslint-prettier-full-setup-p7j)
  - [React DevTools for](https://reactjs.org/link/react-devtools)
+ - [React JS фундаментальный курс от А до Я](https://www.youtube.com/watch?v=GNrdg3PzpJQ) от UlbiTV
