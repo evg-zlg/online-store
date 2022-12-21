@@ -3,6 +3,7 @@ import { products } from '../../data/data'
 import { ProductCard } from '../productCard/productCard'
 import { ProductViewControl } from '../productViewControl/productViewControl'
 import { useState } from 'react'
+import { FilterPanel } from '../filterPanel/filterPanel'
 
 export default function ProductsPage() {
   const [classesProducts, setClassesProducts] = useState(
@@ -17,7 +18,9 @@ export default function ProductsPage() {
   }
   return (
     <section className="products-page">
-      <aside className="products-page__filter">панель</aside>
+      <aside className="products-page__filter">
+        <FilterPanel />
+      </aside>
       <div className="products-page__content">
         <ProductViewControl
           onClick={changeClassesHandler}

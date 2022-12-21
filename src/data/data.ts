@@ -393,6 +393,7 @@ export const products = [
     images: [
       './images/cat-watch-1.jpg',
       './images/cat-watch-2.jpg',
+      './images/cat-watch-2.jpg',
     ],
     count: 1,
   },
@@ -419,6 +420,7 @@ export const products = [
     images: [
       './images/mini-hen-1.jpg',
       './images/mini-hen-2.jpg',
+      './images/mini-hen-2.jpg',
     ],
     count: 1,
   },
@@ -438,6 +440,7 @@ export const products = [
     price: 2000,
     images: [
       './images/acorn-bag-1.jpg',
+      './images/acorn-bag-2.jpg',
       './images/acorn-bag-2.jpg',
     ],
     count: 1,
@@ -460,6 +463,7 @@ export const products = [
     price: 1800,
     images: [
       './images/tray-1.jpg',
+      './images/tray-2.jpg',
       './images/tray-2.jpg',
     ],
     count: 1,
