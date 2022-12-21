@@ -20,10 +20,8 @@ export const ProductViewControl: React.FC<IProductViewControlProps> = ({
 
   return (
     <div className={className}>
-      <select className="view-control__select">
-        <option selected value="1">
-          Сортировать по умолчанию
-        </option>
+      <select defaultValue={1} className="view-control__select">
+        <option value="1">Сортировать по умолчанию</option>
         <option value="2">По цене: ↓</option>
         <option value="3">По цене: ↑</option>
         <option value="4">По наличию: ↓</option>
