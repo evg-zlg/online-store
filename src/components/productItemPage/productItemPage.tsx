@@ -51,8 +51,8 @@ export function ProductItem() {
             </div>
             <div className="info__description">
               <span className="info__text">Описание:</span>{' '}
-              {product.description.map((e) => (
-                <p>{e}</p>
+              {product.description.map((e, key) => (
+                <p key={key}>{e}</p>
               ))}
             </div>
           </div>
