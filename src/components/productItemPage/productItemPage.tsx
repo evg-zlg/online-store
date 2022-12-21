@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { IProduct } from '../../types'
 import { products } from '../../data/data'
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 export function ProductItem() {
   const params = useParams()
@@ -16,8 +17,10 @@ export function ProductItem() {
     <>
       <section className="product-page">
         <div className="product-page__crumbs crumbs">
-          <span className="crumbs__link">Магазин</span> {'>>'}{' '}
-          {product.category} {'>>'} {product.name}
+          <NavLink className="crumbs__link" to="/">
+            <span className="crumbs__title">Магазин {''}</span>
+          </NavLink>
+          {'>>'} {product.category} {'>>'} {product.name}
         </div>
         <div className="product-page__item">
           <div className="product-page__images images">
