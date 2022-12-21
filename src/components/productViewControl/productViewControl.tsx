@@ -6,7 +6,7 @@ interface IProductViewControlProps {
   onClick: (str: string) => void
 }
 
-export const ProductViewControl: React.FC<IProductViewControlProps> = ({
+export const ProductViewControl = ({
   className,
   onClick,
 }: IProductViewControlProps) => {

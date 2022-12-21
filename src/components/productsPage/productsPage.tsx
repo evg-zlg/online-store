@@ -19,7 +19,6 @@ export default function ProductsPage() {
     setClassesProducts(classes)
   }
   function filteredHandler(filteredProductFromComponent: IProduct[]) {
-    console.log(filteredProductFromComponent)
     setFilteredProducts(filteredProductFromComponent)
   }
   return (
