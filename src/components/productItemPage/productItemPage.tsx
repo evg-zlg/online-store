@@ -16,27 +16,27 @@ export function ProductItem() {
     <>
       <section className="product-page">
         <div className="product-page__crumbs crumbs">
-          <span className="crumbs__link">Магазин</span> {'>>'}
+          <span className="crumbs__link">Магазин</span> {'>>'}{' '}
           {product.category} {'>>'} {product.name}
         </div>
         <div className="product-page__item">
           <div className="product-page__images images">
-            <div>
-              <img src={imgScr} alt={product.name} className="images__main" />
-            </div>
-            <div className="images__miniature">
+            <div className="images__miniature miniature">
               {product.images.map((img) => {
                 const src = require('../../data' + img.slice(1))
                 return (
                   <img
                     key={img}
-                    className="images__miniature_img"
+                    className="miniature__img"
                     alt={product.name}
                     src={src}
                     onClick={() => setImgScr(src)}
                   ></img>
                 )
               })}
+            </div>
+            <div>
+              <img src={imgScr} alt={product.name} className="images__main" />
             </div>
           </div>
           <div className="product-page__info info">
@@ -46,8 +46,11 @@ export function ProductItem() {
               <button className="button__add">Добавить в корзину</button>
               <button className="button__buy">Купить сейчас</button>
             </div>
+            <div className="info__category">
+              <span className="info__text">Категория:</span> {product.category}
+            </div>
             <div className="info__description">
-              Описание:{' '}
+              <span className="info__text">Описание:</span>{' '}
               {product.description.map((e) => (
                 <p>{e}</p>
               ))}
