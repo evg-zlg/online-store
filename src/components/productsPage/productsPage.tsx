@@ -4,8 +4,10 @@ import { ProductCard } from '../productCard/productCard'
 import { ProductViewControl } from '../productViewControl/productViewControl'
 import { useState } from 'react'
 import { FilterPanel } from '../filterPanel/filterPanel'
+import { IProduct } from '../../types'
 
 export default function ProductsPage() {
+  const [filteredProducts, setFilteredProducts] = useState(products)
   const [classesProducts, setClassesProducts] = useState(
     'products-page__products',
   )
@@ -16,10 +18,14 @@ export default function ProductsPage() {
         : 'products-page__products products-page__products--list'
     setClassesProducts(classes)
   }
+  function filteredHandler(filteredProductFromComponent: IProduct[]) {
+    console.log(filteredProductFromComponent)
+    setFilteredProducts(filteredProductFromComponent)
+  }
   return (
     <section className="products-page">
       <aside className="products-page__filter">
-        <FilterPanel />
+        <FilterPanel onFiltered={filteredHandler} products={products} />
       </aside>
       <div className="products-page__content">
         <ProductViewControl
@@ -27,7 +33,7 @@ export default function ProductsPage() {
           className={'products-page__view-control view-control'}
         />
         <div className={classesProducts}>
-          {products.map((product) => {
+          {filteredProducts.map((product) => {
             return <ProductCard key={product.id} product={product} />
           })}
         </div>

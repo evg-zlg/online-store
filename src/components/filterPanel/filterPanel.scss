@@ -1,0 +1,45 @@
+.filter {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+  button {
+    background-color: rgb(199, 199, 199);
+    border: none;
+    outline: none;
+    padding: 10px 5px;
+  }
+}
+
+.list {
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+
+  &__title{
+    text-align: center;
+    font-weight: 600;
+  }
+  &__item {
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+  }
+  &__checkbox {}
+  &__label {
+    margin: 0 0 0 10px;
+  }
+  &__results {
+    margin: 0 0 0 auto;
+  }
+}
+
+.results {
+  &__available {}
+  &__all {}
+}
