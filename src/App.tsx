@@ -5,10 +5,8 @@ import Footer from './components/footer/footer'
 import { ProductItem } from './components/productItemPage/productItemPage'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 
 function App() {
-  const location = useLocation()
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length
   const [num, setNum] = useState(initialNum)
   const numHandler = (num: number): void => {
@@ -23,9 +21,7 @@ function App() {
         <Routes>
           <Route
             path={'/'}
-            element={
-              <ProductsPage numHandler={numHandler} location={location} />
-            }
+            element={<ProductsPage numHandler={numHandler} />}
           ></Route>
         </Routes>
         <Routes>

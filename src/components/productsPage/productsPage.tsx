@@ -9,13 +9,9 @@ import { useSearchParams } from 'react-router-dom'
 
 interface IProductsPageProps {
   numHandler: (num: number) => void
-  location: Object
 }
 
-export default function ProductsPage({
-  numHandler,
-  location,
-}: IProductsPageProps) {
+export default function ProductsPage({ numHandler }: IProductsPageProps) {
   const [searchParams, setSearchParams] = useSearchParams()
   let classes = ''
   searchParams.get('view') === 'list'
@@ -23,16 +19,46 @@ export default function ProductsPage({
     : (classes = 'products-page__products')
   const [filteredProducts, setFilteredProducts] = useState(products)
   function getFilteredProduct() {
-    if (searchParams.has('category')) {
-      return products.filter(
-        (product) => product.category === searchParams.get('category'),
+    const filteredProducts: IProduct[] = []
+    if (searchParams.has('decor')) {
+      filteredProducts.push(
+        ...products.filter(
+          (product) => product.categoryID === searchParams.get('decor'),
+        ),
       )
-    } else {
-      return products
     }
-  }
-  function filteredHandler(filteredProductFromComponent: IProduct[]) {
-    setFilteredProducts(filteredProductFromComponent)
+    if (searchParams.has('watch')) {
+      filteredProducts.push(
+        ...products.filter(
+          (product) => product.categoryID === searchParams.get('watch'),
+        ),
+      )
+    }
+    if (searchParams.has('baskets')) {
+      filteredProducts.push(
+        ...products.filter(
+          (product) => product.categoryID === searchParams.get('baskets'),
+        ),
+      )
+    }
+    if (searchParams.has('kitchen')) {
+      filteredProducts.push(
+        ...products.filter(
+          (product) => product.categoryID === searchParams.get('kitchen'),
+        ),
+      )
+    }
+    if (searchParams.has('children')) {
+      filteredProducts.push(
+        ...products.filter(
+          (product) => product.categoryID === searchParams.get('children'),
+        ),
+      )
+    }
+    if (filteredProducts.length === 0) {
+      filteredProducts.push(...products)
+    }
+    return filteredProducts
   }
   return (
     <section className="products-page">
