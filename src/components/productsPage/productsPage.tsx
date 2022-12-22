@@ -7,13 +7,16 @@ import { FilterPanel } from '../filterPanel/filterPanel'
 import { IProduct } from '../../types'
 import { useSearchParams } from 'react-router-dom'
 
-export default function ProductsPage() {
+interface IProductsPageProps {
+  numHandler: (num: number) => void
+}
+
+export default function ProductsPage({ numHandler }: IProductsPageProps) {
   const [searchParams, setSearchParams] = useSearchParams()
   let classes = ''
   searchParams.get('view') === 'list'
     ? (classes = 'products-page__products products-page__products--list')
     : (classes = 'products-page__products')
-  console.log('')
   const [filteredProducts, setFilteredProducts] = useState(products)
   function filteredHandler(filteredProductFromComponent: IProduct[]) {
     setFilteredProducts(filteredProductFromComponent)
@@ -29,7 +32,13 @@ export default function ProductsPage() {
         />
         <div className={classes}>
           {filteredProducts.map((product) => {
-            return <ProductCard key={product.id} product={product} />
+            return (
+              <ProductCard
+                key={product.id}
+                numHandler={numHandler}
+                product={product}
+              />
+            )
           })}
         </div>
       </div>

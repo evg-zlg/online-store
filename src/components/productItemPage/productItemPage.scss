@@ -5,8 +5,13 @@
   margin-bottom: 20px;
   border-bottom: 1px solid rgb(137,144,148);
   text-transform: capitalize;
-
+  
   &__link{
+    text-decoration: none;
+    color: rgb(137,144,148);
+  }
+
+  &__title{
     cursor: pointer;
     &:hover{
       text-decoration: underline;
