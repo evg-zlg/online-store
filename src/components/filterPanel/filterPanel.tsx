@@ -1,6 +1,6 @@
 import './filterPanel.scss'
 import { IProduct } from '../../types'
-import { CategoryItem } from './categoryItem/categoryItem'
+import { CategoryItem } from '../categoryItem/categoryItem'
 
 interface IFilterPanelProps {
   products: IProduct[]

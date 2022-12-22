@@ -1,6 +1,7 @@
 import './categoryItem.scss'
-import { IProduct } from '../../../types'
+import { IProduct } from '../../types'
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 interface ICategoryItemProps {
   products: IProduct[]
@@ -13,6 +14,7 @@ export const CategoryItem = ({
   onChange,
   products,
 }: ICategoryItemProps) => {
+  const [searchParams, setSearchParams] = useSearchParams()
   const [wathFlagFilter, setWatchFlagFilter] = useState(false)
   const [filteredProducts, setFilteredProducts] = useState(products)
   const watchCat = products.filter(
@@ -20,6 +22,12 @@ export const CategoryItem = ({
   ).length
   const [watchFilter, setWatchFilter] = useState(watchCat)
   function clickCheckboxHandler() {
+    console.log(searchParams)
+    const url = new URL(window.location.href)
+    searchParams.get(category)
+      ? url.searchParams.delete(category)
+      : url.searchParams.append(category, category)
+    setSearchParams(url.searchParams)
     setWatchFlagFilter(!wathFlagFilter)
     wathFlagFilter
       ? setFilteredProducts((prev) => {
