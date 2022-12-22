@@ -6,11 +6,11 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Cart from '../addCart/addCart'
 
-export function ProductItem({
-  numHandler,
-}: {
+interface IProductItemProps {
   numHandler: (num: number) => void
-}) {
+}
+
+export function ProductItem({ numHandler }: IProductItemProps) {
   const params = useParams()
   const product: IProduct = products.filter(
     (el) => el.id === Number(params.id),

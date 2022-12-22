@@ -7,12 +7,19 @@ interface IProductViewControlProps {
 
 export const ProductViewControl = ({ className }: IProductViewControlProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
+  const url = new URL(window.location.href)
 
   function listBtnClickHandler() {
-    setSearchParams({ view: 'list' })
+    if (searchParams.get('view') !== 'list') {
+      url.searchParams.set('view', 'list')
+    }
+    setSearchParams(url.searchParams)
   }
   function gridBtnClickHandler() {
-    setSearchParams({ view: 'grid' })
+    if (searchParams.get('view') !== 'grid') {
+      url.searchParams.set('view', 'grid')
+    }
+    setSearchParams(url.searchParams)
   }
   return (
     <div className={className}>

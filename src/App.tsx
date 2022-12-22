@@ -9,10 +9,6 @@ import { useLocation } from 'react-router-dom'
 
 function App() {
   const location = useLocation()
-  function filtered(loc: Object) {
-    console.log('location: ', loc)
-  }
-  filtered(location)
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length
   const [num, setNum] = useState(initialNum)
   const numHandler = (num: number): void => {
@@ -27,7 +23,9 @@ function App() {
         <Routes>
           <Route
             path={'/'}
-            element={<ProductsPage numHandler={numHandler} />}
+            element={
+              <ProductsPage numHandler={numHandler} location={location} />
+            }
           ></Route>
         </Routes>
         <Routes>
