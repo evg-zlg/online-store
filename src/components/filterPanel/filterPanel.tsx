@@ -17,7 +17,7 @@ export const FilterPanel = ({ products, onFiltered }: IFilterPanelProps) => {
       <ul className="filter__list list">
         <p className="list__title">Категория</p>
         <CategoryItem
-          category="Часы"
+          category="часы"
           onChange={onFiltered}
           products={products}
         />

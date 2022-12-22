@@ -5,19 +5,16 @@ import { ProductViewControl } from '../productViewControl/productViewControl'
 import { useState } from 'react'
 import { FilterPanel } from '../filterPanel/filterPanel'
 import { IProduct } from '../../types'
+import { useSearchParams } from 'react-router-dom'
 
 export default function ProductsPage() {
+  const [searchParams, setSearchParams] = useSearchParams()
+  let classes = ''
+  searchParams.get('view') === 'list'
+    ? (classes = 'products-page__products products-page__products--list')
+    : (classes = 'products-page__products')
+  console.log('')
   const [filteredProducts, setFilteredProducts] = useState(products)
-  const [classesProducts, setClassesProducts] = useState(
-    'products-page__products',
-  )
-  function changeClassesHandler(str: string) {
-    const classes =
-      str === 'gridBtn'
-        ? 'products-page__products'
-        : 'products-page__products products-page__products--list'
-    setClassesProducts(classes)
-  }
   function filteredHandler(filteredProductFromComponent: IProduct[]) {
     setFilteredProducts(filteredProductFromComponent)
   }
@@ -28,10 +25,9 @@ export default function ProductsPage() {
       </aside>
       <div className="products-page__content">
         <ProductViewControl
-          onClick={changeClassesHandler}
           className={'products-page__view-control view-control'}
         />
-        <div className={classesProducts}>
+        <div className={classes}>
           {filteredProducts.map((product) => {
             return <ProductCard key={product.id} product={product} />
           })}
