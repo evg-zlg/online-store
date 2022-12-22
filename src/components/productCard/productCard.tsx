@@ -2,7 +2,7 @@ import { IProduct } from '../../types'
 import { NavLink } from 'react-router-dom'
 import { ProductItem } from '../productItemPage/productItemPage'
 import './productCard.scss'
-import Cart from '../addCart/addCart'
+import Cart from '../addToCartBtn/addToCartBtn'
 
 interface ProductCardProps {
   product: IProduct

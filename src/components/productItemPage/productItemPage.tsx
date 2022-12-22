@@ -4,7 +4,7 @@ import { IProduct } from '../../types'
 import { products } from '../../data/data'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import Cart from '../addCart/addCart'
+import Cart from '../addToCartBtn/addToCartBtn'
 
 export function ProductItem({
   numHandler,
