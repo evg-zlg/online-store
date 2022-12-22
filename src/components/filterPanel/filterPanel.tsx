@@ -33,6 +33,7 @@ export const FilterPanel = ({
         {getCategories().map((cat) => {
           return (
             <CategoryItem
+              key={cat}
               category={cat}
               products={products}
               productCurrent={filteredProducts}

@@ -17,16 +17,22 @@ export const CategoryItem = ({
   const [searchParams, setSearchParams] = useSearchParams()
   const [checkedItem, setCheckedItem] = useState(false)
   const [filteredProducts, setFilteredProducts] = useState(productCurrent)
-  const watchCat = products.filter(
+  const productCurrentCount = products.filter(
     (product) => product.category === category,
   ).length
-  const [watchFilter, setWatchFilter] = useState(watchCat)
+  const productTotalCount = products.filter(
+    (product) => product.category === category,
+  ).length
+  function getCategoryID() {
+    return products.filter((product) => product.category === category)[0]
+      .categoryID
+  }
+  const categoryID = getCategoryID()
   function clickCheckboxHandler() {
-    console.log(searchParams)
     const url = new URL(window.location.href)
-    searchParams.get('category') === category
-      ? url.searchParams.delete('category')
-      : url.searchParams.append('category', category)
+    searchParams.get(categoryID) === categoryID
+      ? url.searchParams.delete(categoryID)
+      : url.searchParams.append(categoryID, categoryID)
     setSearchParams(url.searchParams)
     setCheckedItem(!checkedItem)
     checkedItem
@@ -46,7 +52,7 @@ export const CategoryItem = ({
       <label className="list__label" htmlFor={category}>
         {category.slice(0, 1).toUpperCase() + category.slice(1).toLowerCase()}
       </label>
-      <label className="list__results">{`(${watchFilter}/${watchCat})`}</label>
+      <label className="list__results">{`(${productCurrentCount}/${productTotalCount})`}</label>
     </li>
   )
 }
