@@ -5,14 +5,8 @@ import Footer from './components/footer/footer'
 import { ProductItem } from './components/productItemPage/productItemPage'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 
 function App() {
-  const location = useLocation()
-  function filtered(loc: Object) {
-    console.log('location: ', loc)
-  }
-  filtered(location)
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length
   const [num, setNum] = useState(initialNum)
   const numHandler = (num: number): void => {
