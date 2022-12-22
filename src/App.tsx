@@ -3,10 +3,16 @@ import ProductsPage from './components/productsPage/productsPage'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
 import { ProductItem } from './components/productItemPage/productItemPage'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 function App() {
+  const location = useLocation()
+  function filtered(loc: Object) {
+    console.log('location: ', loc)
+  }
+  filtered(location)
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length
   const [num, setNum] = useState(initialNum)
   const numHandler = (num: number): void => {
@@ -15,7 +21,7 @@ function App() {
     })
   }
   return (
-    <BrowserRouter>
+    <>
       <Header num={num} />
       <main className="main">
         <Routes>
@@ -32,7 +38,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
-    </BrowserRouter>
+    </>
   )
 }
 

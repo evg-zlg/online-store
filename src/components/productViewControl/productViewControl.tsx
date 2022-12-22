@@ -1,22 +1,19 @@
-import { StringMappingType } from 'typescript'
 import './productViewControl.scss'
+import { useSearchParams } from 'react-router-dom'
 
 interface IProductViewControlProps {
   className: string
-  onClick: (str: string) => void
 }
 
-export const ProductViewControl: React.FC<IProductViewControlProps> = ({
-  className,
-  onClick,
-}: IProductViewControlProps) => {
+export const ProductViewControl = ({ className }: IProductViewControlProps) => {
+  const [searchParams, setSearchParams] = useSearchParams()
+
   function listBtnClickHandler() {
-    onClick('listBtn')
+    setSearchParams({ view: 'list' })
   }
   function gridBtnClickHandler() {
-    onClick('gridBtn')
+    setSearchParams({ view: 'grid' })
   }
-
   return (
     <div className={className}>
       <select defaultValue={1} className="view-control__select">
