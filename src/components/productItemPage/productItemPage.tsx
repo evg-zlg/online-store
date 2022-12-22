@@ -3,8 +3,14 @@ import { useParams } from 'react-router-dom'
 import { IProduct } from '../../types'
 import { products } from '../../data/data'
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import Cart from '../addCart/addCart'
 
-export function ProductItem() {
+export function ProductItem({
+  numHandler,
+}: {
+  numHandler: (num: number) => void
+}) {
   const params = useParams()
   const product: IProduct = products.filter(
     (el) => el.id === Number(params.id),
@@ -16,8 +22,10 @@ export function ProductItem() {
     <>
       <section className="product-page">
         <div className="product-page__crumbs crumbs">
-          <span className="crumbs__link">Магазин</span> {'>>'}{' '}
-          {product.category} {'>>'} {product.name}
+          <NavLink className="crumbs__link" to="/">
+            <span className="crumbs__title">Магазин {''}</span>
+          </NavLink>
+          {'>>'} {product.category} {'>>'} {product.name}
         </div>
         <div className="product-page__item">
           <div className="product-page__images images">
@@ -43,7 +51,7 @@ export function ProductItem() {
             <h2 className="info__title">{product.name}</h2>
             <div className="info__price">{product.price} руб.</div>
             <div className="product-page__button button">
-              <button className="button__add">Добавить в корзину</button>
+              <Cart onClick={numHandler} id={product.id} />
               <button className="button__buy">Купить сейчас</button>
             </div>
             <div className="info__category">

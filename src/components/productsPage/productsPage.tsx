@@ -6,7 +6,11 @@ import { useState } from 'react'
 import { FilterPanel } from '../filterPanel/filterPanel'
 import { IProduct } from '../../types'
 
-export default function ProductsPage() {
+export default function ProductsPage({
+  numHandler,
+}: {
+  numHandler: (num: number) => void
+}) {
   const [filteredProducts, setFilteredProducts] = useState(products)
   const [classesProducts, setClassesProducts] = useState(
     'products-page__products',
@@ -34,7 +38,13 @@ export default function ProductsPage() {
         />
         <div className={classesProducts}>
           {filteredProducts.map((product) => {
-            return <ProductCard key={product.id} product={product} />
+            return (
+              <ProductCard
+                key={product.id}
+                numHandler={numHandler}
+                product={product}
+              />
+            )
           })}
         </div>
       </div>
