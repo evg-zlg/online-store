@@ -8,15 +8,19 @@
     display: flex;
     justify-content: space-around;
   }
-  button {
+  &__copy,
+  &__reset
+   {
     background-color: rgb(199, 199, 199);
     border: none;
     outline: none;
     padding: 10px 5px;
     cursor: pointer;
-    // &--copied {
-
-    // }
+  }
+  &__copy {
+    &--copied {
+      background-color: rgb(243, 174, 174);
+    }
   }
 }
 
