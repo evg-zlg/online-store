@@ -17,9 +17,6 @@ export const CategoryItem = ({
   const categoryID = getCategoryID()
   const [searchParams, setSearchParams] = useSearchParams()
   let checked = searchParams.has(categoryID)
-  // const [checked, setChecked] = useState(() => {
-  //   return searchParams.has(categoryID)
-  // })
   let productCurrentCount = productCurrent.filter(
     (productCurrent) => productCurrent.category === category,
   ).length

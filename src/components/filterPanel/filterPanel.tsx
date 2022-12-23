@@ -1,6 +1,7 @@
 import './filterPanel.scss'
 import { IProduct } from '../../types'
 import { CategoryItem } from '../categoryItem/categoryItem'
+import { useSearchParams } from 'react-router-dom'
 
 interface IFilterPanelProps {
   products: IProduct[]
@@ -12,6 +13,7 @@ export const FilterPanel = ({
   products,
   filteredProducts,
 }: IFilterPanelProps) => {
+  const [searchParams, setSearchParams] = useSearchParams()
   function getCategories() {
     const categories: string[] = []
     products.forEach((product) => {
@@ -21,11 +23,32 @@ export const FilterPanel = ({
     })
     return categories
   }
+  function getCategoriesID() {
+    const categoriesID: string[] = []
+    products.forEach((product) => {
+      if (!categoriesID.join('').includes(product.categoryID)) {
+        categoriesID.push(product.categoryID)
+      }
+    })
+    return categoriesID
+  }
+  const categoriesID = getCategoriesID()
+  const resetHandler = () => {
+    const url = new URL(window.location.href)
+    categoriesID.forEach((cat) => {
+      if (searchParams.has(cat)) {
+        url.searchParams.delete(cat)
+      }
+    })
+    setSearchParams(url.searchParams)
+  }
 
   return (
     <section className="filter">
       <div className="filter__buttons">
-        <button className="filter__reset">Сбросить фильтры</button>
+        <button onClick={resetHandler} className="filter__reset">
+          Сбросить фильтры
+        </button>
         <button className="filter__copy">Скопировать ссылку</button>
       </div>
       <div className="filter__list list">
