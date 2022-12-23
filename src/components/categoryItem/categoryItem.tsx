@@ -14,11 +14,11 @@ export const CategoryItem = ({
   products,
   productCurrent,
 }: ICategoryItemProps) => {
+  const categoryID = getCategoryID()
   const [searchParams, setSearchParams] = useSearchParams()
-  const [checkedItem, setCheckedItem] = useState(false)
-  const [filteredProducts, setFilteredProducts] = useState(productCurrent)
-  const productCurrentCount = products.filter(
-    (product) => product.category === category,
+  let checked = searchParams.has(categoryID)
+  let productCurrentCount = productCurrent.filter(
+    (productCurrent) => productCurrent.category === category,
   ).length
   const productTotalCount = products.filter(
     (product) => product.category === category,
@@ -27,29 +27,26 @@ export const CategoryItem = ({
     return products.filter((product) => product.category === category)[0]
       .categoryID
   }
-  const categoryID = getCategoryID()
   function clickCheckboxHandler() {
     const url = new URL(window.location.href)
     searchParams.get(categoryID) === categoryID
       ? url.searchParams.delete(categoryID)
       : url.searchParams.append(categoryID, categoryID)
     setSearchParams(url.searchParams)
-    setCheckedItem(!checkedItem)
-    checkedItem
-      ? setFilteredProducts((prev) => {
-          return prev.filter((product) => product.category === category)
-        })
-      : setFilteredProducts(products)
   }
   return (
     <li className="list__item">
-      <input
-        onClick={clickCheckboxHandler}
-        className="list__checkbox"
-        type="checkbox"
-        id={category}
-      ></input>
       <label className="list__label" htmlFor={category}>
+        <input
+          onClick={clickCheckboxHandler}
+          className="list__checkbox"
+          checked={searchParams.has(categoryID)}
+          onChange={() => {
+            checked = !checked
+          }}
+          type="checkbox"
+          id={category}
+        ></input>
         {category.slice(0, 1).toUpperCase() + category.slice(1).toLowerCase()}
       </label>
       <label className="list__results">{`(${productCurrentCount}/${productTotalCount})`}</label>

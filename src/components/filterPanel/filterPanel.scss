@@ -8,11 +8,19 @@
     display: flex;
     justify-content: space-around;
   }
-  button {
+  &__copy,
+  &__reset
+   {
     background-color: rgb(199, 199, 199);
     border: none;
     outline: none;
     padding: 10px 5px;
+    cursor: pointer;
+  }
+  &__copy {
+    &--copied {
+      background-color: rgb(243, 174, 174);
+    }
   }
 }
 
@@ -24,21 +32,6 @@
   &__title{
     text-align: center;
     font-weight: 600;
-  }
-  &__item {
-    list-style: none;
-    display: flex;
-    align-items: baseline;
-  }
-  &__checkbox {    
-    cursor: pointer;
-  }
-  &__label {
-    margin: 5px 0 0 10px;
-    cursor: pointer;
-  }
-  &__results {
-    margin: 0 0 0 auto;
   }
 }
 

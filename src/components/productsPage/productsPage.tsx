@@ -17,7 +17,6 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
   searchParams.get('view') === 'list'
     ? (classes = 'products-page__products products-page__products--list')
     : (classes = 'products-page__products')
-  const [filteredProducts, setFilteredProducts] = useState(products)
   function getFilteredProduct() {
     const filteredProducts: IProduct[] = []
     if (searchParams.has('decor')) {
@@ -60,21 +59,23 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
     }
     return filteredProducts
   }
+  const filteredProducts = getFilteredProduct()
   return (
     <section className="products-page">
       <aside className="products-page__filter">
         <FilterPanel
-          // onFiltered={filteredHandler}
+          //sdf
           products={products}
           filteredProducts={filteredProducts}
         />
       </aside>
       <div className="products-page__content">
         <ProductViewControl
+          countFilteredProducts={filteredProducts.length}
           className={'products-page__view-control view-control'}
         />
         <div className={classes}>
-          {getFilteredProduct().map((product) => {
+          {filteredProducts.map((product) => {
             return (
               <ProductCard
                 key={product.id}
