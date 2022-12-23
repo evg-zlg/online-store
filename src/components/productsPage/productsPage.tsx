@@ -66,7 +66,7 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
         <FilterPanel
           // onFiltered={filteredHandler}
           products={products}
-          filteredProducts={filteredProducts}
+          filteredProducts={getFilteredProduct()}
         />
       </aside>
       <div className="products-page__content">
