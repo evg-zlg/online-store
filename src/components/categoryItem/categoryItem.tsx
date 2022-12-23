@@ -16,9 +16,10 @@ export const CategoryItem = ({
 }: ICategoryItemProps) => {
   const categoryID = getCategoryID()
   const [searchParams, setSearchParams] = useSearchParams()
-  const [checked, setChecked] = useState(() => {
-    return searchParams.has(categoryID)
-  })
+  let checked = searchParams.has(categoryID)
+  // const [checked, setChecked] = useState(() => {
+  //   return searchParams.has(categoryID)
+  // })
   let productCurrentCount = productCurrent.filter(
     (productCurrent) => productCurrent.category === category,
   ).length
@@ -42,8 +43,10 @@ export const CategoryItem = ({
         <input
           onClick={clickCheckboxHandler}
           className="list__checkbox"
-          checked={checked}
-          onChange={(e) => setChecked(e.target.checked)}
+          checked={searchParams.has(categoryID)}
+          onChange={() => {
+            checked = !checked
+          }}
           type="checkbox"
           id={category}
         ></input>
