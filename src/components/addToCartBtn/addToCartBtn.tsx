@@ -1,9 +1,10 @@
+import './addToCartBtn.scss'
 import React, { FC, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { IProduct } from '../../types'
 import { products } from '../../data/data'
 
-const Cart = ({
+const CartBtn = ({
   onClick,
   id,
 }: {
@@ -30,4 +31,4 @@ const Cart = ({
   )
 }
 
-export default Cart
+export default CartBtn
