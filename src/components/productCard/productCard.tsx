@@ -2,7 +2,7 @@ import { IProduct } from '../../types'
 import { NavLink } from 'react-router-dom'
 import { ProductItem } from '../productItemPage/productItemPage'
 import './productCard.scss'
-import Cart from '../addCart/addCart'
+import CartBtn from '../addToCartBtn/addToCartBtn'
 
 interface ProductCardProps {
   product: IProduct
@@ -23,7 +23,7 @@ export function ProductCard({ product, numHandler }: ProductCardProps) {
       ></img>
       <p className="card__count">Остаток: {product.count}</p>
       <div className="card__buttons">
-        <Cart onClick={numHandler} id={product.id} />
+        <CartBtn onClick={numHandler} id={product.id} />
         {/* <button className="card__btn-cart">в корзину</button> */}
         <NavLink className="card__link-inf" to={'/item/' + product.id}>
           <button className="card__btn-inf">инфо</button>

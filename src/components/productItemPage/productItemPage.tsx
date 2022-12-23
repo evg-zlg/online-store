@@ -4,7 +4,7 @@ import { IProduct } from '../../types'
 import { products } from '../../data/data'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import Cart from '../addCart/addCart'
+import CartBtn from '../addToCartBtn/addToCartBtn'
 
 interface IProductItemProps {
   numHandler: (num: number) => void
@@ -51,7 +51,7 @@ export function ProductItem({ numHandler }: IProductItemProps) {
             <h2 className="info__title">{product.name}</h2>
             <div className="info__price">{product.price} руб.</div>
             <div className="product-page__button button">
-              <Cart onClick={numHandler} id={product.id} />
+              <CartBtn onClick={numHandler} id={product.id} />
               <button className="button__buy">Купить сейчас</button>
             </div>
             <div className="info__category">
