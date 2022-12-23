@@ -25,22 +25,6 @@
     text-align: center;
     font-weight: 600;
   }
-  &__item {
-    list-style: none;
-    display: flex;
-    align-items: baseline;
-  }
-  &__checkbox {    
-    margin: 0 10px 0 0;
-    cursor: pointer;
-  }
-  &__label {
-    margin: 0 0 5px 0;
-    cursor: pointer;
-  }
-  &__results {
-    margin: 0 0 0 auto;
-  }
 }
 
 .results {

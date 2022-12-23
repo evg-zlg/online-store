@@ -3,9 +3,13 @@ import { useSearchParams } from 'react-router-dom'
 
 interface IProductViewControlProps {
   className: string
+  countFilteredProducts: number
 }
 
-export const ProductViewControl = ({ className }: IProductViewControlProps) => {
+export const ProductViewControl = ({
+  className,
+  countFilteredProducts,
+}: IProductViewControlProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const url = new URL(window.location.href)
 
@@ -31,7 +35,8 @@ export const ProductViewControl = ({ className }: IProductViewControlProps) => {
         <option value="5">По наличию: ↑</option>
       </select>
       <p className="view-control__found">
-        Найдено товаров: <span className="view-control__count">0</span>
+        {`Найдено товаров: `}
+        <span className="view-control__count">{countFilteredProducts}</span>
       </p>
       <div className="view-control__views">
         <button
