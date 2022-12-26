@@ -1,0 +1,41 @@
+.filter {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+  &__copy,
+  &__reset
+   {
+    background-color: rgb(199, 199, 199);
+    border: none;
+    outline: none;
+    padding: 10px 5px;
+    cursor: pointer;
+  }
+  &__copy {
+    &--copied {
+      background-color: rgb(243, 174, 174);
+    }
+  }
+}
+
+.list {
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+
+  &__title{
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
+.results {
+  &__available {}
+  &__all {}
+}
