@@ -12,6 +12,11 @@
     cursor: pointer;
   }
 
+  &__search {
+    height: 30px;
+    padding: 0 5px;
+    outline: none;
+  }
 
   &__found {
     font-weight: 500;

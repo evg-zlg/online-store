@@ -32,6 +32,12 @@
     height: 330px;
   }
 
+  &__info {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
   &__buttons {
     display: flex;
     width: 100%;
