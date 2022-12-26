@@ -13,8 +13,10 @@ export default function Header({ num }: { num: number }) {
             Total:
             <span className="total__price">0</span>
           </div>
-          <div className="basket__count">{num}</div>
-          <div className="basket__img"></div>
+          <NavLink to={'/cart'}>
+            <div className="basket__count">{num}</div>
+            <div className="basket__img"></div>
+          </NavLink>
         </div>
       </div>
     </header>
