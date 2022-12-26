@@ -13,6 +13,7 @@ interface IProductsPageProps {
 
 export default function ProductsPage({ numHandler }: IProductsPageProps) {
   const [searchParams, setSearchParams] = useSearchParams()
+  // const [search, setSearch] = useState(searchParams.get('search'))
   let classes = ''
   searchParams.get('view') === 'list'
     ? (classes = 'products-page__products products-page__products--list')
@@ -56,6 +57,26 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
     }
     if (filteredProducts.length === 0) {
       filteredProducts.push(...products)
+    }
+    if (searchParams.get('search')) {
+      const search = searchParams.get('search') || ''
+      return filteredProducts.filter((product) => {
+        const result =
+          product.description
+            .join(' ')
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase()) ||
+          product.name
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase()) ||
+          String(product.count)
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase()) ||
+          String(product.price)
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase())
+        return result
+      })
     }
     return filteredProducts
   }

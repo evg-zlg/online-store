@@ -12,6 +12,10 @@
     cursor: pointer;
   }
 
+  &__search {
+    height: 30px;
+    padding: 0 5px;
+  }
 
   &__found {
     font-weight: 500;

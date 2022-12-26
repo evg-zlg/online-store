@@ -1,5 +1,6 @@
 import './productViewControl.scss'
 import { useSearchParams } from 'react-router-dom'
+import { useState } from 'react'
 
 interface IProductViewControlProps {
   className: string
@@ -11,6 +12,7 @@ export const ProductViewControl = ({
   countFilteredProducts,
 }: IProductViewControlProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
+  const [search, setSearch] = useState(searchParams.get('search'))
   const url = new URL(window.location.href)
 
   function listBtnClickHandler() {
@@ -25,6 +27,16 @@ export const ProductViewControl = ({
     }
     setSearchParams(url.searchParams)
   }
+  function searchHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    const str = e.target.value
+    setSearch(str)
+    const url = new URL(window.location.href)
+    str
+      ? url.searchParams.set('search', str)
+      : url.searchParams.delete('search')
+    setSearchParams(url.searchParams)
+    return str
+  }
   return (
     <div className={className}>
       <select defaultValue={1} className="view-control__select">
@@ -34,6 +46,13 @@ export const ProductViewControl = ({
         <option value="4">По наличию: ↓</option>
         <option value="5">По наличию: ↑</option>
       </select>
+      <input
+        className="view-control__search"
+        placeholder="найти..."
+        type="search"
+        value={searchParams.get('search') || ''}
+        onChange={searchHandler}
+      ></input>
       <p className="view-control__found">
         {`Найдено товаров: `}
         <span className="view-control__count">{countFilteredProducts}</span>

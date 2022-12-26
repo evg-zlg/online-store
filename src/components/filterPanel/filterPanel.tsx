@@ -42,6 +42,9 @@ export const FilterPanel = ({
       if (searchParams.has(cat)) {
         url.searchParams.delete(cat)
       }
+      if (searchParams.has('search')) {
+        url.searchParams.delete('search')
+      }
     })
     setSearchParams(url.searchParams)
   }
