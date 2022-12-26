@@ -19,6 +19,7 @@
   // }
   
   &__products {
+    width: 768px;
     flex: 1 1 auto;
     display: flex;
     justify-content: space-around;
@@ -50,6 +51,11 @@
           height: 150px;
           width: 150px;
           grid-area: ceil-1;
+        }
+
+        &__info {
+          justify-content: left;
+          gap: 20px;
         }
 
         &__count {

@@ -3,6 +3,8 @@ import { IProduct } from '../../types'
 import { CategoryItem } from '../categoryItem/categoryItem'
 import { useSearchParams } from 'react-router-dom'
 import { useState } from 'react'
+import { DualSlider } from '../dualSlider/dualSlider'
+import { getMinPrice, getMaxPrice } from '../utility/utility'
 
 interface IFilterPanelProps {
   products: IProduct[]
@@ -42,6 +44,9 @@ export const FilterPanel = ({
       if (searchParams.has(cat)) {
         url.searchParams.delete(cat)
       }
+      if (searchParams.has('search')) {
+        url.searchParams.delete('search')
+      }
     })
     setSearchParams(url.searchParams)
   }
@@ -78,6 +83,13 @@ export const FilterPanel = ({
           )
         })}
       </div>
+      <DualSlider
+        className="filter__price"
+        maxValue={getMaxPrice()}
+        minValue={getMinPrice()}
+        step={10}
+        currency={'руб.'}
+      />
     </section>
   )
 }

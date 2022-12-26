@@ -39,7 +39,7 @@ export const products: IProduct[] = [
       './images/garland-of-stars-2.jpg',
       './images/garland-of-stars-3.jpg',
     ],
-    count: 0,
+    count: 1,
   },
   {
     id: 3,

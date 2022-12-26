@@ -21,7 +21,10 @@ export function ProductCard({ product, numHandler }: ProductCardProps) {
         src={product.images[0]}
         alt={product.name}
       ></img>
-      <p className="card__count">Остаток: {product.count}</p>
+      <div className="card__info">
+        <p className="card__price">Цена: {product.price}</p>
+        <p className="card__count">Остаток: {product.count}</p>
+      </div>
       <div className="card__buttons">
         <CartBtn onClick={numHandler} id={product.id} />
         {/* <button className="card__btn-cart">в корзину</button> */}
