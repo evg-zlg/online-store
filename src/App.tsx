@@ -3,6 +3,7 @@ import ProductsPage from './components/productsPage/productsPage'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
 import { ProductItem } from './components/productItemPage/productItemPage'
+import CartPage from './components/cartPage/cartPage'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
@@ -29,6 +30,9 @@ function App() {
             path={'/item/:id'}
             element={<ProductItem numHandler={numHandler} />}
           ></Route>
+        </Routes>
+        <Routes>
+          <Route path={'/cart'} element={<CartPage />}></Route>
         </Routes>
       </main>
       <Footer />
