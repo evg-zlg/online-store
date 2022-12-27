@@ -42,7 +42,8 @@
   align-items: center;
   width: 90px;
 
-  &__btn {
+  &__btn,
+  &__btn-plus {
     border-radius: 50%;
     background-color: #5a6b47;
     width: 20px;
@@ -50,5 +51,14 @@
     border: none;
     color: white;
     cursor: pointer;
+
+    &--disabled {
+      border-radius: 50%;
+      background-color: rgb(137, 144, 148);
+      width: 20px;
+      height: 20px;
+      border: none;
+      color: white;
+    }
   }
 }

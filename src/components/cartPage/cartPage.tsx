@@ -73,12 +73,19 @@ export default function CartPage({
               <div className="pagination__next"></div>
             </div>
           </div>
-          <div className="cart-page__summary">
-            <p>Детали заказа:</p>
-            <div>
-              <p>Колличество {totalCount}</p>
-              <p>Итого {totalPrice}</p>
+          <div className="cart-page__summary summary">
+            <p className="summary__title">Детали заказа</p>
+            <div className="summary__content content">
+              <div className="content__element">
+                <p className="content__title">Колличество:</p>
+                <p className="content__number">{totalCount} шт.</p>
+              </div>
+              <div className="content__element">
+                <p className="content__title">Итого:</p>
+                <p className="content__number">{totalPrice} руб.</p>
+              </div>
             </div>
+            <button className="summary__btn">Оформить заказ</button>
           </div>
         </div>
       </section>
