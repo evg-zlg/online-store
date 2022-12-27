@@ -15,9 +15,17 @@ function App() {
       return (prevState += num)
     })
   }
+
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [totalCount, setTotalCount] = useState(0)
+
+  const appCallback = (price: number, count: number) => {
+    setTotalPrice(price)
+    setTotalCount(count)
+  }
   return (
     <>
-      <Header num={num} />
+      <Header num={num} totalPrice={totalPrice} totalCount={totalCount} />
       <main className="main">
         <Routes>
           <Route
@@ -32,7 +40,10 @@ function App() {
           ></Route>
         </Routes>
         <Routes>
-          <Route path={'/cart'} element={<CartPage />}></Route>
+          <Route
+            path={'/cart'}
+            element={<CartPage appCallback={appCallback} />}
+          ></Route>
         </Routes>
       </main>
       <Footer />

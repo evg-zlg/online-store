@@ -1,23 +1,45 @@
 import './productCart.scss'
 import { products } from '../../data/data'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface ProductCartProps {
   cartId: number
   cardInd: number
+  storageCallback: (storage: Record<string, number>) => void
+  deleteItemCallback: (id: number) => void
 }
 
-export function ProductCart({ cartId, cardInd }: ProductCartProps) {
-  const [count, setCount] = useState(1)
+export function ProductCart({
+  cartId,
+  cardInd,
+  storageCallback,
+  deleteItemCallback,
+}: ProductCartProps) {
+  const cartlocal = JSON.parse(localStorage.getItem('object') || '{}')
+  const [count, setCount] = useState(cartlocal[cartId])
   const handleDecrement = () => {
-    if (count > 1) {
+    if (count > 0) {
       //надо будет поставить 0 и при значении 0 удалять товар
+      if (count === 1) {
+        deleteItemCallback(cartId)
+        const cartlocal = JSON.parse(localStorage.getItem('object') || '{}')
+        delete cartlocal[cartId]
+        localStorage.setItem('object', JSON.stringify(cartlocal))
+        storageCallback(cartlocal)
+      }
       setCount(() => count - 1)
     }
   }
   const handleIncrement = () => {
-    setCount(() => count + 1)
+    if (count < products[cartId - 1].count) setCount(() => count + 1)
   }
+
+  useEffect(() => {
+    const cartlocal = JSON.parse(localStorage.getItem('object') || '{}')
+    cartlocal[cartId] = count
+    localStorage.setItem('object', JSON.stringify(cartlocal))
+    storageCallback(cartlocal)
+  }, [count, storageCallback, cartId])
 
   return (
     <>
