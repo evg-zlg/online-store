@@ -145,6 +145,7 @@ export const FilterPanel = ({
       <DualSlider
         className="filter__price"
         type="price"
+        title="Стоимость"
         maxValue={getMaxPrice()}
         minValue={getMinPrice()}
         leftValue={String(getMinPriceFilteredProducts())}
@@ -155,6 +156,7 @@ export const FilterPanel = ({
       <DualSlider
         className="filter__stock"
         type="stock"
+        title="В наличии"
         maxValue={getMaxStock()}
         minValue={getMinStock()}
         leftValue={String(getMinStockFilteredProducts())}

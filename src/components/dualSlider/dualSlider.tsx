@@ -8,6 +8,7 @@ interface IDualSliderProps {
   maxValue: number
   leftValue: string
   rightValue: string
+  title: string
   type: string
   step: number
   currency?: string
@@ -19,6 +20,7 @@ export const DualSlider = ({
   maxValue,
   leftValue,
   rightValue,
+  title,
   type,
   step,
   currency,
@@ -43,6 +45,7 @@ export const DualSlider = ({
     : url.searchParams.get(maxParam) || rightValue
   return (
     <div className={className + ` dual-slider`}>
+      <p className="dual-slider__title">{title}</p>
       <div className="dual-slider__text-block">
         <label className="dual-slider__leftText">{leftText}</label>
         <label className="dual-slider__rightText">{rightText}</label>
