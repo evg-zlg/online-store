@@ -27,7 +27,6 @@ export function ProductCard({ product, numHandler }: ProductCardProps) {
       </div>
       <div className="card__buttons">
         <CartBtn onClick={numHandler} id={product.id} />
-        {/* <button className="card__btn-cart">в корзину</button> */}
         <NavLink className="card__link-inf" to={'/item/' + product.id}>
           <button className="card__btn-inf">инфо</button>
         </NavLink>
