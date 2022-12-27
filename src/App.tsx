@@ -3,6 +3,7 @@ import ProductsPage from './components/productsPage/productsPage'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
 import { ProductItem } from './components/productItemPage/productItemPage'
+import CartPage from './components/cartPage/cartPage'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
@@ -14,9 +15,17 @@ function App() {
       return (prevState += num)
     })
   }
+
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [totalCount, setTotalCount] = useState(0)
+
+  const appCallback = (price: number, count: number) => {
+    setTotalPrice(price)
+    setTotalCount(count)
+  }
   return (
     <>
-      <Header num={num} />
+      <Header num={num} totalPrice={totalPrice} totalCount={totalCount} />
       <main className="main">
         <Routes>
           <Route
@@ -28,6 +37,12 @@ function App() {
           <Route
             path={'/item/:id'}
             element={<ProductItem numHandler={numHandler} />}
+          ></Route>
+        </Routes>
+        <Routes>
+          <Route
+            path={'/cart'}
+            element={<CartPage appCallback={appCallback} />}
           ></Route>
         </Routes>
       </main>
