@@ -4,7 +4,6 @@ import { CategoryItem } from '../categoryItem/categoryItem'
 import { useSearchParams } from 'react-router-dom'
 import { useState } from 'react'
 import { DualSlider } from '../dualSlider/dualSlider'
-import { getMinPrice, getMaxPrice } from '../utility/utility'
 
 interface IFilterPanelProps {
   products: IProduct[]
@@ -48,6 +47,8 @@ export const FilterPanel = ({
         url.searchParams.delete('search')
       }
     })
+    url.searchParams.delete('maxprice')
+    url.searchParams.delete('minprice')
     setSearchParams(url.searchParams)
   }
   const copyHandler = () => {
@@ -60,6 +61,35 @@ export const FilterPanel = ({
       setCopyText('Скопировать ссылку')
     }, 1500)
   }
+  function getMaxPriceFilteredProducts() {
+    if (filteredProducts.length === 0) {
+      return getMaxPrice()
+    }
+    const newProducts = []
+    newProducts.push(...filteredProducts)
+    return newProducts.sort((a, b) => a.price - b.price)[newProducts.length - 1]
+      .price
+  }
+  function getMinPriceFilteredProducts() {
+    if (filteredProducts.length === 0) {
+      return getMinPrice()
+    }
+    const newProducts = []
+    newProducts.push(...filteredProducts)
+    return newProducts.sort((a, b) => a.price - b.price)[0].price
+  }
+  function getMaxPrice() {
+    const newProducts = []
+    newProducts.push(...products)
+    return newProducts.sort((a, b) => a.price - b.price)[newProducts.length - 1]
+      .price
+  }
+  function getMinPrice() {
+    const newProducts = []
+    newProducts.push(...products)
+    return newProducts.sort((a, b) => a.price - b.price)[0].price
+  }
+
   return (
     <section className="filter">
       <div className="filter__buttons">
@@ -87,6 +117,8 @@ export const FilterPanel = ({
         className="filter__price"
         maxValue={getMaxPrice()}
         minValue={getMinPrice()}
+        leftValue={String(getMinPriceFilteredProducts())}
+        rightValue={String(getMaxPriceFilteredProducts())}
         step={10}
         currency={'руб.'}
       />

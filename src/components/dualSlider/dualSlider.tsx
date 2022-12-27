@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import './dualSlider.scss'
 
 interface IDualSliderProps {
   className?: string
   minValue: number
   maxValue: number
+  leftValue: string
+  rightValue: string
   step: number
   currency?: string
 }
@@ -13,26 +16,33 @@ export const DualSlider = ({
   className,
   minValue,
   maxValue,
+  leftValue,
+  rightValue,
   step,
   currency,
 }: IDualSliderProps) => {
-  const [leftSlider, setLeftSlider] = useState(minValue)
-  const [rightSlider, setRightSlider] = useState(maxValue)
-  //size of thumbs
-  const sizeThumbs = 20
-  function handleLeftInput(e: React.ChangeEvent<HTMLInputElement>) {
-    const leftPoint = parseInt(e.target.value)
-    // if (leftPoint < (rightSlider - sizeThumbs * ())) {
-    //   setLeftSlider(parseInt(e.target.value))
-    // }
-    // console.log('left:', leftPoint, 'rigth:', rightSlider)
-    // console.log(e.target.parentNode)
+  const url = new URL(window.location.href)
+  const [searchParams, setSearchParams] = useSearchParams()
+  // const [leftSlider, setLeftSlider] = useState(
+  //   searchParams.get('minprice') || leftValue,
+  // )
+  // const [rightSlider, setRightSlider] = useState(
+  //   searchParams.get('maxprice') || rightValue,
+  // )
+  function handlerLeftInput(e: React.ChangeEvent<HTMLInputElement>) {
+    url.searchParams.set('minprice', e.target.value)
+    setSearchParams(url.searchParams)
   }
-  function handleRightInput(e: React.ChangeEvent<HTMLInputElement>) {
-    setRightSlider(parseInt(e.target.value))
+  function handlerRightInput(e: React.ChangeEvent<HTMLInputElement>) {
+    url.searchParams.set('maxprice', e.target.value)
+    setSearchParams(url.searchParams)
   }
-  const leftText = currency ? leftSlider + ' ' + currency : leftSlider
-  const rightText = currency ? rightSlider + ' ' + currency : rightSlider
+  let leftText = currency
+    ? (url.searchParams.get('minprice') || leftValue) + ' ' + currency
+    : url.searchParams.get('minprice') || leftValue
+  let rightText = currency
+    ? (url.searchParams.get('maxprice') || rightValue) + ' ' + currency
+    : url.searchParams.get('maxprice') || rightValue
   return (
     <div className={className + ` dual-slider`}>
       <div className="dual-slider__text-block">
@@ -45,18 +55,18 @@ export const DualSlider = ({
           min={minValue}
           max={maxValue}
           step={step}
-          value={leftSlider}
+          value={url.searchParams.get('minprice') || leftValue}
           type="range"
-          onInput={handleLeftInput}
+          onInput={handlerLeftInput}
         ></input>
         <input
+          className="dual-slider__right"
           min={minValue}
           max={maxValue}
           step={step}
-          value={rightSlider}
-          className="dual-slider__right"
+          value={url.searchParams.get('maxprice') || rightValue}
           type="range"
-          onInput={handleRightInput}
+          onInput={handlerRightInput}
         ></input>
       </span>
     </div>
