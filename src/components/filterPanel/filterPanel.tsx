@@ -49,6 +49,8 @@ export const FilterPanel = ({
     })
     url.searchParams.delete('maxprice')
     url.searchParams.delete('minprice')
+    url.searchParams.delete('minstock')
+    url.searchParams.delete('maxstock')
     setSearchParams(url.searchParams)
   }
   const copyHandler = () => {
@@ -89,7 +91,34 @@ export const FilterPanel = ({
     newProducts.push(...products)
     return newProducts.sort((a, b) => a.price - b.price)[0].price
   }
-
+  function getMaxStock() {
+    const newProducts = []
+    newProducts.push(...products)
+    return newProducts.sort((a, b) => a.count - b.count)[newProducts.length - 1]
+      .count
+  }
+  function getMinStock() {
+    const newProducts = []
+    newProducts.push(...products)
+    return newProducts.sort((a, b) => a.count - b.count)[0].count
+  }
+  function getMaxStockFilteredProducts() {
+    if (filteredProducts.length === 0) {
+      return getMaxStock()
+    }
+    const newProducts = []
+    newProducts.push(...filteredProducts)
+    return newProducts.sort((a, b) => a.count - b.count)[newProducts.length - 1]
+      .count
+  }
+  function getMinStockFilteredProducts() {
+    if (filteredProducts.length === 0) {
+      return getMinPrice()
+    }
+    const newProducts = []
+    newProducts.push(...filteredProducts)
+    return newProducts.sort((a, b) => a.count - b.count)[0].count
+  }
   return (
     <section className="filter">
       <div className="filter__buttons">
@@ -115,12 +144,23 @@ export const FilterPanel = ({
       </div>
       <DualSlider
         className="filter__price"
+        type="price"
         maxValue={getMaxPrice()}
         minValue={getMinPrice()}
         leftValue={String(getMinPriceFilteredProducts())}
         rightValue={String(getMaxPriceFilteredProducts())}
         step={10}
         currency={'руб.'}
+      />
+      <DualSlider
+        className="filter__stock"
+        type="stock"
+        maxValue={getMaxStock()}
+        minValue={getMinStock()}
+        leftValue={String(getMinStockFilteredProducts())}
+        rightValue={String(getMaxStockFilteredProducts())}
+        step={1}
+        currency={''}
       />
     </section>
   )

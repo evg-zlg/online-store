@@ -60,46 +60,51 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
     }
     //exclude in filtered
     let newFilteredProducts: IProduct[] = [...filteredProducts]
-    if (
-      searchParams.has('search') ||
-      searchParams.has('minprice') ||
-      searchParams.has('maxprice')
-    ) {
-      if (searchParams.has('search')) {
-        const search = searchParams.get('search') || ''
-        newFilteredProducts = filteredProducts.filter((product) => {
-          const result =
-            product.description
-              .join(' ')
-              .toLocaleLowerCase()
-              .includes(search.toLocaleLowerCase()) ||
-            product.name
-              .toLocaleLowerCase()
-              .includes(search.toLocaleLowerCase()) ||
-            String(product.count)
-              .toLocaleLowerCase()
-              .includes(search.toLocaleLowerCase()) ||
-            String(product.price)
-              .toLocaleLowerCase()
-              .includes(search.toLocaleLowerCase())
-          return result
-        })
-      }
-      if (searchParams.has('minprice')) {
-        const minPrice = parseInt(searchParams.get('minprice') || '')
-        newFilteredProducts = newFilteredProducts.filter((product) => {
-          return product.price >= minPrice
-        })
-      }
-      if (searchParams.has('maxprice')) {
-        const maxPrice = parseInt(searchParams.get('maxprice') || '')
-        newFilteredProducts = newFilteredProducts.filter((product) => {
-          return product.price <= maxPrice
-        })
-      }
-      return newFilteredProducts
+    if (searchParams.has('search')) {
+      const search = searchParams.get('search') || ''
+      newFilteredProducts = filteredProducts.filter((product) => {
+        const result =
+          product.description
+            .join(' ')
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase()) ||
+          product.name
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase()) ||
+          String(product.count)
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase()) ||
+          String(product.price)
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase())
+        return result
+      })
     }
-    return filteredProducts
+    if (searchParams.has('minprice')) {
+      const minPrice = parseInt(searchParams.get('minprice') || '')
+      newFilteredProducts = newFilteredProducts.filter((product) => {
+        return product.price >= minPrice
+      })
+    }
+    if (searchParams.has('maxprice')) {
+      const maxPrice = parseInt(searchParams.get('maxprice') || '')
+      newFilteredProducts = newFilteredProducts.filter((product) => {
+        return product.price <= maxPrice
+      })
+    }
+    if (searchParams.has('maxstock')) {
+      const maxStock = parseInt(searchParams.get('maxstock') || '')
+      newFilteredProducts = newFilteredProducts.filter((product) => {
+        return product.count <= maxStock
+      })
+    }
+    if (searchParams.has('minstock')) {
+      const minStock = parseInt(searchParams.get('minstock') || '')
+      newFilteredProducts = newFilteredProducts.filter((product) => {
+        return product.count >= minStock
+      })
+    }
+    return newFilteredProducts
   }
   const filteredProducts = getFilteredProduct()
   return (
