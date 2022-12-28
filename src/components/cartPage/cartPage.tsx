@@ -23,6 +23,7 @@ export default function CartPage({
     itemPerPage: +value,
     count: JSON.parse(localStorage.getItem('cart') || '[]').length,
   })
+
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalCount, setTotalCount] = useState(0)
 
@@ -51,61 +52,68 @@ export default function CartPage({
     appCallback(price, count)
   }
 
-  return (
-    <>
-      <section className="cart-page">
-        <Pagination
-          setValue={setValue}
-          setPage={setPage}
-          prevPage={prevPage}
-          nextPage={nextPage}
-          page={page}
-          totalPages={totalPages}
-          value={value}
-        />
-        <div className="cart-page__container">
-          <div className="cart-page__content content">
-            <div className="content__cart-products cart-products">
-              <div className="content__title title">
-                <p className="title__num">№</p>
-                <p className="title__name">Товар</p>
-                <p className="title__category">Категория</p>
-                <p className="title__count">Склад</p>
-                <p className="title__price">Цена</p>
-                <p className="title__pagination">Количество</p>
-                <p className="title__sum">Итого</p>
-              </div>
-              {localArr.map((id: number, index: number) => {
-                if (index + 1 <= firstItemIndex || index + 1 > lastItemIndex)
-                  return null
-                return (
-                  <ProductCart
-                    key={id}
-                    cartId={id}
-                    cardInd={index}
-                    storageCallback={storageCallback}
-                    deleteItemCallback={deleteItemCallback}
-                  />
-                )
-              })}
-            </div>
-          </div>
-          <div className="cart-page__summary summary">
-            <p className="summary__title">Детали заказа</p>
-            <div className="summary__content content">
-              <div className="content__element">
-                <p className="content__title">Колличество:</p>
-                <p className="content__number">{totalCount} шт.</p>
-              </div>
-              <div className="content__element">
-                <p className="content__title">Итого:</p>
-                <p className="content__number">{totalPrice} руб.</p>
+  if (JSON.parse(localStorage.getItem('cart') || '[]').length === 0) {
+    return (
+      <>
+        <div className="cart-page__empty">Cart is Empty</div>
+      </>
+    )
+  } else
+    return (
+      <>
+        <section className="cart-page">
+          <Pagination
+            setValue={setValue}
+            setPage={setPage}
+            prevPage={prevPage}
+            nextPage={nextPage}
+            page={page}
+            totalPages={totalPages}
+            value={value}
+          />
+          <div className="cart-page__container">
+            <div className="cart-page__content content">
+              <div className="content__cart-products cart-products">
+                <div className="content__title title">
+                  <p className="title__num">№</p>
+                  <p className="title__name">Товар</p>
+                  <p className="title__category">Категория</p>
+                  <p className="title__count">Склад</p>
+                  <p className="title__price">Цена</p>
+                  <p className="title__pagination">Количество</p>
+                  <p className="title__sum">Итого</p>
+                </div>
+                {localArr.map((id: number, index: number) => {
+                  if (index + 1 <= firstItemIndex || index + 1 > lastItemIndex)
+                    return null
+                  return (
+                    <ProductCart
+                      key={id}
+                      cartId={id}
+                      cardInd={index}
+                      storageCallback={storageCallback}
+                      deleteItemCallback={deleteItemCallback}
+                    />
+                  )
+                })}
               </div>
             </div>
-            <button className="summary__btn">Оформить заказ</button>
+            <div className="cart-page__summary summary">
+              <p className="summary__title">Детали заказа</p>
+              <div className="summary__content content">
+                <div className="content__element">
+                  <p className="content__title">Колличество:</p>
+                  <p className="content__number">{totalCount} шт.</p>
+                </div>
+                <div className="content__element">
+                  <p className="content__title">Итого:</p>
+                  <p className="content__number">{totalPrice} руб.</p>
+                </div>
+              </div>
+              <button className="summary__btn">Оформить заказ</button>
+            </div>
           </div>
-        </div>
-      </section>
-    </>
-  )
+        </section>
+      </>
+    )
 }
