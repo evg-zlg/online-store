@@ -19,6 +19,7 @@ export const products: IProduct[] = [
       './images/azhur-3.jpg',
     ],
     count: 1,
+    tags: ['настенный декор', 'идея подарка'],
   },
   {
     id: 2,
@@ -40,6 +41,7 @@ export const products: IProduct[] = [
       './images/garland-of-stars-3.jpg',
     ],
     count: 1,
+    tags: ['фотореквизит', 'декор детской', 'новый год'],
   },
   {
     id: 3,
@@ -70,6 +72,7 @@ export const products: IProduct[] = [
       './images/placemat-4.jpg',
     ],
     count: 4,
+    tags: ['фотореквизит', 'сервировка', 'настенный декор'],
   },
   {
     id: 4,
@@ -96,6 +99,7 @@ export const products: IProduct[] = [
       './images/basket-bunny-3.jpg',
     ],
     count: 2,
+    tags: ['фотореквизит', 'идея подарка', 'хранение', 'пасха'],
   },
   {
     id: 5,
@@ -128,6 +132,13 @@ export const products: IProduct[] = [
       './images/rabbit-5.jpg',
     ],
     count: 5,
+    tags: [
+      'фотореквизит',
+      'идея подарка',
+      'новый год',
+      'пасха',
+      'декор детской',
+    ],
   },
   {
     id: 6,
@@ -159,6 +170,7 @@ export const products: IProduct[] = [
       './images/kit-ny3-4.jpg',
     ],
     count: 2,
+    tags: ['фотореквизит', 'идея подарка', 'новый год', 'декор детской'],
   },
   {
     id: 7,
@@ -187,6 +199,7 @@ export const products: IProduct[] = [
       './images/ballerina-3.jpg',
     ],
     count: 3,
+    tags: ['фотореквизит', 'идея подарка', 'новый год', 'декор детской'],
   },
   {
     id: 8,
@@ -216,6 +229,7 @@ export const products: IProduct[] = [
       './images/mini-car-3.jpg',
     ],
     count: 3,
+    tags: ['фотореквизит', 'идея подарка', 'новый год', 'декор детской'],
   },
   {
     id: 9,
@@ -243,6 +257,7 @@ export const products: IProduct[] = [
       './images/heart-3.jpg',
     ],
     count: 3,
+    tags: ['фотореквизит', 'идея подарка', 'новый год', 'декор детской'],
   },
   {
     id: 10,
@@ -273,6 +288,7 @@ export const products: IProduct[] = [
       './images/horse-4.jpg',
     ],
     count: 3,
+    tags: ['фотореквизит', 'идея подарка', 'новый год', 'декор детской'],
   },
   {
     id: 11,
@@ -304,6 +320,7 @@ export const products: IProduct[] = [
       './images/deer-3.jpg',
     ],
     count: 5,
+    tags: ['фотореквизит', 'идея подарка', 'новый год', 'декор детской'],
   },
   {
     id: 12,
@@ -332,6 +349,7 @@ export const products: IProduct[] = [
       './images/star-3.jpg',
     ],
     count: 5,
+    tags: ['фотореквизит', 'идея подарка', 'новый год', 'декор детской'],
   },
   {
     id: 13,
@@ -363,6 +381,7 @@ export const products: IProduct[] = [
       './images/little-red-riding-hood-basket-4.jpg',
     ],
     count: 5,
+    tags: ['фотореквизит', 'идея подарка', 'хранение', 'пасха', '8 марта'],
   },
   {
     id: 14,
@@ -389,6 +408,7 @@ export const products: IProduct[] = [
       './images/openwork-basket-3.jpg',
     ],
     count: 1,
+    tags: ['новый год', 'хранение'],
   },
   {
     id: 15,
@@ -414,6 +434,7 @@ export const products: IProduct[] = [
       './images/cat-watch-3.jpg',
     ],
     count: 1,
+    tags: ['настенный декор', 'идея подарка'],
   },
   {
     id: 16,
@@ -442,6 +463,13 @@ export const products: IProduct[] = [
       './images/mini-hen-3.jpg',
     ],
     count: 1,
+    tags: [
+      'новый год',
+      'идея подарка',
+      'фотореквизит',
+      'пасха',
+      'декор детской',
+    ],
   },
   {
     id: 17,
@@ -464,6 +492,7 @@ export const products: IProduct[] = [
       './images/acorn-bag-3.jpg',
     ],
     count: 1,
+    tags: ['идея подарка', 'фотореквизит', '8 марта'],
   },
   {
     id: 18,
@@ -488,6 +517,7 @@ export const products: IProduct[] = [
       './images/tray-3.jpg',
     ],
     count: 1,
+    tags: ['идея подарка', 'хранение', '8 марта'],
   },
   {
     id: 19,
@@ -511,6 +541,7 @@ export const products: IProduct[] = [
       './images/laundry-basket-3.jpg',
     ],
     count: 1,
+    tags: ['идея подарка', 'хранение'],
   },
   {
     id: 20,
@@ -536,6 +567,7 @@ export const products: IProduct[] = [
       './images/basket-box-3.jpg',
     ],
     count: 1,
+    tags: ['хранение'],
   },
   {
     id: 21,
@@ -563,6 +595,13 @@ export const products: IProduct[] = [
       './images/basket-heart-3.jpg',
     ],
     count: 1,
+    tags: [
+      'хранение',
+      'фотореквизит',
+      'настенный декор',
+      '8 марта',
+      'идея подарка',
+    ],
   },
   {
     id: 22,
@@ -591,6 +630,7 @@ export const products: IProduct[] = [
       './images/basket-basket-3.jpg',
     ],
     count: 1,
+    tags: ['хранение', 'пасха', '8 марта', 'идея подарка', 'новый год'],
   },
   {
     id: 23,
@@ -615,5 +655,6 @@ export const products: IProduct[] = [
       './images/watch-deer-3.jpg',
     ],
     count: 1,
+    tags: ['настенный декор', 'декор детской', 'идея подарка', 'новый год'],
   },
 ]
