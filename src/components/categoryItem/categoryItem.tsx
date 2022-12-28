@@ -1,6 +1,5 @@
 import './categoryItem.scss'
 import { IProduct } from '../../types'
-import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { products } from '../../data/data'
 
