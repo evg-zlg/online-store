@@ -32,14 +32,10 @@ function App() {
             path={'/'}
             element={<ProductsPage numHandler={numHandler} />}
           ></Route>
-        </Routes>
-        <Routes>
           <Route
             path={'/item/:id'}
             element={<ProductItem numHandler={numHandler} />}
           ></Route>
-        </Routes>
-        <Routes>
           <Route
             path={'/cart'}
             element={<CartPage appCallback={appCallback} />}

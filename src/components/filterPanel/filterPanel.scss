@@ -4,38 +4,53 @@
   flex-direction: column;
   gap: 10px;
 
+  &__title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0 0 10px 0;
+  }
   &__buttons {
     display: flex;
     justify-content: space-around;
   }
   &__copy,
-  &__reset
-   {
-    background-color: rgb(199, 199, 199);
+  &__reset {
+    background-color: #898a86;
+    color: white;
     border: none;
+    border-radius: 10px;
     outline: none;
-    padding: 10px 5px;
+    padding: 10px 8px;
     cursor: pointer;
+    transition: all 0.5s ease;
+
+    &:hover{
+      opacity: 0.75;
+    }
   }
+
   &__copy {
     &--copied {
-      background-color: rgb(243, 174, 174);
+      background-color: #5a6b47;
     }
   }
 }
 
-.list {
+.tags {
   border: 1px solid gray;
   border-radius: 5px;
   padding: 5px;
 
-  &__title{
-    text-align: center;
-    font-weight: 600;
-  }
-}
+  &__items {
 
-.results {
-  &__available {}
-  &__all {}
+  }
+  &__tag {
+    background-color: rgba(90, 107, 71, 0.1);
+    cursor: pointer;
+
+    &::before {
+      content: "#"
+    }
+  }
 }
