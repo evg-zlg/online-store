@@ -1,8 +1,5 @@
 import './addToCartBtn.scss'
-import React, { FC, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { IProduct } from '../../types'
-import { products } from '../../data/data'
+import { useState } from 'react'
 
 const CartBtn = ({
   onClick,
