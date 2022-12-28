@@ -7,14 +7,18 @@ interface ICategoryItemProps {
   category: string
   products: IProduct[]
   productCurrent: IProduct[]
+  type: string
+  index?: number
 }
 
 export const CategoryItem = ({
   category,
   products,
   productCurrent,
+  type,
+  index,
 }: ICategoryItemProps) => {
-  const categoryID = getCategoryID()
+  const categoryID = type === 'categories' ? getCategoryID() : String(index)
   const [searchParams, setSearchParams] = useSearchParams()
   let checked = searchParams.has(categoryID)
   let productCurrentCount = productCurrent.filter(

@@ -36,6 +36,17 @@ export const FilterPanel = ({
     })
     return categoriesID
   }
+  function getTags() {
+    const tags: string[] = []
+    products.forEach((product) => {
+      product.tags.forEach((tag) => {
+        if (!tags.join(' ').includes(tag)) {
+          tags.push(tag)
+        }
+      })
+    })
+    return tags
+  }
   const categoriesID = getCategoriesID()
   const resetHandler = () => {
     const url = new URL(window.location.href)
@@ -130,10 +141,11 @@ export const FilterPanel = ({
         </button>
       </div>
       <div className="filter__list list">
-        <p className="list__title">Категория</p>
+        <h2 className="filter__title">Категория</h2>
         {getCategories().map((cat) => {
           return (
             <CategoryItem
+              type="categories"
               key={cat}
               category={cat}
               products={products}
@@ -141,6 +153,23 @@ export const FilterPanel = ({
             />
           )
         })}
+      </div>
+      <div className="filter__tags tags">
+        <h2 className="filter__title">Подборки</h2>
+        <div className="tags__items">
+          {getTags().map((tag, index) => {
+            return (
+              <CategoryItem
+                type="tags"
+                key={tag}
+                category={tag}
+                products={products}
+                index={index}
+                productCurrent={filteredProducts}
+              />
+            )
+          })}
+        </div>
       </div>
       <DualSlider
         className="filter__price"

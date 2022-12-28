@@ -45,7 +45,7 @@ export const DualSlider = ({
     : url.searchParams.get(maxParam) || rightValue
   return (
     <div className={className + ` dual-slider`}>
-      <p className="dual-slider__title">{title}</p>
+      <h2 className="dual-slider__title">{title}</h2>
       <div className="dual-slider__text-block">
         <label className="dual-slider__leftText">{leftText}</label>
         <label className="dual-slider__rightText">{rightText}</label>
