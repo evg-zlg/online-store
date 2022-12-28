@@ -11,16 +11,13 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, numHandler }: ProductCardProps) {
+  const imgSrc = require('../../data' + product.images[0].slice(1))
   return (
     <div className="card">
       <NavLink className="card__link-title" to={'/item/' + product.id}>
         <h2 className="card__title">{product.name}</h2>
       </NavLink>
-      <img
-        className="card__img"
-        src={product.images[0]}
-        alt={product.name}
-      ></img>
+      <img className="card__img" src={imgSrc} alt={product.name}></img>
       <div className="card__info">
         <p className="card__price">Цена: {product.price}</p>
         <p className="card__count">Остаток: {product.count}</p>

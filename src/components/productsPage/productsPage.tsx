@@ -104,6 +104,32 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
         return product.count >= minStock
       })
     }
+    //sort
+    switch (searchParams.get('sort')) {
+      case 'price-ask':
+        newFilteredProducts = [...newFilteredProducts].sort(
+          (a, b) => a.price - b.price,
+        )
+        break
+      case 'price-desk':
+        newFilteredProducts = [...newFilteredProducts].sort(
+          (a, b) => b.price - a.price,
+        )
+        break
+      case 'stock-ask':
+        newFilteredProducts = [...newFilteredProducts].sort(
+          (a, b) => a.count - b.count,
+        )
+        break
+      case 'stock-desk':
+        newFilteredProducts = [...newFilteredProducts].sort(
+          (a, b) => b.count - a.count,
+        )
+        break
+
+      default:
+        break
+    }
     return newFilteredProducts
   }
   const filteredProducts = getFilteredProduct()
