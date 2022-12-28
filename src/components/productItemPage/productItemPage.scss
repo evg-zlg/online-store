@@ -1,45 +1,45 @@
-.crumbs{
+.crumbs {
   text-align: center;
-  color: rgb(137,144,148);
+  color: rgb(137, 144, 148);
   padding-bottom: 20px;
   margin-bottom: 20px;
-  border-bottom: 1px solid rgb(137,144,148);
+  border-bottom: 1px solid rgb(137, 144, 148);
   text-transform: capitalize;
-  
-  &__link{
+
+  &__link {
     text-decoration: none;
-    color: rgb(137,144,148);
+    color: rgb(137, 144, 148);
   }
 
-  &__title{
+  &__title {
     cursor: pointer;
-    &:hover{
+    &:hover {
       text-decoration: underline;
       color: rgb(91, 95, 97);
     }
   }
 }
 
-.product-page{
+.product-page {
   margin-bottom: 20px;
 
-  &__item{
+  &__item {
     display: flex;
     justify-content: space-between;
   }
 
-  &__info{
+  &__info {
     width: 49%;
   }
 }
 
-.images{
+.images {
   width: 49%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 
-  &__main{
+  &__main {
     display: block;
     height: 500px;
     width: 450px;
@@ -48,51 +48,51 @@
   }
 }
 
-.miniature{
+.miniature {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
   width: 10%;
   margin-right: 5%;
 
-  &__img{
+  &__img {
     width: 100%;
     object-fit: cover;
     aspect-ratio: 1/1;
     cursor: pointer;
     transition: all 0.5s ease;
 
-    &:hover{
+    &:hover {
       opacity: 0.75;
     }
   }
 }
 
-.info{
-  &__title{
-    color: rgb(90,107,71);
+.info {
+  &__title {
+    color: rgb(90, 107, 71);
     text-align: start;
     margin-bottom: 10px;
   }
 
-  &__price{
+  &__price {
     color: #81cfdc;
     font-size: 30px;
-    font-weight:700;
+    font-weight: 700;
     margin-bottom: 10px;
   }
 
-  &__text{
-    color: rgb(137,144,148);
+  &__text {
+    color: rgb(137, 144, 148);
   }
 }
 
-.button{
+.button {
   margin-bottom: 10px;
   display: flex;
   column-gap: 10px;
 
-  &__buy{
+  &__buy {
     background-color: #898a86;
     color: rgb(255, 255, 255);
     border: none;
@@ -100,10 +100,10 @@
     padding: 10px 15px;
     transition: all 0.5s ease;
     cursor: pointer;
-  
+
     &:hover,
-    &:hover{
-     opacity: 0.75;
-   }
+    &:hover {
+      opacity: 0.75;
+    }
   }
 }
