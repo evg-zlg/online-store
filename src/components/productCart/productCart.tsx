@@ -65,7 +65,7 @@ export function ProductCart({
           <button
             className={
               count === products[cartId - 1].count
-                ? 'input-group__btn-plus--disabled'
+                ? 'input-group__btn-plus input-group__btn-plus--disabled'
                 : 'input-group__btn-plus'
             }
             onClick={handleIncrement}
