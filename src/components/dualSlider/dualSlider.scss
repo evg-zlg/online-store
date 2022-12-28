@@ -1,15 +1,20 @@
 .dual-slider {
-  margin: 0 auto;
-  width: 90%;
+  padding: 10px 5px;
   height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 15px;
+  border: 1px solid gray;
+  border-radius: 5px;
+
+  &__title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0 0 10px 0;
+  }
 
   &__text-block {
     display: flex;
     justify-content: space-around;
+    margin: 0 0 15px 0;
   }
 
   &__inputs {
@@ -27,8 +32,6 @@
     background-color: rgb(48, 48, 48);
     pointer-events: none;
     position: absolute;
-    top: 0;
-    left: 0;
 
     &::-webkit-slider-thumb {
       appearance: none;

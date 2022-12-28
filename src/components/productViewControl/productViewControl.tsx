@@ -1,6 +1,6 @@
 import './productViewControl.scss'
 import { useSearchParams } from 'react-router-dom'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 interface IProductViewControlProps {
   className: string
@@ -12,7 +12,7 @@ export const ProductViewControl = ({
   countFilteredProducts,
 }: IProductViewControlProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [search, setSearch] = useState(searchParams.get('search'))
+  const [select, setSelect] = useState(searchParams.get('sort') || 'none')
   const url = new URL(window.location.href)
 
   function listBtnClickHandler() {
@@ -29,7 +29,6 @@ export const ProductViewControl = ({
   }
   function searchHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const str = e.target.value
-    setSearch(str)
     const url = new URL(window.location.href)
     str
       ? url.searchParams.set('search', str)
@@ -37,14 +36,27 @@ export const ProductViewControl = ({
     setSearchParams(url.searchParams)
     return str
   }
+  function handleSelect(e: React.ChangeEvent<HTMLSelectElement>) {
+    const url = new URL(window.location.href)
+    const value = e.target.value
+    setSelect(value)
+    value === 'none'
+      ? url.searchParams.delete('sort')
+      : url.searchParams.set('sort', value)
+    setSearchParams(url.searchParams)
+  }
   return (
     <div className={className}>
-      <select defaultValue={1} className="view-control__select">
-        <option value="1">Сортировать по умолчанию</option>
-        <option value="2">По цене: ↓</option>
-        <option value="3">По цене: ↑</option>
-        <option value="4">По наличию: ↓</option>
-        <option value="5">По наличию: ↑</option>
+      <select
+        className="view-control__select"
+        value={select}
+        onChange={handleSelect}
+      >
+        <option value="none">Сортировать по умолчанию</option>
+        <option value="price-ask">По возрастанию цены</option>
+        <option value="price-desk">По убыванию цены</option>
+        <option value="stock-ask">По возрастанию остатка</option>
+        <option value="stock-desk">По убыванию остатка</option>
       </select>
       <input
         className="view-control__search"

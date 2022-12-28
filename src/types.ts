@@ -6,5 +6,6 @@ export interface IProduct {
   description: string[],
   price: number,
   images: string[],
-  count: number
+  count: number,
+  tags: string[]
 }
