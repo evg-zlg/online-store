@@ -50,7 +50,7 @@ export function ProductCart({
         <div className="item__num">{cardInd + 1}</div>
         <img
           className="item__img"
-          src={products[cartId - 1].images[0]}
+          src={require('../../data' + products[cartId - 1].images[0].slice(1))}
           alt={products[cartId - 1].name}
         ></img>
         <div className="item__name">{products[cartId - 1].name}</div>
