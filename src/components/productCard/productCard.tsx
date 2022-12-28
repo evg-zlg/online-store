@@ -1,16 +1,15 @@
 import { IProduct } from '../../types'
 import { NavLink } from 'react-router-dom'
-import { ProductItem } from '../productItemPage/productItemPage'
 import './productCard.scss'
 import CartBtn from '../addToCartBtn/addToCartBtn'
 
-interface ProductCardProps {
+interface IProductCardProps {
   product: IProduct
 
   numHandler: (num: number) => void
 }
 
-export function ProductCard({ product, numHandler }: ProductCardProps) {
+export function ProductCard({ product, numHandler }: IProductCardProps) {
   const imgSrc = require('../../data' + product.images[0].slice(1))
   return (
     <div className="card">

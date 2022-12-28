@@ -13,48 +13,106 @@ interface IProductsPageProps {
 
 export default function ProductsPage({ numHandler }: IProductsPageProps) {
   const [searchParams, setSearchParams] = useSearchParams()
+  const categories = getCategories()
+  const tags = getTags()
   let classes = ''
   searchParams.get('view') === 'list'
     ? (classes = 'products-page__products products-page__products--list')
     : (classes = 'products-page__products')
+  function getCategories() {
+    const categories: string[] = []
+    products.forEach((product) => {
+      if (!categories.join('').includes(product.category)) {
+        categories.push(product.category)
+      }
+    })
+    return categories
+  }
+  function getTags() {
+    const tags: string[] = []
+    products.forEach((product) => {
+      product.tags.forEach((tag) => {
+        if (!tags.join(' ').includes(tag)) {
+          tags.push(tag)
+        }
+      })
+    })
+    return tags
+  }
+  function getElementNameByIndex(i: number, type: string) {
+    let result: string = ''
+    type === 'categories' ? (result = categories[i]) : (result = tags[i])
+    return result
+  }
+  // function deduplicateArray(arr: IProduct[]): IProduct[] {
+  //   let set = new Set()
+  //   let result: IProduct[] = []
+  //   arr.forEach((el) => {
+  //     if (!set.has(el.id)) {
+  //       set.add(el.id)
+  //       result.push(el)
+  //     }
+  //   })
+  //   return result
+  // }
   function getFilteredProduct() {
-    const filteredProducts: IProduct[] = []
+    let filteredProducts: IProduct[] = []
     //include in filtered
-    if (searchParams.has('decor')) {
-      filteredProducts.push(
-        ...products.filter(
-          (product) => product.categoryID === searchParams.get('decor'),
-        ),
-      )
+    if (searchParams.has('categories') && searchParams.has('tags')) {
+      let catParams = searchParams.get('categories')?.split('.') || []
+      let tagParams = searchParams.get('tags')?.split('.') || []
+      if (catParams.length > 0) {
+        catParams.forEach((param) => {
+          filteredProducts.push(
+            ...products.filter((product) => {
+              let haveTag = false
+              tagParams.forEach((tagParam) => {
+                if (
+                  product.tags
+                    .join(' ')
+                    .includes(getElementNameByIndex(parseInt(tagParam), 'tags'))
+                ) {
+                  haveTag = true
+                }
+              })
+              return (
+                product.category ===
+                  getElementNameByIndex(parseInt(param), 'categories') &&
+                haveTag
+              )
+            }),
+          )
+        })
+      }
+    } else if (searchParams.has('categories')) {
+      let params = searchParams.get('categories')?.split('.') || []
+      if (params.length > 0) {
+        params.forEach((param) => {
+          filteredProducts.push(
+            ...products.filter((product) => {
+              return (
+                product.category ===
+                getElementNameByIndex(parseInt(param), 'categories')
+              )
+            }),
+          )
+        })
+      }
+    } else if (searchParams.has('tags')) {
+      let params = searchParams.get('tags')?.split('.') || []
+      if (params.length > 0) {
+        params.forEach((param) => {
+          filteredProducts.push(
+            ...products.filter((product) => {
+              return product.tags
+                .join(' ')
+                .includes(getElementNameByIndex(parseInt(param), 'tags'))
+            }),
+          )
+        })
+      }
     }
-    if (searchParams.has('watch')) {
-      filteredProducts.push(
-        ...products.filter(
-          (product) => product.categoryID === searchParams.get('watch'),
-        ),
-      )
-    }
-    if (searchParams.has('baskets')) {
-      filteredProducts.push(
-        ...products.filter(
-          (product) => product.categoryID === searchParams.get('baskets'),
-        ),
-      )
-    }
-    if (searchParams.has('kitchen')) {
-      filteredProducts.push(
-        ...products.filter(
-          (product) => product.categoryID === searchParams.get('kitchen'),
-        ),
-      )
-    }
-    if (searchParams.has('children')) {
-      filteredProducts.push(
-        ...products.filter(
-          (product) => product.categoryID === searchParams.get('children'),
-        ),
-      )
-    }
+    //if no filters
     if (filteredProducts.length === 0) {
       filteredProducts.push(...products)
     }
@@ -140,6 +198,8 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
           //sdf
           products={products}
           filteredProducts={filteredProducts}
+          categories={categories}
+          tags={tags}
         />
       </aside>
       <div className="products-page__content">

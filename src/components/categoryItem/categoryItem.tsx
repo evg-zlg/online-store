@@ -2,56 +2,69 @@ import './categoryItem.scss'
 import { IProduct } from '../../types'
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { products } from '../../data/data'
 
 interface ICategoryItemProps {
-  category: string
-  products: IProduct[]
+  item: string
   productCurrent: IProduct[]
   type: string
   index?: number
 }
 
 export const CategoryItem = ({
-  category,
-  products,
+  item,
   productCurrent,
   type,
   index,
 }: ICategoryItemProps) => {
-  const categoryID = type === 'categories' ? getCategoryID() : String(index)
   const [searchParams, setSearchParams] = useSearchParams()
-  let checked = searchParams.has(categoryID)
-  let productCurrentCount = productCurrent.filter(
-    (productCurrent) => productCurrent.category === category,
-  ).length
-  const productTotalCount = products.filter(
-    (product) => product.category === category,
-  ).length
-  function getCategoryID() {
-    return products.filter((product) => product.category === category)[0]
-      .categoryID
+  let checked = searchParams.get(type)?.includes(String(index))
+  let productCurrentCount =
+    type === 'categories'
+      ? productCurrent.filter(
+          (productCurrent) => productCurrent.category === item,
+        ).length
+      : productCurrent.filter((productCurrent) =>
+          productCurrent.tags.join(' ').includes(item),
+        ).length
+  const productTotalCount =
+    type === 'categories'
+      ? products.filter((product) => product.category === item).length
+      : products.filter((product) => product.tags.join(' ').includes(item))
+          .length
+  function deleteParam(param: string, str: string) {
+    const params = str.split('.')
+    return params.filter((el) => el !== param).join('.')
   }
   function clickCheckboxHandler() {
     const url = new URL(window.location.href)
-    searchParams.get(categoryID) === categoryID
-      ? url.searchParams.delete(categoryID)
-      : url.searchParams.append(categoryID, categoryID)
+    if (searchParams.has(type)) {
+      let params = url.searchParams.get(type)
+      params?.includes(String(index))
+        ? (params = deleteParam(String(index), params))
+        : (params += `.${index}`)
+      params
+        ? url.searchParams.set(type, params)
+        : url.searchParams.delete(type)
+    } else {
+      url.searchParams.append(type, String(index))
+    }
     setSearchParams(url.searchParams)
   }
   return (
     <li className="list__item">
-      <label className="list__label" htmlFor={category}>
+      <label className="list__label" htmlFor={type + index}>
         <input
           onClick={clickCheckboxHandler}
           className="list__checkbox"
-          checked={searchParams.has(categoryID)}
+          checked={searchParams.get(type)?.includes(String(index)) || false}
           onChange={() => {
             checked = !checked
           }}
           type="checkbox"
-          id={category}
+          id={type + index}
         ></input>
-        {category.slice(0, 1).toUpperCase() + category.slice(1).toLowerCase()}
+        {item.slice(0, 1).toUpperCase() + item.slice(1).toLowerCase()}
       </label>
       <label className="list__results">{`(${productCurrentCount}/${productTotalCount})`}</label>
     </li>

@@ -8,56 +8,24 @@ import { DualSlider } from '../dualSlider/dualSlider'
 interface IFilterPanelProps {
   products: IProduct[]
   filteredProducts: IProduct[]
-  // onFiltered: (products: IProduct[]) => void
+  categories: string[]
+  tags: string[]
 }
 
 export const FilterPanel = ({
   products,
   filteredProducts,
+  categories,
+  tags,
 }: IFilterPanelProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const [copyText, setCopyText] = useState('Копировать ссылку')
   const [copyClass, setCopyClass] = useState('filter__copy')
-  function getCategories() {
-    const categories: string[] = []
-    products.forEach((product) => {
-      if (!categories.join('').includes(product.category)) {
-        categories.push(product.category)
-      }
-    })
-    return categories
-  }
-  function getCategoriesID() {
-    const categoriesID: string[] = []
-    products.forEach((product) => {
-      if (!categoriesID.join('').includes(product.categoryID)) {
-        categoriesID.push(product.categoryID)
-      }
-    })
-    return categoriesID
-  }
-  function getTags() {
-    const tags: string[] = []
-    products.forEach((product) => {
-      product.tags.forEach((tag) => {
-        if (!tags.join(' ').includes(tag)) {
-          tags.push(tag)
-        }
-      })
-    })
-    return tags
-  }
-  const categoriesID = getCategoriesID()
   const resetHandler = () => {
     const url = new URL(window.location.href)
-    categoriesID.forEach((cat) => {
-      if (searchParams.has(cat)) {
-        url.searchParams.delete(cat)
-      }
-      if (searchParams.has('search')) {
-        url.searchParams.delete('search')
-      }
-    })
+    url.searchParams.delete('categories')
+    url.searchParams.delete('tags')
+    url.searchParams.delete('search')
     url.searchParams.delete('maxprice')
     url.searchParams.delete('minprice')
     url.searchParams.delete('minstock')
@@ -142,13 +110,13 @@ export const FilterPanel = ({
       </div>
       <div className="filter__list list">
         <h2 className="filter__title">Категория</h2>
-        {getCategories().map((cat) => {
+        {categories.map((cat, index) => {
           return (
             <CategoryItem
               type="categories"
               key={cat}
-              category={cat}
-              products={products}
+              item={cat}
+              index={index}
               productCurrent={filteredProducts}
             />
           )
@@ -157,13 +125,12 @@ export const FilterPanel = ({
       <div className="filter__tags tags">
         <h2 className="filter__title">Подборки</h2>
         <div className="tags__items">
-          {getTags().map((tag, index) => {
+          {tags.map((tag, index) => {
             return (
               <CategoryItem
                 type="tags"
                 key={tag}
-                category={tag}
-                products={products}
+                item={tag}
                 index={index}
                 productCurrent={filteredProducts}
               />
@@ -174,7 +141,7 @@ export const FilterPanel = ({
       <DualSlider
         className="filter__price"
         type="price"
-        title="Стоимость"
+        title="Цена"
         maxValue={getMaxPrice()}
         minValue={getMinPrice()}
         leftValue={String(getMinPriceFilteredProducts())}
