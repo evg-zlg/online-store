@@ -44,17 +44,17 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
     type === 'categories' ? (result = categories[i]) : (result = tags[i])
     return result
   }
-  // function deduplicateArray(arr: IProduct[]): IProduct[] {
-  //   let set = new Set()
-  //   let result: IProduct[] = []
-  //   arr.forEach((el) => {
-  //     if (!set.has(el.id)) {
-  //       set.add(el.id)
-  //       result.push(el)
-  //     }
-  //   })
-  //   return result
-  // }
+  function deduplicateArray(arr: IProduct[]): IProduct[] {
+    let set = new Set()
+    let result: IProduct[] = []
+    arr.forEach((el) => {
+      if (!set.has(el.id)) {
+        set.add(el.id)
+        result.push(el)
+      }
+    })
+    return result
+  }
   function getFilteredProduct() {
     let filteredProducts: IProduct[] = []
     //include in filtered
@@ -112,9 +112,13 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
         })
       }
     }
-    //if no filters
-    if (filteredProducts.length === 0) {
-      filteredProducts.push(...products)
+    if (filteredProducts.length > 0) {
+      filteredProducts = deduplicateArray(filteredProducts)
+    } else {
+      //if no filters
+      if (!(searchParams.has('categories') && searchParams.has('tags'))) {
+        filteredProducts.push(...products)
+      }
     }
     //exclude in filtered
     let newFilteredProducts: IProduct[] = [...filteredProducts]
