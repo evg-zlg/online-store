@@ -2,15 +2,30 @@ import './cartPage.scss'
 import { ProductCart } from '../productCart/productCart'
 import { useState } from 'react'
 import { products } from '../../data/data'
+import usePagination from '../productCart/pagination/usePagination'
+import Pagination from '../productCart/pagination/pagination'
 
 export default function CartPage({
   appCallback,
 }: {
   appCallback: (a: number, b: number) => void
 }) {
-  // const localArr = JSON.parse(localStorage.getItem('cart') || '[]')
+  const [value, setValue] = useState(+(localStorage.getItem('countItems') || 1))
+  const {
+    firstItemIndex,
+    lastItemIndex,
+    nextPage,
+    prevPage,
+    page,
+    setPage,
+    totalPages,
+  } = usePagination({
+    itemPerPage: +value,
+    count: JSON.parse(localStorage.getItem('cart') || '[]').length,
+  })
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalCount, setTotalCount] = useState(0)
+
   let [localArr, setLocalArr] = useState(
     JSON.parse(localStorage.getItem('cart') || '[]'),
   )
@@ -39,6 +54,15 @@ export default function CartPage({
   return (
     <>
       <section className="cart-page">
+        <Pagination
+          setValue={setValue}
+          setPage={setPage}
+          prevPage={prevPage}
+          nextPage={nextPage}
+          page={page}
+          totalPages={totalPages}
+          value={value}
+        />
         <div className="cart-page__container">
           <div className="cart-page__content content">
             <div className="content__cart-products cart-products">
@@ -52,6 +76,8 @@ export default function CartPage({
                 <p className="title__sum">Итого</p>
               </div>
               {localArr.map((id: number, index: number) => {
+                if (index + 1 <= firstItemIndex || index + 1 > lastItemIndex)
+                  return null
                 return (
                   <ProductCart
                     key={id}
@@ -62,15 +88,6 @@ export default function CartPage({
                   />
                 )
               })}
-            </div>
-            <div className="content__pagination pagination">
-              <p>Страница: </p>
-              <button>{'<'}</button>
-              {/* <input type="text" value={currentPage}></input> */}
-              <button>{'>'}</button>
-              <div className="pagination__prev"></div>
-              <div className="pagination__count"></div>
-              <div className="pagination__next"></div>
             </div>
           </div>
           <div className="cart-page__summary summary">
