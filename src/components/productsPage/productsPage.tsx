@@ -212,15 +212,21 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
           className={'products-page__view-control view-control'}
         />
         <div className={classes}>
-          {filteredProducts.map((product) => {
-            return (
-              <ProductCard
-                key={product.id}
-                numHandler={numHandler}
-                product={product}
-              />
-            )
-          })}
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => {
+              return (
+                <ProductCard
+                  key={product.id}
+                  numHandler={numHandler}
+                  product={product}
+                />
+              )
+            })
+          ) : (
+            <p className="products-page__empty">
+              Товаров не найдено, попробуйте изменить настройки фильтрации
+            </p>
+          )}
         </div>
       </div>
     </section>

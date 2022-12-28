@@ -24,8 +24,17 @@ export function ProductCard({ product, numHandler }: IProductCardProps) {
       <div className="card__buttons">
         <CartBtn onClick={numHandler} id={product.id} />
         <NavLink className="card__link-inf" to={'/item/' + product.id}>
-          <button className="card__btn-inf">инфо</button>
+          <button className="card__btn-inf">Подробней</button>
         </NavLink>
+      </div>
+      <div className="card__tag-items">
+        {product.tags.map((tag) => {
+          return (
+            <p key={tag} className="card__tag">
+              {tag.slice(0, 1).toUpperCase() + tag.slice(1).toLowerCase()}
+            </p>
+          )
+        })}
       </div>
     </div>
   )
