@@ -10,13 +10,17 @@ export default function Footer() {
             href="https://github.com/evg-zlg"
             target="_blank"
             rel="noreferrer"
-          ></a>
+          >
+            github evg-zlg
+          </a>
           <a
             className="gitHub__kar"
             href="https://github.com/Karinaguseva"
             target="_blank"
             rel="noreferrer"
-          ></a>
+          >
+            github Karinaguseva
+          </a>
         </div>
         <div className="footer__year">&copy; 2022</div>
         <a
@@ -24,7 +28,9 @@ export default function Footer() {
           href="https://rs.school/js/"
           target="_blank"
           rel="noreferrer"
-        ></a>
+        >
+          rs school course js
+        </a>
       </div>
     </footer>
   )
