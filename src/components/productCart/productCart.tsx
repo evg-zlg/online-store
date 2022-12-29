@@ -17,6 +17,7 @@ export function ProductCart({
 }: ProductCartProps) {
   const cartlocal = JSON.parse(localStorage.getItem('object') || '{}')
   const [count, setCount] = useState(cartlocal[cartId])
+
   const handleDecrement = () => {
     if (count > 0) {
       //надо будет поставить 0 и при значении 0 удалять товар
@@ -31,7 +32,9 @@ export function ProductCart({
     }
   }
   const handleIncrement = () => {
-    if (count < products[cartId - 1].count) setCount(() => count + 1)
+    if (count < products[cartId - 1].count) {
+      setCount(() => count + 1)
+    }
   }
 
   useEffect(() => {
@@ -59,7 +62,14 @@ export function ProductCart({
             -
           </button>
           <div className="input-group__text">{count}</div>
-          <button className="input-group__btn" onClick={handleIncrement}>
+          <button
+            className={
+              count === products[cartId - 1].count
+                ? 'input-group__btn-plus input-group__btn-plus--disabled'
+                : 'input-group__btn-plus'
+            }
+            onClick={handleIncrement}
+          >
             +
           </button>
         </div>

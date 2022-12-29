@@ -2,22 +2,9 @@ import './header.scss'
 import { NavLink } from 'react-router-dom'
 import { products } from '../../data/data'
 
-export default function Header({
-  num,
-  totalPrice,
-  totalCount,
-}: {
-  num: number
-  totalPrice: number
-  totalCount: number
-}) {
+export default function Header() {
   const localArr = JSON.parse(localStorage.getItem('object') || '{}')
-  // let sumArr: number[] = Object.values(localArr)
-  // let sum = 0
-  // for (let i = 0; i < sumArr.length; i++) {
-  //   sum += sumArr[i]
-  // }
-  // console.log(sum)
+  const cartArr = JSON.parse(localStorage.getItem('cart') || '[]').length
   let price = 0
   let count = 0
   for (const product of products) {
@@ -33,12 +20,26 @@ export default function Header({
           <div className="header__logo"></div>
         </NavLink>
         <div className="header__basket basket">
-          <div className="basket__price total">
+          <div
+            className={
+              cartArr === 0
+                ? 'basket__price'
+                : 'basket__price basket__price--active'
+            }
+          >
             Total:
             <span className="total__price">{price}</span>
           </div>
           <NavLink to={'/cart'}>
-            <div className="basket__count">{count}</div>
+            <div
+              className={
+                cartArr === 0
+                  ? 'basket__count'
+                  : 'basket__count basket__count--active'
+              }
+            >
+              {count}
+            </div>
             <div className="basket__img"></div>
           </NavLink>
         </div>
