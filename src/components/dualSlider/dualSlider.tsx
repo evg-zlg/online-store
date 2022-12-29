@@ -37,11 +37,11 @@ export const DualSlider = ({
     setSearchParams(url.searchParams)
   }
   let leftText = currency
-    ? (url.searchParams.get(minParam) || leftValue) + ' ' + currency
-    : url.searchParams.get(minParam) || leftValue
+    ? (searchParams.get(minParam) || leftValue) + ' ' + currency
+    : searchParams.get(minParam) || leftValue
   let rightText = currency
-    ? (url.searchParams.get(maxParam) || rightValue) + ' ' + currency
-    : url.searchParams.get(maxParam) || rightValue
+    ? (searchParams.get(maxParam) || rightValue) + ' ' + currency
+    : searchParams.get(maxParam) || rightValue
   return (
     <div className={className + ` dual-slider`}>
       <h2 className="dual-slider__title">{title}</h2>
