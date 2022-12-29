@@ -6,6 +6,7 @@ import { ProductItem } from './components/productItemPage/productItemPage'
 import CartPage from './components/cartPage/cartPage'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { NotFoundPage404 } from './components/notFoundPage404/notFoundPage404'
 
 function App() {
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length
@@ -23,6 +24,14 @@ function App() {
     setTotalPrice(price)
     setTotalCount(count)
   }
+  //for delete warning
+  if (num) {
+  }
+  if (totalPrice) {
+  }
+  if (totalCount) {
+  }
+
   return (
     <>
       <Header />
@@ -40,6 +49,7 @@ function App() {
             path={'/cart'}
             element={<CartPage appCallback={appCallback} />}
           ></Route>
+          <Route path="*" element={<NotFoundPage404 />}></Route>
         </Routes>
       </main>
       <Footer />
