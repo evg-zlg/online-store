@@ -24,6 +24,14 @@ function App() {
     setTotalPrice(price)
     setTotalCount(count)
   }
+  //for delete warning
+  if (num) {
+  }
+  if (totalPrice) {
+  }
+  if (totalCount) {
+  }
+
   return (
     <>
       <Header />
