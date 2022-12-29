@@ -26,7 +26,7 @@ function App() {
   }
   return (
     <>
-      <Header num={num} totalPrice={totalPrice} totalCount={totalCount} />
+      <Header />
       <main className="main">
         <Routes>
           <Route
