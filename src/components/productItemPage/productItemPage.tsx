@@ -15,61 +15,63 @@ export function ProductItem({ numHandler }: IProductItemProps) {
   const product: IProduct = products.filter(
     (el) => el.id === Number(params.id),
   )[0]
-  const [imgScr, setImgScr] = useState(
-    require('../../data' + product.images[0].slice(1)),
-  )
+  const startImgSrc = product
+    ? require('../../data' + product.images[0].slice(1))
+    : ''
+  const [imgScr, setImgScr] = useState(startImgSrc)
+  const hasProduct = product ? true : false
   return (
     <>
-      <section className="product-page">
-        <div className="product-page__crumbs crumbs">
-          <NavLink className="crumbs__link" to="/">
-            <span className="crumbs__title">Магазин {''}</span>
-          </NavLink>
-          {'>>'} {product.category} {'>>'} {product.name}
-        </div>
-        <div className="product-page__item">
-          <div className="product-page__images images">
-            <div className="images__miniature miniature">
-              {product.images.map((img) => {
-                const src = require('../../data' + img.slice(1))
-                return (
-                  <img
-                    key={img}
-                    className="miniature__img"
-                    alt={product.name}
-                    src={src}
-                    onClick={() => setImgScr(src)}
-                  ></img>
-                )
-              })}
+      {hasProduct && (
+        <section className="product-page">
+          <div className="product-page__crumbs crumbs">
+            <NavLink className="crumbs__link" to="/">
+              <span className="crumbs__title">Магазин {''}</span>
+            </NavLink>
+            {'>>'} {product.category} {'>>'} {product.name}
+          </div>
+          <div className="product-page__item">
+            <div className="product-page__images images">
+              <div className="images__miniature miniature">
+                {product.images.map((img) => {
+                  const src = require('../../data' + img.slice(1))
+                  return (
+                    <img
+                      key={img}
+                      className="miniature__img"
+                      alt={product.name}
+                      src={src}
+                      onClick={() => setImgScr(src)}
+                    ></img>
+                  )
+                })}
+              </div>
+              <div>
+                <img src={imgScr} alt={product.name} className="images__main" />
+              </div>
             </div>
-            <div>
-              <img src={imgScr} alt={product.name} className="images__main" />
+            <div className="product-page__info info">
+              <h2 className="info__title">{product.name}</h2>
+              <div className="info__price">{product.price} руб.</div>
+              <div className="product-page__button button">
+                <CartBtn onClick={numHandler} id={product.id} />
+                <button className="button__buy">Купить сейчас</button>
+              </div>
+              <div className="info__category">
+                <span className="info__text">Категория:</span>{' '}
+                {product.category}
+              </div>
+              <div className="info__description">
+                <span className="info__text">Описание:</span>{' '}
+                {product.description.map((e, key) => (
+                  <p key={key}>{e}</p>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="product-page__info info">
-            <h2 className="info__title">{product.name}</h2>
-            <div className="info__price">{product.price} руб.</div>
-            <div className="product-page__button button">
-              <CartBtn onClick={numHandler} id={product.id} />
-              <button className="button__buy">Купить сейчас</button>
-            </div>
-            <div className="info__category">
-              <span className="info__text">Категория:</span> {product.category}
-            </div>
-            <div className="info__tags">
-              <span className="info__text">Теги:</span>{' '}
-              {product.tags.join(', ')}
-            </div>
-            <div className="info__description">
-              <span className="info__text">Описание:</span>{' '}
-              {product.description.map((e, key) => (
-                <p key={key}>{e}</p>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
+      {!hasProduct && <h1>Товар {params.id} не найден</h1>}
     </>
   )
 }
