@@ -2,13 +2,17 @@ import './cartPage.scss'
 import { ProductCart } from '../productCart/productCart'
 import { useState } from 'react'
 import { products } from '../../data/data'
-import usePagination from '../productCart/pagination/usePagination'
-import Pagination from '../productCart/pagination/pagination'
+import usePagination from './pagination/usePagination'
+import Pagination from './pagination/pagination'
 
 export default function CartPage({
   appCallback,
+  active,
+  setActive,
 }: {
   appCallback: (a: number, b: number) => void
+  active: boolean
+  setActive: (bool: boolean) => void
 }) {
   const [value, setValue] = useState(+(localStorage.getItem('countItems') || 1))
   const {
@@ -55,7 +59,7 @@ export default function CartPage({
   if (JSON.parse(localStorage.getItem('cart') || '[]').length === 0) {
     return (
       <>
-        <div className="cart-page__empty">Cart is Empty</div>
+        <div className="cart-page__empty">Корзина пуста</div>
       </>
     )
   } else
@@ -110,7 +114,9 @@ export default function CartPage({
                   <p className="content__number">{totalPrice} руб.</p>
                 </div>
               </div>
-              <button className="summary__btn">Оформить заказ</button>
+              <button className="summary__btn" onClick={() => setActive(true)}>
+                Оформить заказ
+              </button>
             </div>
           </div>
         </section>

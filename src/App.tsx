@@ -6,6 +6,7 @@ import { ProductItem } from './components/productItemPage/productItemPage'
 import CartPage from './components/cartPage/cartPage'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import CheckoutWindow from './components/checkoutWindow/checkoutWindow'
 import { NotFoundPage404 } from './components/notFoundPage404/notFoundPage404'
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
 
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalCount, setTotalCount] = useState(0)
+
+  const [modalActive, setmodalActive] = useState(false)
 
   const appCallback = (price: number, count: number) => {
     setTotalPrice(price)
@@ -34,6 +37,7 @@ function App() {
 
   return (
     <>
+      <CheckoutWindow active={modalActive} setActive={setmodalActive} />
       <Header />
       <main className="main">
         <Routes>
@@ -43,11 +47,23 @@ function App() {
           ></Route>
           <Route
             path={'/item/:id'}
-            element={<ProductItem numHandler={numHandler} />}
+            element={
+              <ProductItem
+                numHandler={numHandler}
+                active={modalActive}
+                setActive={setmodalActive}
+              />
+            }
           ></Route>
           <Route
             path={'/cart'}
-            element={<CartPage appCallback={appCallback} />}
+            element={
+              <CartPage
+                appCallback={appCallback}
+                active={modalActive}
+                setActive={setmodalActive}
+              />
+            }
           ></Route>
           <Route path="/item/*" element={<NotFoundPage404 />}></Route>
           <Route path="*" element={<NotFoundPage404 />}></Route>
