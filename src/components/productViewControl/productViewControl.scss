@@ -22,16 +22,12 @@
     font-weight: 500;
   }
 
-  // &__count {
-    
-  // }
-
   &__views {
     display: flex;
     gap: 10px;
   }
 
-  &__list-btn, 
+  &__list-btn,
   &__grid-btn {
     border: none;
     outline: none;
@@ -42,7 +38,6 @@
     background-repeat: no-repeat;
     background-position: center center;
     cursor: pointer;
-    
   }
   &__list-btn {
     background-image: url('./list-btn-icon.svg');
@@ -50,5 +45,4 @@
   &__grid-btn {
     background-image: url('./grid-btn-icon.svg');
   }
-
 }
