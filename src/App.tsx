@@ -47,7 +47,13 @@ function App() {
           ></Route>
           <Route
             path={'/item/:id'}
-            element={<ProductItem numHandler={numHandler} />}
+            element={
+              <ProductItem
+                numHandler={numHandler}
+                active={modalActive}
+                setActive={setmodalActive}
+              />
+            }
           ></Route>
           <Route
             path={'/cart'}

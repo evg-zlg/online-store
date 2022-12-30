@@ -5,12 +5,19 @@ import { products } from '../../data/data'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import CartBtn from '../addToCartBtn/addToCartBtn'
+import BuyNowBtn from '../buyNowBtn/buyNowBtn'
 
 interface IProductItemProps {
   numHandler: (num: number) => void
+  active: boolean
+  setActive: (bool: boolean) => void
 }
 
-export function ProductItem({ numHandler }: IProductItemProps) {
+export function ProductItem({
+  numHandler,
+  active,
+  setActive,
+}: IProductItemProps) {
   const params = useParams()
   const product: IProduct = products.filter(
     (el) => el.id === Number(params.id),
@@ -55,7 +62,9 @@ export function ProductItem({ numHandler }: IProductItemProps) {
               <div className="info__price">{product.price} руб.</div>
               <div className="product-page__button button">
                 <CartBtn onClick={numHandler} id={product.id} />
-                <button className="button__buy">Купить сейчас</button>
+                <NavLink to={'/cart'} onClick={() => setActive(true)}>
+                  <BuyNowBtn onClick={numHandler} id={product.id} />
+                </NavLink>
               </div>
               <div className="info__category">
                 <span className="info__text">Категория:</span>{' '}
