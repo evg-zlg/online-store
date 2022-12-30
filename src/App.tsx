@@ -21,6 +21,8 @@ function App() {
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalCount, setTotalCount] = useState(0)
 
+  const [modalActive, setmodalActive] = useState(false)
+
   const appCallback = (price: number, count: number) => {
     setTotalPrice(price)
     setTotalCount(count)
@@ -35,7 +37,7 @@ function App() {
 
   return (
     <>
-      {/* <CheckoutWindow /> */}
+      <CheckoutWindow active={modalActive} setActive={setmodalActive} />
       <Header />
       <main className="main">
         <Routes>
@@ -49,7 +51,13 @@ function App() {
           ></Route>
           <Route
             path={'/cart'}
-            element={<CartPage appCallback={appCallback} />}
+            element={
+              <CartPage
+                appCallback={appCallback}
+                active={modalActive}
+                setActive={setmodalActive}
+              />
+            }
           ></Route>
           <Route path="/item/*" element={<NotFoundPage404 />}></Route>
           <Route path="*" element={<NotFoundPage404 />}></Route>

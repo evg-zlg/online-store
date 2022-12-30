@@ -7,6 +7,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: scale(0);
+}
+
+.checkout-window--active {
+  transform: scale(1);
 }
 
 .popup {
@@ -33,14 +38,14 @@
     cursor: pointer;
   }
 
-  &__card{
+  &__card {
     width: 35%;
     height: 35%;
     border-radius: 10px;
     background-color: bisque;
   }
 
-  &__btn{
+  &__btn {
     padding: 10px 30px;
     background-color: #5a6b47;
     border-radius: 10px;
@@ -50,12 +55,12 @@
 }
 
 .close__line {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 1.7px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 16px;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 1.7px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
   &:first-child {
     transform: translateY(500%) rotate(45deg);
   }

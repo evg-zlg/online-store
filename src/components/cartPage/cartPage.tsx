@@ -7,8 +7,12 @@ import Pagination from '../productCart/pagination/pagination'
 
 export default function CartPage({
   appCallback,
+  active,
+  setActive,
 }: {
   appCallback: (a: number, b: number) => void
+  active: boolean
+  setActive: (bool: boolean) => void
 }) {
   const [value, setValue] = useState(+(localStorage.getItem('countItems') || 1))
   const {
@@ -110,7 +114,9 @@ export default function CartPage({
                   <p className="content__number">{totalPrice} руб.</p>
                 </div>
               </div>
-              <button className="summary__btn">Оформить заказ</button>
+              <button className="summary__btn" onClick={() => setActive(true)}>
+                Оформить заказ
+              </button>
             </div>
           </div>
         </section>

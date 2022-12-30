@@ -2,12 +2,25 @@ import './checkoutWindow.scss'
 import { NavLink } from 'react-router-dom'
 import { products } from '../../data/data'
 
-export default function CheckoutWindow() {
+interface CheckoutWindow {
+  active: boolean
+  setActive: (bool: boolean) => void
+}
+
+export default function CheckoutWindow({ active, setActive }: CheckoutWindow) {
   return (
     <>
-      <section className="checkout-window">
-        <div className="checkout-window__popup popup">
-          <div className="popup__close close">
+      <section
+        className={
+          active ? 'checkout-window checkout-window--active' : 'checkout-window'
+        }
+        onClick={() => setActive(false)}
+      >
+        <div
+          className="checkout-window__popup popup"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="popup__close close" onClick={() => setActive(false)}>
             <span className="close__line"></span>
             <span className="close__line"></span>
           </div>
