@@ -6,7 +6,7 @@ import { ProductItem } from './components/productItemPage/productItemPage'
 import CartPage from './components/cartPage/cartPage'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import CheckoutWindow from './components/checkoutWindow/checkoutWindow'
+import ModalWindow from './components/modalWindow/modalWindow'
 import { NotFoundPage404 } from './components/notFoundPage404/notFoundPage404'
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
 
   return (
     <>
-      <CheckoutWindow active={modalActive} setActive={setmodalActive} />
+      <ModalWindow active={modalActive} setActive={setmodalActive} />
       <Header />
       <main className="main">
         <Routes>
