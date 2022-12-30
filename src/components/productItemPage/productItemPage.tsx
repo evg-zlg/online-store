@@ -71,7 +71,7 @@ export function ProductItem({ numHandler }: IProductItemProps) {
           </div>
         </section>
       )}
-      {!hasProduct && <h1>Товар не найден</h1>}
+      {!hasProduct && <h1>Товар {params.id} не найден</h1>}
     </>
   )
 }
