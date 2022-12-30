@@ -11,7 +11,7 @@ interface IProductsPageProps {
 }
 
 export default function ProductsPage({ numHandler }: IProductsPageProps) {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const categories = getCategories()
   const tags = getTags()
   let classes = ''

@@ -22,6 +22,8 @@ export const FilterPanel = ({
   const [copyText, setCopyText] = useState('Копировать ссылку')
   const [copyClass, setCopyClass] = useState('filter__copy')
   const resetHandler = () => {
+    if (searchParams) {
+    }
     const url = new URL(window.location.href)
     url.searchParams.delete('categories')
     url.searchParams.delete('tags')
