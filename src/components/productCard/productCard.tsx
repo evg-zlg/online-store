@@ -2,6 +2,7 @@ import { IProduct } from '../../types'
 import { NavLink } from 'react-router-dom'
 import './productCard.scss'
 import CartBtn from '../addToCartBtn/addToCartBtn'
+import { Carousel } from '../carousel/carousel'
 
 interface IProductCardProps {
   product: IProduct
@@ -10,13 +11,16 @@ interface IProductCardProps {
 }
 
 export function ProductCard({ product, numHandler }: IProductCardProps) {
-  const imgSrc = require('../../data' + product.images[0].slice(1))
   return (
     <div className="card">
       <NavLink className="card__link-title" to={'/item/' + product.id}>
         <h2 className="card__title">{product.name}</h2>
       </NavLink>
-      <img className="card__img" src={imgSrc} alt={product.name}></img>
+      <Carousel
+        className="card__img"
+        images={product.images}
+        alt={product.name}
+      />
       <div className="card__info">
         <p className="card__price">Цена: {product.price}</p>
         <p className="card__count">Остаток: {product.count}</p>
