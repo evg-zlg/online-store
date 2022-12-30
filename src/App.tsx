@@ -49,6 +49,7 @@ function App() {
             path={'/cart'}
             element={<CartPage appCallback={appCallback} />}
           ></Route>
+          <Route path="/item/*" element={<NotFoundPage404 />}></Route>
           <Route path="*" element={<NotFoundPage404 />}></Route>
         </Routes>
       </main>
