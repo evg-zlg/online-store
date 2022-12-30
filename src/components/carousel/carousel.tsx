@@ -1,23 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './carousel.scss'
 
 interface ICarouselProps {
   images: string[]
+  currentImage: string
   alt: string
   className: string
 }
 
-export const Carousel = ({ images, alt, className }: ICarouselProps) => {
+export const Carousel = ({
+  images,
+  alt,
+  className,
+  currentImage,
+}: ICarouselProps) => {
   const [showCarousel, setShowCarousel] = useState(false)
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
   function handleClickZoomBtn() {
     setShowCarousel((prev) => !prev)
   }
-  useEffect(() => {
-    showCarousel
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = '')
-  }, [showCarousel])
+  showCarousel
+    ? (document.body.style.overflow = 'hidden')
+    : (document.body.style.overflow = '')
   function handleClickBigBoxImg(e: React.MouseEvent) {
     setShowCarousel(false)
   }
@@ -46,7 +50,7 @@ export const Carousel = ({ images, alt, className }: ICarouselProps) => {
           ></button>
           <img
             className="carousel__img"
-            src={require('../../data' + images[0].slice(1))}
+            src={require('../../data' + currentImage.slice(1))}
             alt={alt}
           ></img>
         </div>

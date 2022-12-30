@@ -20,6 +20,7 @@ export function ProductCard({ product, numHandler }: IProductCardProps) {
         className="card__img"
         images={product.images}
         alt={product.name}
+        currentImage={product.images[0]}
       />
       <div className="card__info">
         <p className="card__price">Цена: {product.price}</p>
