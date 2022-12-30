@@ -1,13 +1,11 @@
 import './checkoutWindow.scss'
-import { NavLink } from 'react-router-dom'
-import { products } from '../../data/data'
 
-interface CheckoutWindow {
+interface ICheckoutWindow {
   active: boolean
   setActive: (bool: boolean) => void
 }
 
-export default function CheckoutWindow({ active, setActive }: CheckoutWindow) {
+export default function CheckoutWindow({ active, setActive }: ICheckoutWindow) {
   return (
     <>
       <section
