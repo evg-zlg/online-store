@@ -2,13 +2,13 @@
   border: 1px solid gray;
   border-radius: 5px;
   padding: 5px;
-  
+
   &__item {
     list-style: none;
     display: flex;
     align-items: baseline;
   }
-  &__checkbox {    
+  &__checkbox {
     margin: 0 10px 0 0;
     cursor: pointer;
   }
