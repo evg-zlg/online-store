@@ -6,6 +6,7 @@ import { ProductItem } from './components/productItemPage/productItemPage'
 import CartPage from './components/cartPage/cartPage'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import CheckoutWindow from './components/checkoutWindow/checkoutWindow'
 
 function App() {
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length
@@ -25,6 +26,7 @@ function App() {
   }
   return (
     <>
+      {/* <CheckoutWindow /> */}
       <Header />
       <main className="main">
         <Routes>
