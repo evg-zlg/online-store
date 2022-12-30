@@ -33,16 +33,24 @@
     outline: none;
     width: 40px;
     height: 40px;
-    background-color: unset;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
     cursor: pointer;
+    background-color: gray;
+    mask-size: contain;
+    transition: all ease 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+      background-color: #5a6b47;
+    }
+
+    &--active {
+      background-color: #5a6b47;
+    }
   }
   &__list-btn {
-    background-image: url('./list-btn-icon.svg');
+    mask-image: url('./list-btn-icon.svg');
   }
   &__grid-btn {
-    background-image: url('./grid-btn-icon.svg');
+    mask-image: url('./grid-btn-icon.svg');
   }
 }
