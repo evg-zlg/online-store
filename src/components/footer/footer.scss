@@ -17,13 +17,13 @@
     background-size: 100px 80px;
     background-repeat: no-repeat;
     cursor: pointer;
+    font-size: 0;
   }
 
   &__year {
     color: rgb(137, 144, 148);
   }
 }
-
 .gitHub {
   display: flex;
   &__evg {
@@ -33,6 +33,7 @@
     background-size: 50px 50px;
     background-repeat: no-repeat;
     cursor: pointer;
+    font-size: 0;
   }
   &__kar {
     background-image: url('./github-icon-Kar.svg');
@@ -41,5 +42,6 @@
     background-size: 50px 50px;
     background-repeat: no-repeat;
     cursor: pointer;
+    font-size: 0;
   }
 }

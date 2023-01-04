@@ -18,7 +18,7 @@
     width: 768px;
     flex: 1 1 auto;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     gap: 10px;
     flex-wrap: wrap;
 
@@ -68,6 +68,11 @@
         &__tag-items {
           grid-area: ceil-5;
           display: block;
+        }
+
+        .carousel__zoom {
+          right: 10px;
+          top: 10px;
         }
       }
     }
