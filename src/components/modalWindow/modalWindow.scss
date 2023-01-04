@@ -16,7 +16,7 @@
 
 .popup {
   width: 50%;
-  height: 50%;
+  // height: 50%;
   background-color: rgb(255, 255, 255);
   padding: 20px;
   position: relative;
@@ -38,7 +38,7 @@
     cursor: pointer;
   }
 
-  &__title{
+  &__title {
     font-size: 30px;
     color: #5a6b47;
     font-weight: bold;
@@ -69,19 +69,19 @@
   align-items: center;
   gap: 10px;
 
-  &__item{
+  &__item {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
   }
 
-  &__title{
+  &__title {
     font-size: 20px;
     font-weight: bold;
     margin-right: 10px;
   }
 
-  &__input-wrapper{
+  &__input-wrapper {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -94,25 +94,49 @@
   }
 
   &__card {
-    width: 35%;
-    height: 35%;
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
     border-radius: 10px;
     background-color: bisque;
   }
 
   &__btn {
+    margin-top: 10px;
     padding: 10px 30px;
     background-color: #5a6b47;
     border-radius: 10px;
     border: none;
     color: white;
+    cursor: pointer;
   }
 }
 
+.input {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(137, 144, 148);
+  margin-bottom: 10px;
+}
 
-.input{
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: 1px solid rgb(137, 144, 148);
-    margin-bottom: 10px;
+.bank-card {
+  &__img {
+    width: 40px;
+    height: 30px;
+    background-image: url('./card-img.svg');
+    background-size: 40px 30px;
+    background-repeat: no-repeat;
+
+    &--amEx {
+      background-image: url('./american-express.svg');
+    }
+    &--visa {
+      background-image: url('./Visa.svg');
+    }
+    &--master {
+      background-image: url('./mastercard.svg');
+    }
+  }
 }
