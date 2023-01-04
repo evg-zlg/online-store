@@ -4,16 +4,24 @@ import { CategoryItem } from '../categoryItem/categoryItem'
 import { useSearchParams } from 'react-router-dom'
 import { useState } from 'react'
 import { DualSlider } from '../dualSlider/dualSlider'
+import {
+  getMaxPriceFilteredProducts,
+  getMinPriceFilteredProducts,
+  getMaxPrice,
+  getMinPrice,
+  getMaxStock,
+  getMinStock,
+  getMaxStockFilteredProducts,
+  getMinStockFilteredProducts,
+} from '../utility/utility'
 
 interface IFilterPanelProps {
-  products: IProduct[]
   filteredProducts: IProduct[]
   categories: string[]
   tags: string[]
 }
 
 export const FilterPanel = ({
-  products,
   filteredProducts,
   categories,
   tags,
@@ -43,62 +51,6 @@ export const FilterPanel = ({
       setCopyClass('filter__copy')
       setCopyText('Скопировать ссылку')
     }, 1500)
-  }
-  function getMaxPriceFilteredProducts() {
-    if (filteredProducts.length === 0) {
-      return getMaxPrice()
-    }
-    const newProducts = []
-    newProducts.push(...filteredProducts)
-    return newProducts.sort((a, b) => a.price - b.price)[newProducts.length - 1]
-      .price
-  }
-  function getMinPriceFilteredProducts() {
-    if (filteredProducts.length === 0) {
-      return getMinPrice()
-    }
-    const newProducts = []
-    newProducts.push(...filteredProducts)
-    return newProducts.sort((a, b) => a.price - b.price)[0].price
-  }
-  function getMaxPrice() {
-    const newProducts = []
-    newProducts.push(...products)
-    return newProducts.sort((a, b) => a.price - b.price)[newProducts.length - 1]
-      .price
-  }
-  function getMinPrice() {
-    const newProducts = []
-    newProducts.push(...products)
-    return newProducts.sort((a, b) => a.price - b.price)[0].price
-  }
-  function getMaxStock() {
-    const newProducts = []
-    newProducts.push(...products)
-    return newProducts.sort((a, b) => a.count - b.count)[newProducts.length - 1]
-      .count
-  }
-  function getMinStock() {
-    const newProducts = []
-    newProducts.push(...products)
-    return newProducts.sort((a, b) => a.count - b.count)[0].count
-  }
-  function getMaxStockFilteredProducts() {
-    if (filteredProducts.length === 0) {
-      return getMaxStock()
-    }
-    const newProducts = []
-    newProducts.push(...filteredProducts)
-    return newProducts.sort((a, b) => a.count - b.count)[newProducts.length - 1]
-      .count
-  }
-  function getMinStockFilteredProducts() {
-    if (filteredProducts.length === 0) {
-      return getMinPrice()
-    }
-    const newProducts = []
-    newProducts.push(...filteredProducts)
-    return newProducts.sort((a, b) => a.count - b.count)[0].count
   }
   return (
     <section className="filter">
@@ -146,8 +98,8 @@ export const FilterPanel = ({
         title="Цена"
         maxValue={getMaxPrice()}
         minValue={getMinPrice()}
-        leftValue={String(getMinPriceFilteredProducts())}
-        rightValue={String(getMaxPriceFilteredProducts())}
+        leftValue={String(getMinPriceFilteredProducts(filteredProducts))}
+        rightValue={String(getMaxPriceFilteredProducts(filteredProducts))}
         step={10}
         currency={'руб.'}
       />
@@ -157,8 +109,8 @@ export const FilterPanel = ({
         title="В наличии"
         maxValue={getMaxStock()}
         minValue={getMinStock()}
-        leftValue={String(getMinStockFilteredProducts())}
-        rightValue={String(getMaxStockFilteredProducts())}
+        leftValue={String(getMinStockFilteredProducts(filteredProducts))}
+        rightValue={String(getMaxStockFilteredProducts(filteredProducts))}
         step={1}
         currency={''}
       />
