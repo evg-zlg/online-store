@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 import './modalWindow.scss'
+import { useNavigate } from 'react-router-dom'
 
 interface IModalWindow {
   active: boolean
@@ -14,6 +15,8 @@ enum BankImg {
 }
 
 export default function ModalWindow({ active, setActive }: IModalWindow) {
+  const navigate = useNavigate()
+  const [orderReady, setOrderReady] = useState(false)
   const [bankCardClass, setBankCardClass] = useState(0)
   const [nameValue, setNameValue] = useState('')
   const [nameError, setNameError] = useState(false)
@@ -152,202 +155,14 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
           setCardCvvError(false)
         }}
       >
-        <div
-          className="checkout-window__popup popup"
-          onClick={(e) => e.stopPropagation()}
-        >
+        {!orderReady && (
           <div
-            className="popup__close close"
-            onClick={() => {
-              setActive(false)
-              setBankCardClass(0)
-              setNameValue('')
-              setNameError(false)
-              setTelValue('')
-              setTelError(false)
-              setMailValue('')
-              setMailError(false)
-              setAdressValue('')
-              setAdressError(false)
-              setCardNumberValue('')
-              setCardNumberError(false)
-              setCardDataValue('')
-              setCardDataError(false)
-              setCardCvvValue('')
-              setCardCvvError(false)
-            }}
+            className="checkout-window__popup popup"
+            onClick={(e) => e.stopPropagation()}
           >
-            <span className="close__line"></span>
-            <span className="close__line"></span>
-          </div>
-          <p className="popup__title">Персональные данные</p>
-          <form className="popup__form form">
-            <div className="form__input-wrapper">
-              <div className="form__item">
-                <p className="form__title">Имя</p>{' '}
-                {nameError && (
-                  <p className="form__error">
-                    *Введите два слова, каждое не менее 3 букв
-                  </p>
-                )}
-              </div>
-              <input
-                type="text"
-                className="form__name input"
-                value={nameValue}
-                onChange={(e) => setNameValue(e.target.value)}
-                placeholder={'Иванов Иван'}
-                onBlur={nameVerify}
-              />
-            </div>
-            <div className="form__input-wrapper">
-              <div className="form__item">
-                <p className="form__title">Телефон</p>
-                {telError && <p className="form__error">*Ввод неверный</p>}
-              </div>
-              <input
-                type="tel"
-                className="form__telephone input"
-                value={telValue}
-                onChange={(e) => setTelValue(e.target.value)}
-                placeholder={'+79513498575'}
-                onBlur={telVerify}
-              />
-            </div>
-            <div className="form__input-wrapper">
-              <div className="form__item">
-                <p className="form__title">Электронная почта</p>
-                {mailError && <p className="form__error">*Ввод неверный</p>}
-              </div>
-              <input
-                type="email"
-                className="form__mail input"
-                value={mailValue}
-                onChange={(e) => setMailValue(e.target.value)}
-                placeholder={'email@gmail.com'}
-                onBlur={mailVerify}
-              />
-            </div>
-            <div className="form__input-wrapper">
-              <div className="form__item">
-                <p className="form__title">Адрес</p>
-                {adressError && (
-                  <p className="form__error">
-                    *Введите три слова, каждое не менее 5 букв
-                  </p>
-                )}
-              </div>
-              <input
-                type="text"
-                className="form__adress input"
-                value={adressValue}
-                onChange={(e) => setAdressValue(e.target.value)}
-                placeholder={'Город поселение улица'}
-                onBlur={adressVerify}
-              />
-            </div>
-            <div className="form__card bank-card">
-              <div className={BankImg[bankCardClass]}></div>
-              <div className="form__item">
-                <p className="form__title">Номер карты</p>
-                {cardNumberError && (
-                  <p className="form__error">*Неправильный номер карты</p>
-                )}
-              </div>
-              <input
-                type="text"
-                className="bank-card__number input"
-                value={cardNumberValue}
-                onChange={(e) => {
-                  setCardNumberValue(
-                    e.target.value
-                      .replace(/[^\d]/g, '')
-                      .split('')
-                      .reverse()
-                      .join('')
-                      .replace(/\B(?=(\d{4})+(?!\d))/g, (s) => ` ${s}`)
-                      .split('')
-                      .reverse()
-                      .slice(0, 19)
-                      .join(''),
-                  )
-                  if (e.target.value[0] === '3') {
-                    setBankCardClass(1)
-                  }
-                  if (e.target.value[0] === '4') {
-                    setBankCardClass(2)
-                  }
-                  if (e.target.value[0] === '5') {
-                    setBankCardClass(3)
-                  }
-                  if (!e.target.value[0]) {
-                    setBankCardClass(0)
-                  }
-                }}
-                placeholder={'XXXX XXXX XXXX XXXX'}
-                onBlur={cardNumberVerify}
-              />
-              <div className="form__item">
-                <p className="form__title">Срок действия</p>
-                {cardDataError && <p className="form__error">*Ввод неверный</p>}
-              </div>
-              <input
-                type="text"
-                className="bank-card__data input"
-                value={cardDataValue}
-                onChange={(e) =>
-                  setCardDataValue(
-                    e.target.value
-                      .replace(/[^\d]/g, '')
-                      .split('')
-                      .reverse()
-                      .join('')
-                      .replace(/\B(?=(\d{2})+(?!\d))/g, (s) => `/${s}`)
-                      .split('')
-                      .reverse()
-                      .slice(0, 5)
-                      .join(''),
-                  )
-                }
-                placeholder={'03/30'}
-                onBlur={cardDataVerify}
-              />
-              <div className="form__item">
-                <p className="form__title">CVC/CVV</p>
-                {cardCvvError && <p className="form__error">*Ввод неверный</p>}
-              </div>
-              <input
-                type="text"
-                className="bank-card__cvv input"
-                value={cardCvvValue}
-                onChange={(e) =>
-                  setCardCvvValue(
-                    e.target.value.replace(/[^\d]/g, '').slice(0, 3),
-                  )
-                }
-                placeholder={'123'}
-                onBlur={cardCvvVerify}
-              />
-            </div>
-          </form>
-          <button
-            className="form__btn"
-            onClick={() => {
-              if (
-                nameError === false &&
-                telValue !== '' &&
-                telError === false &&
-                mailValue !== '' &&
-                mailError === false &&
-                adressValue !== '' &&
-                adressError === false &&
-                cardNumberValue !== '' &&
-                cardNumberError === false &&
-                cardDataValue !== '' &&
-                cardDataError === false &&
-                cardCvvValue !== '' &&
-                cardCvvError === false
-              ) {
+            <div
+              className="popup__close close"
+              onClick={() => {
                 setActive(false)
                 setBankCardClass(0)
                 setNameValue('')
@@ -364,14 +179,214 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                 setCardDataError(false)
                 setCardCvvValue('')
                 setCardCvvError(false)
-                localStorage.removeItem('cart')
-                localStorage.removeItem('object')
-              }
-            }}
-          >
-            Подтвердить заказ
-          </button>
-        </div>
+              }}
+            >
+              <span className="close__line"></span>
+              <span className="close__line"></span>
+            </div>
+            <p className="popup__title">Персональные данные</p>
+            <form className="popup__form form">
+              <div className="form__input-wrapper">
+                <div className="form__item">
+                  <p className="form__title">Имя</p>{' '}
+                  {nameError && (
+                    <p className="form__error">
+                      *Введите два слова, каждое не менее 3 букв
+                    </p>
+                  )}
+                </div>
+                <input
+                  type="text"
+                  className="form__name input"
+                  value={nameValue}
+                  onChange={(e) => setNameValue(e.target.value)}
+                  placeholder={'Иванов Иван'}
+                  onBlur={nameVerify}
+                />
+              </div>
+              <div className="form__input-wrapper">
+                <div className="form__item">
+                  <p className="form__title">Телефон</p>
+                  {telError && <p className="form__error">*Ввод неверный</p>}
+                </div>
+                <input
+                  type="tel"
+                  className="form__telephone input"
+                  value={telValue}
+                  onChange={(e) => setTelValue(e.target.value)}
+                  placeholder={'+79513498575'}
+                  onBlur={telVerify}
+                />
+              </div>
+              <div className="form__input-wrapper">
+                <div className="form__item">
+                  <p className="form__title">Электронная почта</p>
+                  {mailError && <p className="form__error">*Ввод неверный</p>}
+                </div>
+                <input
+                  type="email"
+                  className="form__mail input"
+                  value={mailValue}
+                  onChange={(e) => setMailValue(e.target.value)}
+                  placeholder={'email@gmail.com'}
+                  onBlur={mailVerify}
+                />
+              </div>
+              <div className="form__input-wrapper">
+                <div className="form__item">
+                  <p className="form__title">Адрес</p>
+                  {adressError && (
+                    <p className="form__error">
+                      *Введите три слова, каждое не менее 5 букв
+                    </p>
+                  )}
+                </div>
+                <input
+                  type="text"
+                  className="form__adress input"
+                  value={adressValue}
+                  onChange={(e) => setAdressValue(e.target.value)}
+                  placeholder={'Город поселение улица'}
+                  onBlur={adressVerify}
+                />
+              </div>
+              <div className="form__card bank-card">
+                <div className={BankImg[bankCardClass]}></div>
+                <div className="form__item">
+                  <p className="form__title">Номер карты</p>
+                  {cardNumberError && (
+                    <p className="form__error">*Неправильный номер карты</p>
+                  )}
+                </div>
+                <input
+                  type="text"
+                  className="bank-card__number input"
+                  value={cardNumberValue}
+                  onChange={(e) => {
+                    setCardNumberValue(
+                      e.target.value
+                        .replace(/[^\d]/g, '')
+                        .split('')
+                        .reverse()
+                        .join('')
+                        .replace(/\B(?=(\d{4})+(?!\d))/g, (s) => ` ${s}`)
+                        .split('')
+                        .reverse()
+                        .slice(0, 19)
+                        .join(''),
+                    )
+                    if (e.target.value[0] === '3') {
+                      setBankCardClass(1)
+                    }
+                    if (e.target.value[0] === '4') {
+                      setBankCardClass(2)
+                    }
+                    if (e.target.value[0] === '5') {
+                      setBankCardClass(3)
+                    }
+                    if (!e.target.value[0]) {
+                      setBankCardClass(0)
+                    }
+                  }}
+                  placeholder={'XXXX XXXX XXXX XXXX'}
+                  onBlur={cardNumberVerify}
+                />
+                <div className="form__item">
+                  <p className="form__title">Срок действия</p>
+                  {cardDataError && (
+                    <p className="form__error">*Ввод неверный</p>
+                  )}
+                </div>
+                <input
+                  type="text"
+                  className="bank-card__data input"
+                  value={cardDataValue}
+                  onChange={(e) =>
+                    setCardDataValue(
+                      e.target.value
+                        .replace(/[^\d]/g, '')
+                        .split('')
+                        .reverse()
+                        .join('')
+                        .replace(/\B(?=(\d{2})+(?!\d))/g, (s) => `/${s}`)
+                        .split('')
+                        .reverse()
+                        .slice(0, 5)
+                        .join(''),
+                    )
+                  }
+                  placeholder={'03/30'}
+                  onBlur={cardDataVerify}
+                />
+                <div className="form__item">
+                  <p className="form__title">CVC/CVV</p>
+                  {cardCvvError && (
+                    <p className="form__error">*Ввод неверный</p>
+                  )}
+                </div>
+                <input
+                  type="text"
+                  className="bank-card__cvv input"
+                  value={cardCvvValue}
+                  onChange={(e) =>
+                    setCardCvvValue(
+                      e.target.value.replace(/[^\d]/g, '').slice(0, 3),
+                    )
+                  }
+                  placeholder={'123'}
+                  onBlur={cardCvvVerify}
+                />
+              </div>
+            </form>
+            <button
+              className="form__btn"
+              onClick={() => {
+                if (
+                  nameError === false &&
+                  telValue !== '' &&
+                  telError === false &&
+                  mailValue !== '' &&
+                  mailError === false &&
+                  adressValue !== '' &&
+                  adressError === false &&
+                  cardNumberValue !== '' &&
+                  cardNumberError === false &&
+                  cardDataValue !== '' &&
+                  cardDataError === false &&
+                  cardCvvValue !== '' &&
+                  cardCvvError === false
+                ) {
+                  setOrderReady(true)
+                  window.setTimeout(() => {
+                    setActive(false)
+                    setBankCardClass(0)
+                    setNameValue('')
+                    setNameError(false)
+                    setTelValue('')
+                    setTelError(false)
+                    setMailValue('')
+                    setMailError(false)
+                    setAdressValue('')
+                    setAdressError(false)
+                    setCardNumberValue('')
+                    setCardNumberError(false)
+                    setCardDataValue('')
+                    setCardDataError(false)
+                    setCardCvvValue('')
+                    setCardCvvError(false)
+                    localStorage.removeItem('cart')
+                    localStorage.removeItem('object')
+                    setOrderReady(false)
+                    navigate('/')
+                  }, 5000)
+                }
+              }}
+            >
+              Подтвердить заказ
+            </button>
+          </div>
+        )}
+        {orderReady && <h2>Заказ оформлен!</h2>}
       </section>
     </>
   )
