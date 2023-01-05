@@ -251,16 +251,23 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                 />
               </div>
               <div className="form__card bank-card">
-                <div className={BankImg[bankCardClass]}></div>
-                <div className="form__item">
-                  <p className="form__title">Номер карты</p>
+                <div className="bank-card__content">
+                  <div className="bank-card__main-title">
+                    Банковские реквизиты
+                  </div>
+                  <div className={BankImg[bankCardClass]}></div>
+                </div>
+                <div className="bank-card__item">
+                  <p className="bank-card__title">Номер карты</p>
                   {cardNumberError && (
-                    <p className="form__error">*Неправильный номер карты</p>
+                    <p className="bank-card__error">
+                      *Неправильный номер карты
+                    </p>
                   )}
                 </div>
                 <input
                   type="text"
-                  className="bank-card__number input"
+                  className="bank-card__number bank-card__input"
                   value={cardNumberValue}
                   onChange={(e) => {
                     setCardNumberValue(
@@ -291,70 +298,77 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                   placeholder={'XXXX XXXX XXXX XXXX'}
                   onBlur={cardNumberVerify}
                 />
-                <div className="form__item">
-                  <p className="form__title">Срок действия</p>
-                  {cardDataError && (
-                    <p className="form__error">*Ввод неверный</p>
-                  )}
+                <div className="bank-card__content content">
+                  <div className="content__item">
+                    <div className="bank-card__item">
+                      <p className="bank-card__title">Срок действия</p>
+                      {cardDataError && (
+                        <p className="bank-card__error">*Ввод неверный</p>
+                      )}
+                    </div>
+                    <input
+                      type="text"
+                      className="bank-card__data bank-card__input"
+                      value={cardDataValue}
+                      onChange={(e) =>
+                        setCardDataValue(
+                          e.target.value
+                            .replace(/[^\d]/g, '')
+                            .split('')
+                            .reverse()
+                            .join('')
+                            .replace(/\B(?=(\d{2})+(?!\d))/g, (s) => `/${s}`)
+                            .split('')
+                            .reverse()
+                            .slice(0, 5)
+                            .join(''),
+                        )
+                      }
+                      placeholder={'03/30'}
+                      onBlur={cardDataVerify}
+                    />
+                  </div>
+                  <div className="content__item">
+                    <div className="bank-card__item">
+                      <p className="bank-card__title">CVC/CVV</p>
+                      {cardCvvError && (
+                        <p className="bank-card__error">*Ввод неверный</p>
+                      )}
+                    </div>
+                    <input
+                      type="text"
+                      className="bank-card__cvv bank-card__input"
+                      value={cardCvvValue}
+                      onChange={(e) =>
+                        setCardCvvValue(
+                          e.target.value.replace(/[^\d]/g, '').slice(0, 3),
+                        )
+                      }
+                      placeholder={'123'}
+                      onBlur={cardCvvVerify}
+                    />
+                  </div>
                 </div>
-                <input
-                  type="text"
-                  className="bank-card__data input"
-                  value={cardDataValue}
-                  onChange={(e) =>
-                    setCardDataValue(
-                      e.target.value
-                        .replace(/[^\d]/g, '')
-                        .split('')
-                        .reverse()
-                        .join('')
-                        .replace(/\B(?=(\d{2})+(?!\d))/g, (s) => `/${s}`)
-                        .split('')
-                        .reverse()
-                        .slice(0, 5)
-                        .join(''),
-                    )
-                  }
-                  placeholder={'03/30'}
-                  onBlur={cardDataVerify}
-                />
-                <div className="form__item">
-                  <p className="form__title">CVC/CVV</p>
-                  {cardCvvError && (
-                    <p className="form__error">*Ввод неверный</p>
-                  )}
-                </div>
-                <input
-                  type="text"
-                  className="bank-card__cvv input"
-                  value={cardCvvValue}
-                  onChange={(e) =>
-                    setCardCvvValue(
-                      e.target.value.replace(/[^\d]/g, '').slice(0, 3),
-                    )
-                  }
-                  placeholder={'123'}
-                  onBlur={cardCvvVerify}
-                />
               </div>
             </form>
             <button
               className="form__btn"
               onClick={() => {
                 if (
-                  nameError === false &&
-                  telValue !== '' &&
-                  telError === false &&
-                  mailValue !== '' &&
-                  mailError === false &&
-                  adressValue !== '' &&
-                  adressError === false &&
-                  cardNumberValue !== '' &&
-                  cardNumberError === false &&
-                  cardDataValue !== '' &&
-                  cardDataError === false &&
-                  cardCvvValue !== '' &&
-                  cardCvvError === false
+                  nameError === false
+                  // &&
+                  // telValue !== '' &&
+                  // telError === false &&
+                  // mailValue !== '' &&
+                  // mailError === false &&
+                  // adressValue !== '' &&
+                  // adressError === false &&
+                  // cardNumberValue !== '' &&
+                  // cardNumberError === false &&
+                  // cardDataValue !== '' &&
+                  // cardDataError === false &&
+                  // cardCvvValue !== '' &&
+                  // cardCvvError === false
                 ) {
                   setOrderReady(true)
                   window.setTimeout(() => {
@@ -378,7 +392,7 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                     localStorage.removeItem('object')
                     setOrderReady(false)
                     navigate('/')
-                  }, 5000)
+                  }, 4000)
                 }
               }}
             >
@@ -386,7 +400,9 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
             </button>
           </div>
         )}
-        {orderReady && <h2>Заказ оформлен!</h2>}
+        {orderReady && (
+          <h2 className="checkout-window__title">Заказ оформлен!</h2>
+        )}
       </section>
     </>
   )

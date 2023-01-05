@@ -8,6 +8,13 @@
   justify-content: center;
   align-items: center;
   transform: scale(0);
+
+  &__title {
+    background-color: #5a6b47;
+    padding: 30px 50px;
+    color: white;
+    border-radius: 10px;
+  }
 }
 
 .checkout-window--active {
@@ -95,12 +102,18 @@
 
   &__card {
     display: flex;
-    width: 70%;
+    width: 50%;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
     padding: 10px;
     border-radius: 10px;
-    background-color: bisque;
+
+    background: linear-gradient(
+      133deg,
+      rgba(84, 84, 84, 1) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(84, 84, 84, 0.5) 100%
+    );
   }
 
   &__btn {
@@ -123,10 +136,10 @@
 
 .bank-card {
   &__img {
-    width: 40px;
-    height: 30px;
+    width: 100px;
+    height: 50px;
     background-image: url('./card-img.svg');
-    background-size: 40px 30px;
+    background-size: 100px 50px;
     background-repeat: no-repeat;
 
     &--amEx {
@@ -139,4 +152,46 @@
       background-image: url('./mastercard.svg');
     }
   }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__main-title{
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  &__title {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  &__error{
+    display: inline-block;
+    color: red;
+  }
+
+  &__input {
+    padding: 10px 0;
+    border: none;
+    border: none;
+    background: none;
+    margin-bottom: 10px;
+    font-stretch: condensed;
+    font-size: 2rem;
+
+    &:focus {
+      outline: 0;
+      outline-offset: 0;
+  }
+  }
+}
+
+.content__item{
+  width: 40%;
 }
