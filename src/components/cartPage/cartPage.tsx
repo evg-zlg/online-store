@@ -1,9 +1,10 @@
 import './cartPage.scss'
 import { ProductCart } from '../productCart/productCart'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { products } from '../../data/data'
 import usePagination from './pagination/usePagination'
 import Pagination from './pagination/pagination'
+import TotalPrice from './totalPrice/totalPrice'
 
 export default function CartPage({
   appCallback,
@@ -54,6 +55,42 @@ export default function CartPage({
     setTotalPrice(price)
     setTotalCount(count)
     appCallback(price, count)
+  }
+
+  const [promo, setPromo] = useState('')
+  const [promoError, setPromoError] = useState(false)
+
+  const promoVerify = (e: ChangeEvent<HTMLInputElement>) => {
+    let error = false
+    const newPromoValue = e.target.value
+    let promoCodeRS = 'RS'
+    let promoCodeEPM = 'EPM'
+    if (newPromoValue === promoCodeRS || newPromoValue === promoCodeEPM) {
+      error = false
+    } else {
+      error = true
+    }
+    setPromoError(error)
+  }
+
+  const handleDiscount = (e: ChangeEvent<HTMLInputElement>) => {
+    promoVerify(e)
+    setPromo(e.target.value)
+  }
+  let discountInit = JSON.parse(localStorage.getItem('discount') || '[]')
+  const [discount, setDiscount] = useState(discountInit as string[])
+
+  const handleApplyDiscount = () => {
+    if (discount.includes(promo)) return
+    const newDiscount = [...discount, promo]
+    setDiscount(newDiscount)
+    localStorage.setItem('discount', JSON.stringify(newDiscount))
+  }
+
+  const deletePromo = (elem: string) => {
+    const newDiscount = [...discount.filter((promoName) => promoName !== elem)]
+    setDiscount(newDiscount)
+    localStorage.setItem('discount', JSON.stringify(newDiscount))
   }
 
   if (JSON.parse(localStorage.getItem('cart') || '[]').length === 0) {
@@ -109,10 +146,46 @@ export default function CartPage({
                   <p className="content__title">Колличество:</p>
                   <p className="content__number">{totalCount} шт.</p>
                 </div>
-                <div className="content__element">
-                  <p className="content__title">Итого:</p>
-                  <p className="content__number">{totalPrice} руб.</p>
-                </div>
+                <TotalPrice discount={discount} totalPrice={totalPrice} />
+                <input
+                  type="text"
+                  className="content__input"
+                  value={promo}
+                  onChange={handleDiscount}
+                  placeholder={'Введите "RS" или "EPM"'}
+                  onBlur={promoVerify}
+                />
+                {promoError && <p className="content__error">*Ввод неверный</p>}
+                {!!promo && !promoError && (
+                  <button
+                    className="content__btn"
+                    onClick={handleApplyDiscount}
+                  >
+                    Добавить скидку
+                  </button>
+                )}
+                {!!discount.length &&
+                  discount.map((promoName) => {
+                    let discountValue = ''
+                    if (promoName === 'RS') discountValue = '10%'
+                    if (promoName === 'EPM') discountValue = '20%'
+                    return (
+                      <>
+                        <div className="discount__category">
+                          <span className="discount__name">{promoName}</span>
+                          <span className="discount__name">
+                            {discountValue}
+                          </span>
+                          <button
+                            className="discount__btn"
+                            onClick={() => deletePromo(promoName)}
+                          >
+                            Удалить
+                          </button>
+                        </div>
+                      </>
+                    )
+                  })}
               </div>
               <button className="summary__btn" onClick={() => setActive(true)}>
                 Оформить заказ
