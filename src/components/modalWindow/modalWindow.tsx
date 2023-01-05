@@ -52,7 +52,8 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
   const telVerify = (e: ChangeEvent<HTMLInputElement>) => {
     let error = false
     const newTelValue = e.target.value
-    let tel = /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/
+    let tel =
+      /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d{15}$/
     if (newTelValue.match(tel)) {
       error = false
     } else {
@@ -213,7 +214,9 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                   type="tel"
                   className="form__telephone input"
                   value={telValue}
-                  onChange={(e) => setTelValue(e.target.value)}
+                  onChange={(e) =>
+                    setTelValue(e.target.value.replace(/[^\d%+]/g, ''))
+                  }
                   placeholder={'+79513498575'}
                   onBlur={telVerify}
                 />
@@ -272,7 +275,6 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                   onChange={(e) => {
                     setCardNumberValue(
                       e.target.value
-                        .replace(/[^\d]/g, '')
                         .split('')
                         .reverse()
                         .join('')
@@ -313,7 +315,6 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                       onChange={(e) =>
                         setCardDataValue(
                           e.target.value
-                            .replace(/[^\d]/g, '')
                             .split('')
                             .reverse()
                             .join('')
@@ -355,20 +356,19 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
               className="form__btn"
               onClick={() => {
                 if (
-                  nameError === false
-                  // &&
-                  // telValue !== '' &&
-                  // telError === false &&
-                  // mailValue !== '' &&
-                  // mailError === false &&
-                  // adressValue !== '' &&
-                  // adressError === false &&
-                  // cardNumberValue !== '' &&
-                  // cardNumberError === false &&
-                  // cardDataValue !== '' &&
-                  // cardDataError === false &&
-                  // cardCvvValue !== '' &&
-                  // cardCvvError === false
+                  nameError === false &&
+                  telValue !== '' &&
+                  telError === false &&
+                  mailValue !== '' &&
+                  mailError === false &&
+                  adressValue !== '' &&
+                  adressError === false &&
+                  cardNumberValue !== '' &&
+                  cardNumberError === false &&
+                  cardDataValue !== '' &&
+                  cardDataError === false &&
+                  cardCvvValue !== '' &&
+                  cardCvvError === false
                 ) {
                   setOrderReady(true)
                   window.setTimeout(() => {
