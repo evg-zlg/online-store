@@ -274,6 +274,7 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                   onChange={(e) => {
                     setCardNumberValue(
                       e.target.value
+                        .replace(/[^\d]/g, '')
                         .split('')
                         .reverse()
                         .join('')
@@ -314,6 +315,7 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                       onChange={(e) =>
                         setCardDataValue(
                           e.target.value
+                            .replace(/[^\d]/g, '')
                             .split('')
                             .reverse()
                             .join('')
