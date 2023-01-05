@@ -52,8 +52,7 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
   const telVerify = (e: ChangeEvent<HTMLInputElement>) => {
     let error = false
     const newTelValue = e.target.value
-    let tel =
-      /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d{15}$/
+    let tel = /^\+?\d{9,}$/
     if (newTelValue.match(tel)) {
       error = false
     } else {
@@ -390,6 +389,7 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                     setCardCvvError(false)
                     localStorage.removeItem('cart')
                     localStorage.removeItem('object')
+                    localStorage.removeItem('discount')
                     setOrderReady(false)
                     navigate('/')
                   }, 4000)
