@@ -52,7 +52,7 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
   const telVerify = (e: ChangeEvent<HTMLInputElement>) => {
     let error = false
     const newTelValue = e.target.value
-    let tel = /^\+?\d{9,}$/
+    let tel = /^\+\d{9,}$/
     if (newTelValue.match(tel)) {
       error = false
     } else {
@@ -357,6 +357,7 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
               className="form__btn"
               onClick={() => {
                 if (
+                  nameValue !== '' &&
                   nameError === false &&
                   telValue !== '' &&
                   telError === false &&
@@ -396,6 +397,17 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                     navigate('/')
                   }, 4000)
                 }
+                !nameValue ? setNameError(true) : setNameError(false)
+                !telValue ? setTelError(true) : setTelError(false)
+                !mailValue ? setMailError(true) : setMailError(false)
+                !adressValue ? setAdressError(true) : setAdressError(false)
+                !cardNumberValue
+                  ? setCardNumberError(true)
+                  : setCardNumberError(false)
+                !cardDataValue
+                  ? setCardDataError(true)
+                  : setCardDataError(false)
+                !cardCvvValue ? setCardCvvError(true) : setCardCvvError(false)
               }}
             >
               Подтвердить заказ
