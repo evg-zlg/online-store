@@ -254,7 +254,7 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                 />
               </div>
               <div className="form__card bank-card">
-                <div className="bank-card__content">
+                <div className="bank-card__element">
                   <div className="bank-card__main-title">
                     Банковские реквизиты
                   </div>
@@ -300,8 +300,8 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                   placeholder={'XXXX XXXX XXXX XXXX'}
                   onBlur={cardNumberVerify}
                 />
-                <div className="bank-card__content content">
-                  <div className="content__item">
+                <div className="bank-card__element element">
+                  <div className="element__item">
                     <div className="bank-card__item">
                       <p className="bank-card__title">Срок действия</p>
                       {cardDataError && (
@@ -329,7 +329,7 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                       onBlur={cardDataVerify}
                     />
                   </div>
-                  <div className="content__item">
+                  <div className="element__item">
                     <div className="bank-card__item">
                       <p className="bank-card__title">CVC/CVV</p>
                       {cardCvvError && (

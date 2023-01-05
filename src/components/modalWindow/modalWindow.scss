@@ -23,7 +23,6 @@
 
 .popup {
   width: 50%;
-  // height: 50%;
   background-color: rgb(255, 255, 255);
   padding: 20px;
   position: relative;
@@ -71,7 +70,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 90%;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
@@ -101,10 +99,7 @@
   }
 
   &__card {
-    display: flex;
     width: 50%;
-    flex-direction: column;
-    // align-items: center;
     padding: 10px;
     border-radius: 10px;
 
@@ -153,25 +148,26 @@
     }
   }
 
-  &__content {
-    width: 100%;
+  &__element {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
   }
 
-  &__main-title{
+  &__main-title {
     font-size: 1.5em;
     font-weight: bold;
   }
 
   &__title {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5px;
   }
-  
-  &__error{
+
+  &__error {
     display: inline-block;
     color: red;
   }
@@ -184,16 +180,10 @@
     margin-bottom: 10px;
     font-stretch: condensed;
     font-size: 2rem;
-
+    width: 100%;
     &:focus {
       outline: 0;
       outline-offset: 0;
+    }
   }
-  }
-}
-
-.content__item{
-  width: 40%;
-  display: flex;
-  flex-direction: column;
 }
