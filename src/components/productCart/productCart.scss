@@ -18,6 +18,11 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
+  }
+
+  &__link{
+    color: black;
+    text-decoration: none;
     cursor: pointer;
   }
 
