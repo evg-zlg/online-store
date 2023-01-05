@@ -27,7 +27,7 @@ export default function Header() {
                 : 'basket__price basket__price--active'
             }
           >
-            Total:
+            Сумма:
             <span className="total__price">{price}</span>
           </div>
           <NavLink to={'/cart'}>
