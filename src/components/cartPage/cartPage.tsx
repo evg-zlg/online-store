@@ -155,7 +155,9 @@ export default function CartPage({
                   placeholder={'Введите "RS" или "EPM"'}
                   onBlur={promoVerify}
                 />
-                {promoError && <p className="content__error">*Ввод неверный</p>}
+                {promoError && (
+                  <p className="content__error">*Промокод отсутствует</p>
+                )}
                 {!!promo && !promoError && (
                   <button
                     className="content__btn"

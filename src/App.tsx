@@ -2,7 +2,7 @@ import './App.scss'
 import ProductsPage from './components/productsPage/productsPage'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
-import { ProductItem } from './components/productItemPage/productItemPage'
+import { ProductItemPage } from './components/productItemPage/productItemPage'
 import CartPage from './components/cartPage/cartPage'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
@@ -48,7 +48,7 @@ function App() {
           <Route
             path={'/item/:id'}
             element={
-              <ProductItem
+              <ProductItemPage
                 numHandler={numHandler}
                 active={modalActive}
                 setActive={setmodalActive}
