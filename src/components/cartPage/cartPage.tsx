@@ -172,20 +172,16 @@ export default function CartPage({
                     if (promoName === 'RS') discountValue = '10%'
                     if (promoName === 'EPM') discountValue = '20%'
                     return (
-                      <>
-                        <div className="discount__category">
-                          <span className="discount__name">{promoName}</span>
-                          <span className="discount__name">
-                            {discountValue}
-                          </span>
-                          <button
-                            className="discount__btn"
-                            onClick={() => deletePromo(promoName)}
-                          >
-                            Удалить
-                          </button>
-                        </div>
-                      </>
+                      <div className="discount__category" key={promoName}>
+                        <span className="discount__name">{promoName}</span>
+                        <span className="discount__name">{discountValue}</span>
+                        <button
+                          className="discount__btn"
+                          onClick={() => deletePromo(promoName)}
+                        >
+                          Удалить
+                        </button>
+                      </div>
                     )
                   })}
               </div>
