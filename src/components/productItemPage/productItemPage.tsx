@@ -4,7 +4,7 @@ import { IProduct } from '../../types'
 import { products } from '../../data/data'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import CartBtn from '../addToCartBtn/addToCartBtn'
+import AddToCartBtn from '../addToCartBtn/addToCartBtn'
 import BuyNowBtn from '../buyNowBtn/buyNowBtn'
 
 interface IProductItemProps {
@@ -13,7 +13,7 @@ interface IProductItemProps {
   setActive: (bool: boolean) => void
 }
 
-export function ProductItem({
+export function ProductItemPage({
   numHandler,
   active,
   setActive,
@@ -61,7 +61,7 @@ export function ProductItem({
               <h2 className="info__title">{product.name}</h2>
               <div className="info__price">{product.price} руб.</div>
               <div className="product-page__button button">
-                <CartBtn onClick={numHandler} id={product.id} />
+                <AddToCartBtn onClick={numHandler} id={product.id} />
                 <NavLink to={'/cart'} onClick={() => setActive(true)}>
                   <BuyNowBtn onClick={numHandler} id={product.id} />
                 </NavLink>

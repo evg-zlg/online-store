@@ -16,7 +16,9 @@ interface UsePaginationReturn {
 type UsePagination = (arg: UsePaginationProps) => UsePaginationReturn
 
 const usePagination: UsePagination = ({ itemPerPage, count }) => {
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(
+    +JSON.parse(localStorage.getItem('currentPage') || '1'),
+  )
   const pageCount = Math.ceil(count / itemPerPage)
   const lastItemIndex = page * itemPerPage
   const firstItemIndex = lastItemIndex - itemPerPage

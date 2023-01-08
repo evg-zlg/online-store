@@ -1,6 +1,7 @@
 import './productCart.scss'
 import { products } from '../../data/data'
 import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 interface ProductCartProps {
   cartId: number
@@ -20,7 +21,6 @@ export function ProductCart({
 
   const handleDecrement = () => {
     if (count > 0) {
-      //надо будет поставить 0 и при значении 0 удалять товар
       if (count === 1) {
         deleteItemCallback(cartId)
         const cartlocal = JSON.parse(localStorage.getItem('object') || '{}')
@@ -53,7 +53,9 @@ export function ProductCart({
           src={require('../../data' + products[cartId - 1].images[0].slice(1))}
           alt={products[cartId - 1].name}
         ></img>
-        <div className="item__name">{products[cartId - 1].name}</div>
+        <NavLink className="item__link" to={'/item/' + cartId}>
+          <div className="item__name">{products[cartId - 1].name}</div>
+        </NavLink>
         <div className="item__category">{products[cartId - 1].category}</div>
         <div className="item__count">{products[cartId - 1].count}</div>
         <div className="item__price">{products[cartId - 1].price} руб.</div>

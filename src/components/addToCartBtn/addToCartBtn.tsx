@@ -1,7 +1,7 @@
 import './addToCartBtn.scss'
 import { useState } from 'react'
 
-const CartBtn = ({
+const AddToCartBtn = ({
   onClick,
   id,
 }: {
@@ -32,4 +32,4 @@ const CartBtn = ({
   )
 }
 
-export default CartBtn
+export default AddToCartBtn
