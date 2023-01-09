@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 interface UsePaginationProps {
   itemPerPage: number
@@ -16,9 +17,10 @@ interface UsePaginationReturn {
 type UsePagination = (arg: UsePaginationProps) => UsePaginationReturn
 
 const usePagination: UsePagination = ({ itemPerPage, count }) => {
-  const [page, setPage] = useState(
-    +JSON.parse(localStorage.getItem('currentPage') || '1'),
-  )
+  const [, setPageParams] = useSearchParams()
+  const url = new URL(window.location.href)
+
+  const [page, setPage] = useState(+(url.searchParams.get('page') || 1))
   const pageCount = Math.ceil(count / itemPerPage)
   const lastItemIndex = page * itemPerPage
   const firstItemIndex = lastItemIndex - itemPerPage
@@ -48,8 +50,22 @@ const usePagination: UsePagination = ({ itemPerPage, count }) => {
   }
   return {
     totalPages: pageCount,
-    nextPage: () => changePage(true),
-    prevPage: () => changePage(false),
+    nextPage: () => {
+      const url = new URL(window.location.href)
+      let newPage = page + 1
+      if (newPage > pageCount) newPage = pageCount
+      url.searchParams.set('page', newPage.toString())
+      setPageParams(url.searchParams)
+      changePage(true)
+    },
+    prevPage: () => {
+      const url = new URL(window.location.href)
+      let newPage = page - 1
+      if (newPage < 1) newPage = 1
+      url.searchParams.set('page', newPage.toString())
+      setPageParams(url.searchParams)
+      changePage(false)
+    },
     setPage: setPageNum,
     firstItemIndex,
     lastItemIndex,

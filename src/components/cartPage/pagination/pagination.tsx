@@ -1,8 +1,8 @@
 import './pagination.scss'
-import { ChangeEvent, useEffect } from 'react'
+import { ChangeEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-interface Ipagination {
+interface IPagination {
   setValue: (n: number) => void
   setPage: (n: number) => void
   prevPage: () => void
@@ -20,24 +20,18 @@ export default function Pagination({
   page,
   totalPages,
   value,
-}: Ipagination) {
+}: IPagination) {
+  const [, setPageParams] = useSearchParams()
   const inputCallback = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = +(e.target as HTMLInputElement).value
     if (newValue > 0) {
-      localStorage.setItem('countItems', newValue.toString())
       setValue(newValue)
       setPage(1)
+      const url = new URL(window.location.href)
+      url.searchParams.set('items', newValue.toString())
+      setPageParams(url.searchParams)
     }
   }
-
-  const [, setPageParams] = useSearchParams()
-
-  useEffect(() => {
-    localStorage.setItem('currentPage', JSON.stringify(page))
-    const url = new URL(window.location.href)
-    url.searchParams.set('page', page.toString())
-    setPageParams(url.searchParams)
-  }, [page, setPageParams])
 
   return (
     <div className="cart-page__pagination pagination">

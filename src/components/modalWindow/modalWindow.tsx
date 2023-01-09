@@ -393,7 +393,6 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                     localStorage.removeItem('cart')
                     localStorage.removeItem('object')
                     localStorage.removeItem('discount')
-                    localStorage.removeItem('currentPage')
                     setOrderReady(false)
                     navigate('/')
                   }, 4000)
