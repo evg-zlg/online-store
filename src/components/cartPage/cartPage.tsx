@@ -16,7 +16,7 @@ export default function CartPage({
   setActive: (bool: boolean) => void
 }) {
   const url = new URL(window.location.href)
-  const [value, setValue] = useState(+(url.searchParams.get('items') || 1))
+  const [value, setValue] = useState(+(url.searchParams.get('items') || 3))
   const {
     firstItemIndex,
     lastItemIndex,

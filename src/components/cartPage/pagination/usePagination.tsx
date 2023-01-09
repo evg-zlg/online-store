@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 interface UsePaginationProps {
@@ -17,10 +17,12 @@ interface UsePaginationReturn {
 type UsePagination = (arg: UsePaginationProps) => UsePaginationReturn
 
 const usePagination: UsePagination = ({ itemPerPage, count }) => {
-  const [, setPageParams] = useSearchParams()
-  const url = new URL(window.location.href)
+  const [searchParams, setPageParams] = useSearchParams()
+  useEffect(() => {
+    setPage(+(searchParams.get('page') || 1))
+  }, [searchParams])
 
-  const [page, setPage] = useState(+(url.searchParams.get('page') || 1))
+  const [page, setPage] = useState(+(searchParams.get('page') || 1))
   const pageCount = Math.ceil(count / itemPerPage)
   const lastItemIndex = page * itemPerPage
   const firstItemIndex = lastItemIndex - itemPerPage
