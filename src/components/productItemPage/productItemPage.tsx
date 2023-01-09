@@ -74,6 +74,10 @@ export function ProductItemPage({
                 <span className="info__text">Категория:</span>{' '}
                 {product.category}
               </div>
+              <div className="info__tags">
+                <span className="info__text">Теги:</span>{' '}
+                {product.tags.join(', ')}
+              </div>
               <div className="info__description">
                 <span className="info__text">Описание:</span>{' '}
                 {product.description.map((e, key) => (

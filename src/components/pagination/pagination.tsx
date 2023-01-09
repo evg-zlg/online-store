@@ -1,5 +1,5 @@
 import './pagination.scss'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 interface IPagination {
@@ -33,6 +33,12 @@ export default function Pagination({
       setPageParams(url.searchParams)
     }
   }
+
+  const [searchParams] = useSearchParams()
+  useEffect(() => {
+    const currentItems = +(searchParams.get('items') || 3)
+    if (currentItems) setValue(currentItems)
+  }, [setValue, searchParams])
 
   if (totalPages < page) {
     const url = new URL(window.location.href)
