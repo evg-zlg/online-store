@@ -5,12 +5,19 @@ import { FilterPanel } from '../filterPanel/filterPanel'
 import { IProduct } from '../../types'
 import { useSearchParams } from 'react-router-dom'
 import { getCategories, getTags, getFilteredProduct } from '../utility/utility'
+import { useEffect } from 'react'
 
 interface IProductsPageProps {
   numHandler: (num: number) => void
+  changeBannerIndex: () => void
+  bannerIndex: number
 }
 
-export default function ProductsPage({ numHandler }: IProductsPageProps) {
+export default function ProductsPage({
+  numHandler,
+  changeBannerIndex,
+  bannerIndex,
+}: IProductsPageProps) {
   const [searchParams] = useSearchParams()
   const categories = getCategories()
   const tags = getTags()
@@ -19,6 +26,10 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
     ? (classes = 'products-page__products products-page__products--list')
     : (classes = 'products-page__products')
   const filteredProducts = getFilteredProduct(searchParams)
+  useEffect(() => {
+    changeBannerIndex()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <section className="products-page">
       <aside className="products-page__filter">
@@ -27,6 +38,26 @@ export default function ProductsPage({ numHandler }: IProductsPageProps) {
           categories={categories}
           tags={tags}
         />
+        {bannerIndex === 0 && (
+          <a
+            className="products-page__banner products-page__banner--taplink"
+            href="https://taplink.cc/sekreta_ecodecor"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Узнать больше
+          </a>
+        )}
+        {bannerIndex === 1 && (
+          <a
+            className="products-page__banner products-page__banner--vk"
+            href="https://vk.com/sekreta_ecodecor"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Заглянуть в VK
+          </a>
+        )}
       </aside>
       <div className="products-page__content">
         <ProductViewControl
