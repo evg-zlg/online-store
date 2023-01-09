@@ -2,6 +2,7 @@ import './productCart.scss'
 import { products } from '../../data/data'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Carousel } from '../carousel/carousel'
 
 interface ProductCartProps {
   cartId: number
@@ -48,11 +49,17 @@ export function ProductCart({
     <>
       <div className="cart-products__item item">
         <div className="item__num">{cardInd + 1}</div>
-        <img
+        <Carousel
+          className={'item__img'}
+          alt={products[cartId - 1].name}
+          images={products[cartId - 1].images}
+          currentImage={products[cartId - 1].images[0]}
+        />
+        {/* <img
           className="item__img"
           src={require('../../data' + products[cartId - 1].images[0].slice(1))}
           alt={products[cartId - 1].name}
-        ></img>
+        ></img> */}
         <NavLink className="item__link" to={'/item/' + cartId}>
           <div className="item__name">{products[cartId - 1].name}</div>
         </NavLink>
