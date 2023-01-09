@@ -52,7 +52,9 @@
       opacity: 0.8;
     }
   }
-
+  &__link-inf {
+    position: relative;
+  }
   &__btn-inf {
     padding: 10px 15px;
     background-color: #3d3836de;
@@ -63,10 +65,30 @@
     transition: all 0.5s ease;
     min-width: 152px;
 
+
+    // &--hasVideo {
+    //   background-color: brown;
+    //   mask-image: url('./video-icon.png');
+    //   
+    //   mask-repeat: no-repeat;
+    //   mask-position: 95% center;
+    // }
+
     &:hover{
       opacity: 0.8;
     }
 
+  }
+  &__video-icon {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 25px;
+    height: 25px;
+    mask-image: url('./video-icon.png');
+    mask-size: 25px 25px;
+    background-color: #aa8066;
+    pointer-events: none;
   }
   &__tag-items {
     display: none;
