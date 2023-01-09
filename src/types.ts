@@ -8,4 +8,5 @@ export interface IProduct {
   images: string[]
   count: number
   tags: string[]
+  video?: string
 }

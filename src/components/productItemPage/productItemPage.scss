@@ -31,6 +31,14 @@
   &__info {
     width: 49%;
   }
+
+  &__video {
+    display: block;
+    width: 90%;
+    height: 450px;
+    margin: 20px auto 0;
+
+  }
 }
 
 .images {
@@ -76,7 +84,7 @@
   }
 
   &__price {
-    color: #81cfdc;
+    color: #ab8150;
     font-size: 30px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -85,5 +93,6 @@
   &__text {
     color: rgb(137, 144, 148);
   }
+
 }
 

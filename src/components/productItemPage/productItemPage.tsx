@@ -86,6 +86,15 @@ export function ProductItemPage({
               </div>
             </div>
           </div>
+          {product.video && (
+            <iframe
+              title={String(product.id)}
+              className="product-page__video"
+              src={product.video}
+              allow="encrypted-media; fullscreen; picture-in-picture;"
+              allowFullScreen
+            ></iframe>
+          )}
         </section>
       )}
       {!hasProduct && <h1>Товар {params.id} не найден</h1>}
