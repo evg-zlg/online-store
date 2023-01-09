@@ -235,6 +235,10 @@ const getFilteredProduct = (searchParams: URLSearchParams) => {
   }
   return newFilteredProducts
 }
+const changeBannerIndex = (currentIndex: number) => {
+  console.log('actual number:', currentIndex)
+  return currentIndex === 0 ? 1 : 0
+}
 export {
   deleteParam,
   getMaxPriceFilteredProducts,
@@ -250,4 +254,5 @@ export {
   getElementNameByIndex,
   deduplicateArray,
   getFilteredProduct,
+  changeBannerIndex,
 }
