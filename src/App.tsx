@@ -17,7 +17,7 @@ function App() {
       return (prevState += num)
     })
   }
-
+  const [bannerIndex, setBannerIndex] = useState(0)
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalCount, setTotalCount] = useState(0)
 
@@ -26,6 +26,11 @@ function App() {
   const appCallback = (price: number, count: number) => {
     setTotalPrice(price)
     setTotalCount(count)
+  }
+  const changeBannerIndex = () => {
+    setBannerIndex((bannerIndex) => {
+      return bannerIndex === 0 ? 1 : 0
+    })
   }
   //for delete warning
   if (num) {
@@ -43,7 +48,13 @@ function App() {
         <Routes>
           <Route
             path={'/'}
-            element={<ProductsPage numHandler={numHandler} />}
+            element={
+              <ProductsPage
+                numHandler={numHandler}
+                changeBannerIndex={changeBannerIndex}
+                bannerIndex={bannerIndex}
+              />
+            }
           ></Route>
           <Route
             path={'/item/:id'}

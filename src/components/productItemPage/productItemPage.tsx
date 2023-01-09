@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import AddToCartBtn from '../addToCartBtn/addToCartBtn'
 import BuyNowBtn from '../buyNowBtn/buyNowBtn'
+import { Carousel } from '../carousel/carousel'
 
 interface IProductItemProps {
   numHandler: (num: number) => void
@@ -22,9 +23,7 @@ export function ProductItemPage({
   const product: IProduct = products.filter(
     (el) => el.id === Number(params.id),
   )[0]
-  const startImgSrc = product
-    ? require('../../data' + product.images[0].slice(1))
-    : ''
+  const startImgSrc = product.images[0]
   const [imgScr, setImgScr] = useState(startImgSrc)
   const hasProduct = product ? true : false
   return (
@@ -48,13 +47,18 @@ export function ProductItemPage({
                       className="miniature__img"
                       alt={product.name}
                       src={src}
-                      onClick={() => setImgScr(src)}
+                      onClick={() => setImgScr(img)}
                     ></img>
                   )
                 })}
               </div>
               <div>
-                <img src={imgScr} alt={product.name} className="images__main" />
+                <Carousel
+                  images={product.images}
+                  currentImage={imgScr}
+                  alt={product.name}
+                  className={'images__main'}
+                />
               </div>
             </div>
             <div className="product-page__info info">
