@@ -11,15 +11,15 @@ import { NotFoundPage404 } from './components/notFoundPage404/notFoundPage404'
 
 function App() {
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length
-  const [num, setNum] = useState(initialNum)
+  const [, setNum] = useState(initialNum)
   const numHandler = (num: number): void => {
     setNum((prevState: number) => {
       return (prevState += num)
     })
   }
   const [bannerIndex, setBannerIndex] = useState(0)
-  const [totalPrice, setTotalPrice] = useState(0)
-  const [totalCount, setTotalCount] = useState(0)
+  const [, setTotalPrice] = useState(0)
+  const [, setTotalCount] = useState(0)
 
   const [modalActive, setmodalActive] = useState(false)
 
@@ -31,13 +31,6 @@ function App() {
     setBannerIndex((bannerIndex) => {
       return bannerIndex === 0 ? 1 : 0
     })
-  }
-  //for delete warning
-  if (num) {
-  }
-  if (totalPrice) {
-  }
-  if (totalCount) {
   }
 
   return (
