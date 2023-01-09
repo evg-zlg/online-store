@@ -2,9 +2,9 @@ import './cartPage.scss'
 import { ProductCart } from '../productCart/productCart'
 import { ChangeEvent, useState } from 'react'
 import { products } from '../../data/data'
-import usePagination from './pagination/usePagination'
-import Pagination from './pagination/pagination'
-import TotalPrice from './totalPrice/totalPrice'
+import usePagination from '../pagination/usePagination'
+import Pagination from '../pagination/pagination'
+import TotalPrice from '../totalPrice/totalPrice'
 
 export default function CartPage({
   appCallback,
