@@ -29,10 +29,16 @@ export default function Pagination({
       setPage(1)
       const url = new URL(window.location.href)
       url.searchParams.set('items', newValue.toString())
+      url.searchParams.set('page', '1')
       setPageParams(url.searchParams)
     }
   }
 
+  if (totalPages < page) {
+    const url = new URL(window.location.href)
+    url.searchParams.set('page', totalPages.toString())
+    setPageParams(url.searchParams)
+  }
   return (
     <div className="cart-page__pagination pagination">
       <p className="pagination__text">
