@@ -29,7 +29,8 @@ export function ProductCard({ product, numHandler }: IProductCardProps) {
       <div className="card__buttons">
         <AddToCartBtn onClick={numHandler} id={product.id} />
         <NavLink className="card__link-inf" to={'/item/' + product.id}>
-          <button className="card__btn-inf">Подробней</button>
+          <button className={'card__btn-inf'}>Подробней</button>
+          {product.video && <div className="card__video-icon"></div>}
         </NavLink>
       </div>
       <div className="card__tag-items">
