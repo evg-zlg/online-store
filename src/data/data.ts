@@ -9,9 +9,9 @@ export const products: IProduct[] = [
     description: [
       `Основная функция этих часов - показывать время - объективно ушла на второй план:`,
       `Часы украсят собой любую скучную стену в вашем доме. `,
-      `Посмотреть видеоклип с часами можно по ссылке https://vk.com/clip-211355847_456239030`,
       `Диаметр часов 30,5см., ( с декоративным оплетением - 54 см.)`,
     ],
+    video: `https://vk.com/video_ext.php?oid=-211355847&id=456239030&hash=8a5668b256abe209&hd=2`,
     price: 3300,
     images: [
       './images/azhur-1.jpg',
@@ -92,6 +92,8 @@ export const products: IProduct[] = [
       `Высота 9 см. (с ушками 17см)`,
       `Диаметр по дну 8см, по верху 12 см.`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239021&hash=8d4163c98bb91919&hd=2',
     price: 600,
     images: [
       './images/basket-bunny-1.jpg',
@@ -123,6 +125,8 @@ export const products: IProduct[] = [
       ``,
       `Хвостик выполнен из хлопкового шпагата.`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239052&hash=06debc6e25fccc83&hd=2',
     price: 250,
     images: [
       './images/rabbit-1.jpg',
@@ -162,6 +166,8 @@ export const products: IProduct[] = [
       `✅ Комплимент к заказу`,
       `✅ Доставка набора в любой город России`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239086&hash=cbd813acad9619f5&hd=2',
     price: 890,
     images: [
       './images/kit-ny3-1.jpg',
@@ -192,6 +198,8 @@ export const products: IProduct[] = [
       `Высота 19 см, ширина 5 см.`,
       `Волосы и пуанты выполнены из хлопкового шпагата.`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239090&hash=7e581ba227c47362&hd=2',
     price: 280,
     images: [
       './images/ballerina-1.jpg',
@@ -222,6 +230,8 @@ export const products: IProduct[] = [
       `Характеристики:`,
       `Размер 10*7см.`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239052&hash=06debc6e25fccc83&hd=2',
     price: 300,
     images: [
       './images/mini-car-1.jpg',
@@ -250,6 +260,8 @@ export const products: IProduct[] = [
       `Характеристики:`,
       `Размер 9*7см.`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239037&hash=bdca86029407f341&hd=2',
     price: 250,
     images: [
       './images/heart-1.jpg',
@@ -313,6 +325,8 @@ export const products: IProduct[] = [
       ``,
       `Есть возможность вырастить оленя побольше или наоборот поменьше, а также другой масти.`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239055&hash=0ea8fcac668b8394&hd=2',
     price: 290,
     images: [
       './images/deer-1.jpg',
@@ -401,6 +415,8 @@ export const products: IProduct[] = [
       `Возможно исполнение с фанерным дном, в другом цвете, размере.`,
       `Корзина может быть дополнена чехлом, крышкой, ручки заменены на кожаные/джутовые.`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239038&hash=c56cb13ed6205946&hd=2',
     price: 3000,
     images: [
       './images/openwork-basket-1.jpg',
@@ -485,6 +501,8 @@ export const products: IProduct[] = [
       `🌷 декор на шляпке в виде звёздочки`,
       `🌷 вкусный презент внутри`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239068&hash=88aa4f3f53a2caeb&hd=2',
     price: 2000,
     images: [
       './images/acorn-bag-1.jpg',
@@ -623,6 +641,8 @@ export const products: IProduct[] = [
       `Высота 12 см., с ручкой 23 см`,
       `Вместимость до 15 яиц`,
     ],
+    video:
+      'https://vk.com/video_ext.php?oid=-211355847&id=456239029&hash=24014515e8cb9934&hd=2',
     price: 1500,
     images: [
       './images/basket-basket-1.jpg',
