@@ -18,14 +18,26 @@ type UsePagination = (arg: UsePaginationProps) => UsePaginationReturn
 
 const usePagination: UsePagination = ({ itemPerPage, count }) => {
   const [searchParams, setPageParams] = useSearchParams()
-  useEffect(() => {
-    setPage(+(searchParams.get('page') || 1))
-  }, [searchParams])
-
-  const [page, setPage] = useState(+(searchParams.get('page') || 1))
   const pageCount = Math.ceil(count / itemPerPage)
+
+  let currentPage = +(searchParams.get('page') || 1)
+  if (currentPage > pageCount) currentPage = 1
+  const [page, setPage] = useState(currentPage || 1)
+
   const lastItemIndex = page * itemPerPage
   const firstItemIndex = lastItemIndex - itemPerPage
+
+  useEffect(() => {
+    let currentPage = +(searchParams.get('page') || 1)
+    if (currentPage > pageCount) {
+      currentPage = 1
+      const url = new URL(window.location.href)
+      url.searchParams.set('page', '1')
+      setPageParams(url.searchParams)
+    }
+    if (currentPage) setPage(currentPage)
+  }, [pageCount, searchParams, setPageParams])
+
   const changePage = (direction: boolean) => {
     setPage((state) => {
       if (direction) {
@@ -56,17 +68,21 @@ const usePagination: UsePagination = ({ itemPerPage, count }) => {
       const url = new URL(window.location.href)
       let newPage = page + 1
       if (newPage > pageCount) newPage = pageCount
-      url.searchParams.set('page', newPage.toString())
-      setPageParams(url.searchParams)
-      changePage(true)
+      else {
+        url.searchParams.set('page', newPage.toString())
+        setPageParams(url.searchParams)
+        changePage(true)
+      }
     },
     prevPage: () => {
       const url = new URL(window.location.href)
       let newPage = page - 1
       if (newPage < 1) newPage = 1
-      url.searchParams.set('page', newPage.toString())
-      setPageParams(url.searchParams)
-      changePage(false)
+      else {
+        url.searchParams.set('page', newPage.toString())
+        setPageParams(url.searchParams)
+        changePage(false)
+      }
     },
     setPage: setPageNum,
     firstItemIndex,
