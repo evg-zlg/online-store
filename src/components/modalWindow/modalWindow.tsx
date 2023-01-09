@@ -397,17 +397,13 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
                     navigate('/')
                   }, 4000)
                 }
-                !nameValue ? setNameError(true) : setNameError(false)
-                !telValue ? setTelError(true) : setTelError(false)
-                !mailValue ? setMailError(true) : setMailError(false)
-                !adressValue ? setAdressError(true) : setAdressError(false)
-                !cardNumberValue
-                  ? setCardNumberError(true)
-                  : setCardNumberError(false)
-                !cardDataValue
-                  ? setCardDataError(true)
-                  : setCardDataError(false)
-                !cardCvvValue ? setCardCvvError(true) : setCardCvvError(false)
+                if (!nameValue) setNameError(true)
+                if (!telValue) setTelError(true)
+                if (!mailValue) setMailError(true)
+                if (!adressValue) setAdressError(true)
+                if (!cardNumberValue) setCardNumberError(true)
+                if (!cardDataValue) setCardDataError(true)
+                if (!cardCvvValue) setCardCvvError(true)
               }}
             >
               Подтвердить заказ
