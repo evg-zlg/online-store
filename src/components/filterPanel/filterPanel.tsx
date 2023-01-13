@@ -4,6 +4,7 @@ import { CategoryItem } from '../categoryItem/categoryItem'
 import { useSearchParams } from 'react-router-dom'
 import { useState } from 'react'
 import { DualSlider } from '../dualSlider/dualSlider'
+import { products } from '../../data/data'
 import {
   getMaxPriceFilteredProducts,
   getMinPriceFilteredProducts,
@@ -96,8 +97,8 @@ export const FilterPanel = ({
         className="filter__price"
         type="price"
         title="Цена"
-        maxValue={getMaxPrice()}
-        minValue={getMinPrice()}
+        maxValue={getMaxPrice(products)}
+        minValue={getMinPrice(products)}
         leftValue={String(getMinPriceFilteredProducts(filteredProducts))}
         rightValue={String(getMaxPriceFilteredProducts(filteredProducts))}
         step={10}
