@@ -2,6 +2,7 @@ import './categoryItem.scss'
 import { IProduct } from '../../types'
 import { useSearchParams } from 'react-router-dom'
 import { products } from '../../data/data'
+import { deleteParam } from '../utility/utility'
 
 interface ICategoryItemProps {
   item: string
@@ -31,10 +32,6 @@ export const CategoryItem = ({
       ? products.filter((product) => product.category === item).length
       : products.filter((product) => product.tags.join(' ').includes(item))
           .length
-  function deleteParam(param: string, str: string) {
-    const params = str.split('.')
-    return params.filter((el) => el !== param).join('.')
-  }
   function clickCheckboxHandler() {
     const url = new URL(window.location.href)
     if (searchParams.has(type)) {

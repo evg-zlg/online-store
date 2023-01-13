@@ -3,11 +3,12 @@ import { products } from '../../data/data'
 
 const deleteParam = (param: string, str: string) => {
   const params = str.split('.')
+  console.log('param', param, 'str', str)
   return params.filter((el) => el !== param).join('.')
 }
 const getMaxPriceFilteredProducts = (filteredProducts: IProduct[]) => {
   if (filteredProducts.length === 0) {
-    return getMaxPrice()
+    return getMaxPrice(products)
   }
   const newProducts = []
   newProducts.push(...filteredProducts)
@@ -16,19 +17,21 @@ const getMaxPriceFilteredProducts = (filteredProducts: IProduct[]) => {
 }
 const getMinPriceFilteredProducts = (filteredProducts: IProduct[]) => {
   if (filteredProducts.length === 0) {
-    return getMinPrice()
+    return getMinPrice(products)
   }
   const newProducts = []
   newProducts.push(...filteredProducts)
   return newProducts.sort((a, b) => a.price - b.price)[0].price
 }
-const getMaxPrice = () => {
+const getMaxPrice = (products: IProduct[]) => {
+  if (products.length === 0) return 0
   const newProducts = []
   newProducts.push(...products)
   return newProducts.sort((a, b) => a.price - b.price)[newProducts.length - 1]
     .price
 }
-const getMinPrice = () => {
+const getMinPrice = (products: IProduct[]) => {
+  if (products.length === 0) return 0
   const newProducts = []
   newProducts.push(...products)
   return newProducts.sort((a, b) => a.price - b.price)[0].price
@@ -55,7 +58,7 @@ const getMaxStockFilteredProducts = (filteredProducts: IProduct[]) => {
 }
 const getMinStockFilteredProducts = (filteredProducts: IProduct[]) => {
   if (filteredProducts.length === 0) {
-    return getMinPrice()
+    return getMinPrice(products)
   }
   const newProducts = []
   newProducts.push(...filteredProducts)
