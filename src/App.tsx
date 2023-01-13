@@ -1,13 +1,9 @@
 import './App.scss'
-import ProductsPage from './components/productsPage/productsPage'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
-import { ProductItemPage } from './components/productItemPage/productItemPage'
-import CartPage from './components/cartPage/cartPage'
 import { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
 import ModalWindow from './components/modalWindow/modalWindow'
-import { NotFoundPage404 } from './components/notFoundPage404/notFoundPage404'
+import { Router } from './components/router/router'
 
 function App() {
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length
@@ -38,40 +34,14 @@ function App() {
       <ModalWindow active={modalActive} setActive={setmodalActive} />
       <Header />
       <main className="main">
-        <Routes>
-          <Route
-            path={'/'}
-            element={
-              <ProductsPage
-                numHandler={numHandler}
-                changeBannerIndex={changeBannerIndex}
-                bannerIndex={bannerIndex}
-              />
-            }
-          ></Route>
-          <Route
-            path={'/item/:id'}
-            element={
-              <ProductItemPage
-                numHandler={numHandler}
-                active={modalActive}
-                setActive={setmodalActive}
-              />
-            }
-          ></Route>
-          <Route
-            path={'/cart'}
-            element={
-              <CartPage
-                appCallback={appCallback}
-                active={modalActive}
-                setActive={setmodalActive}
-              />
-            }
-          ></Route>
-          <Route path="/item/*" element={<NotFoundPage404 />}></Route>
-          <Route path="*" element={<NotFoundPage404 />}></Route>
-        </Routes>
+        <Router
+          numHandler={numHandler}
+          changeBannerIndex={changeBannerIndex}
+          bannerIndex={bannerIndex}
+          active={modalActive}
+          setActive={setmodalActive}
+          appCallback={appCallback}
+        />
       </main>
       <Footer />
     </>
