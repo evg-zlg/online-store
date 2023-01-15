@@ -1,18 +1,26 @@
 import './header.scss'
 import { NavLink } from 'react-router-dom'
 import { products } from '../../data/data'
+import { useState, useEffect } from 'react'
 
 export default function Header() {
   const localArr = JSON.parse(localStorage.getItem('object') || '{}')
-  const cartArr = JSON.parse(localStorage.getItem('cart') || '[]').length
-  let price = 0
-  let count = 0
-  for (const product of products) {
-    if (Object.keys(localArr).includes(product.id.toString())) {
-      price += product.price * localArr[product.id]
-      count += localArr[product.id]
+  const [price, setPrice] = useState(0)
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let priceHandler = 0
+    let countHandler = 0
+    for (const product of products) {
+      if (Object.keys(localArr).includes(product.id.toString())) {
+        priceHandler += product.price * localArr[product.id]
+        countHandler += localArr[product.id]
+      }
     }
-  }
+    setPrice(priceHandler)
+    setCount(countHandler)
+  }, [localArr])
+
   return (
     <header className="header">
       <div className="header__container">
@@ -22,7 +30,7 @@ export default function Header() {
         <div className="header__basket basket">
           <div
             className={
-              cartArr === 0
+              count === 0
                 ? 'basket__price'
                 : 'basket__price basket__price--active'
             }
@@ -33,7 +41,7 @@ export default function Header() {
           <NavLink to={'/cart'}>
             <div
               className={
-                cartArr === 0
+                count === 0
                   ? 'basket__count'
                   : 'basket__count basket__count--active'
               }
