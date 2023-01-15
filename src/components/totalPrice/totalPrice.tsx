@@ -1,11 +1,11 @@
-import './totalPrice.scss'
+import './totalPrice.scss';
 
 const TotalPrice = ({
   discount,
   totalPrice,
 }: {
-  discount: string[]
-  totalPrice: number
+  discount: string[];
+  totalPrice: number;
 }) => {
   if (!discount.length) {
     return (
@@ -13,17 +13,17 @@ const TotalPrice = ({
         <p className="content__title">Итого:</p>
         <p className="content__number">{totalPrice} руб.</p>
       </div>
-    )
+    );
   }
-  let totalDiscountPrice = totalPrice
+  let totalDiscountPrice = totalPrice;
   discount.forEach((discName) => {
     if (discName === 'RS') {
-      totalDiscountPrice -= totalPrice * 0.1
+      totalDiscountPrice -= totalPrice * 0.1;
     }
     if (discName === 'EPM') {
-      totalDiscountPrice -= totalPrice * 0.2
+      totalDiscountPrice -= totalPrice * 0.2;
     }
-  })
+  });
   return (
     <div className="content__discount discount">
       <p className="discount__title">Итого:</p>
@@ -32,7 +32,7 @@ const TotalPrice = ({
       </p>
       <p className="discount__number">{totalDiscountPrice} руб.</p>
     </div>
-  )
-}
+  );
+};
 
-export default TotalPrice
+export default TotalPrice;

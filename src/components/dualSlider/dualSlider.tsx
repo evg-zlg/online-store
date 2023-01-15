@@ -1,16 +1,16 @@
-import { useSearchParams } from 'react-router-dom'
-import './dualSlider.scss'
+import { useSearchParams } from 'react-router-dom';
+import './dualSlider.scss';
 
 interface IDualSliderProps {
-  className?: string
-  minValue: number
-  maxValue: number
-  leftValue: string
-  rightValue: string
-  title: string
-  type: string
-  step: number
-  currency?: string
+  className?: string;
+  minValue: number;
+  maxValue: number;
+  leftValue: string;
+  rightValue: string;
+  title: string;
+  type: string;
+  step: number;
+  currency?: string;
 }
 
 export const DualSlider = ({
@@ -24,24 +24,24 @@ export const DualSlider = ({
   step,
   currency,
 }: IDualSliderProps) => {
-  const minParam = `min${type}`
-  const maxParam = `max${type}`
-  const url = new URL(window.location.href)
-  const [searchParams, setSearchParams] = useSearchParams()
+  const minParam = `min${type}`;
+  const maxParam = `max${type}`;
+  const url = new URL(window.location.href);
+  const [searchParams, setSearchParams] = useSearchParams();
   function handlerLeftInput(e: React.ChangeEvent<HTMLInputElement>) {
-    url.searchParams.set(minParam, e.target.value)
-    setSearchParams(url.searchParams)
+    url.searchParams.set(minParam, e.target.value);
+    setSearchParams(url.searchParams);
   }
   function handlerRightInput(e: React.ChangeEvent<HTMLInputElement>) {
-    url.searchParams.set(maxParam, e.target.value)
-    setSearchParams(url.searchParams)
+    url.searchParams.set(maxParam, e.target.value);
+    setSearchParams(url.searchParams);
   }
   let leftText = currency
     ? (searchParams.get(minParam) || leftValue) + ' ' + currency
-    : searchParams.get(minParam) || leftValue
+    : searchParams.get(minParam) || leftValue;
   let rightText = currency
     ? (searchParams.get(maxParam) || rightValue) + ' ' + currency
-    : searchParams.get(maxParam) || rightValue
+    : searchParams.get(maxParam) || rightValue;
   return (
     <div className={className + ` dual-slider`}>
       <h2 className="dual-slider__title">{title}</h2>
@@ -70,5 +70,5 @@ export const DualSlider = ({
         ></input>
       </span>
     </div>
-  )
-}
+  );
+};

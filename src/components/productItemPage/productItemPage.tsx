@@ -1,17 +1,17 @@
-import './productItemPage.scss'
-import { useParams } from 'react-router-dom'
-import { IProduct } from '../../types'
-import { products } from '../../data/data'
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import AddToCartBtn from '../addToCartBtn/addToCartBtn'
-import BuyNowBtn from '../buyNowBtn/buyNowBtn'
-import { Carousel } from '../carousel/carousel'
+import './productItemPage.scss';
+import { useParams } from 'react-router-dom';
+import { IProduct } from '../../types';
+import { products } from '../../data/data';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import AddToCartBtn from '../addToCartBtn/addToCartBtn';
+import BuyNowBtn from '../buyNowBtn/buyNowBtn';
+import { Carousel } from '../carousel/carousel';
 
 interface IProductItemProps {
-  numHandler: (num: number) => void
-  active: boolean
-  setActive: (bool: boolean) => void
+  numHandler: (num: number) => void;
+  active: boolean;
+  setActive: (bool: boolean) => void;
 }
 
 export function ProductItemPage({
@@ -19,13 +19,13 @@ export function ProductItemPage({
   active,
   setActive,
 }: IProductItemProps) {
-  const params = useParams()
+  const params = useParams();
   const product: IProduct = products.filter(
     (el) => el.id === Number(params.id),
-  )[0]
-  const startImgSrc = product.images[0]
-  const [imgScr, setImgScr] = useState(startImgSrc)
-  const hasProduct = product ? true : false
+  )[0];
+  const startImgSrc = product.images[0];
+  const [imgScr, setImgScr] = useState(startImgSrc);
+  const hasProduct = product ? true : false;
   return (
     <>
       {hasProduct && (
@@ -40,7 +40,7 @@ export function ProductItemPage({
             <div className="product-page__images images">
               <div className="images__miniature miniature">
                 {product.images.map((img) => {
-                  const src = require('../../data' + img.slice(1))
+                  const src = require('../../data' + img.slice(1));
                   return (
                     <img
                       key={img}
@@ -49,7 +49,7 @@ export function ProductItemPage({
                       src={src}
                       onClick={() => setImgScr(img)}
                     ></img>
-                  )
+                  );
                 })}
               </div>
               <div>
@@ -99,5 +99,5 @@ export function ProductItemPage({
       )}
       {!hasProduct && <h1>Товар {params.id} не найден</h1>}
     </>
-  )
+  );
 }

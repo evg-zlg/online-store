@@ -1,16 +1,16 @@
-import { Route, Routes } from 'react-router-dom'
-import { ProductItemPage } from '../productItemPage/productItemPage'
-import ProductsPage from '../productsPage/productsPage'
-import CartPage from '../cartPage/cartPage'
-import { NotFoundPage404 } from '../notFoundPage404/notFoundPage404'
+import { Route, Routes } from 'react-router-dom';
+import { ProductItemPage } from '../productItemPage/productItemPage';
+import ProductsPage from '../productsPage/productsPage';
+import CartPage from '../cartPage/cartPage';
+import { NotFoundPage404 } from '../notFoundPage404/notFoundPage404';
 
 interface IRoutesProps {
-  numHandler: (num: number) => void
-  changeBannerIndex: () => void
-  bannerIndex: number
-  active: boolean
-  setActive: (bool: boolean) => void
-  appCallback: (a: number, b: number) => void
+  numHandler: (num: number) => void;
+  changeBannerIndex: () => void;
+  bannerIndex: number;
+  active: boolean;
+  setActive: (bool: boolean) => void;
+  appCallback: (a: number, b: number) => void;
 }
 
 const Router = ({
@@ -56,7 +56,7 @@ const Router = ({
       <Route path="/item/*" element={<NotFoundPage404 />}></Route>
       <Route path="*" element={<NotFoundPage404 />}></Route>
     </Routes>
-  )
-}
+  );
+};
 
-export { Router }
+export { Router };

@@ -1,13 +1,13 @@
-import { IProduct } from '../../types'
-import { NavLink } from 'react-router-dom'
-import './productCard.scss'
-import AddToCartBtn from '../addToCartBtn/addToCartBtn'
-import { Carousel } from '../carousel/carousel'
+import { IProduct } from '../../types';
+import { NavLink } from 'react-router-dom';
+import './productCard.scss';
+import AddToCartBtn from '../addToCartBtn/addToCartBtn';
+import { Carousel } from '../carousel/carousel';
 
 interface IProductCardProps {
-  product: IProduct
+  product: IProduct;
 
-  numHandler: (num: number) => void
+  numHandler: (num: number) => void;
 }
 
 export function ProductCard({ product, numHandler }: IProductCardProps) {
@@ -39,9 +39,9 @@ export function ProductCard({ product, numHandler }: IProductCardProps) {
             <p key={tag} className="card__tag">
               {tag.slice(0, 1).toUpperCase() + tag.slice(1).toLowerCase()}
             </p>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }

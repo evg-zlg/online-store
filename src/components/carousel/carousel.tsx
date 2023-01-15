@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import './carousel.scss'
+import { useState } from 'react';
+import './carousel.scss';
 
 interface ICarouselProps {
-  images: string[]
-  currentImage: string
-  alt: string
-  className: string
+  images: string[];
+  currentImage: string;
+  alt: string;
+  className: string;
 }
 
 export const Carousel = ({
@@ -14,31 +14,31 @@ export const Carousel = ({
   className,
   currentImage,
 }: ICarouselProps) => {
-  const [showCarousel, setShowCarousel] = useState(false)
-  const [currentImgIndex, setCurrentImgIndex] = useState(0)
+  const [showCarousel, setShowCarousel] = useState(false);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
   function handleClickZoomBtn() {
-    setShowCarousel((prev) => !prev)
+    setShowCarousel((prev) => !prev);
   }
   showCarousel
     ? (document.body.style.overflow = 'hidden')
-    : (document.body.style.overflow = '')
+    : (document.body.style.overflow = '');
   function handleClickBigBoxImg(e: React.MouseEvent) {
-    setShowCarousel(false)
+    setShowCarousel(false);
   }
   function handleClickBigImg(e: React.MouseEvent) {
-    e.stopPropagation()
+    e.stopPropagation();
   }
   function handleClickLeftBtn(e: React.MouseEvent) {
-    e.stopPropagation()
+    e.stopPropagation();
     currentImgIndex === 0
       ? setCurrentImgIndex(images.length - 1)
-      : setCurrentImgIndex(currentImgIndex - 1)
+      : setCurrentImgIndex(currentImgIndex - 1);
   }
   function handleClickRightBtn(e: React.MouseEvent) {
-    e.stopPropagation()
+    e.stopPropagation();
     currentImgIndex === images.length - 1
       ? setCurrentImgIndex(0)
-      : setCurrentImgIndex(currentImgIndex + 1)
+      : setCurrentImgIndex(currentImgIndex + 1);
   }
   return (
     <div className={`${className} carousel`}>
@@ -77,5 +77,5 @@ export const Carousel = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};

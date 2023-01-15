@@ -1,25 +1,25 @@
-import './header.scss'
-import { NavLink } from 'react-router-dom'
-import { products } from '../../data/data'
-import { useState, useEffect } from 'react'
+import './header.scss';
+import { NavLink } from 'react-router-dom';
+import { products } from '../../data/data';
+import { useState, useEffect } from 'react';
 
 export default function Header() {
-  const localArr = JSON.parse(localStorage.getItem('object') || '{}')
-  const [price, setPrice] = useState(0)
-  const [count, setCount] = useState(0)
+  const localArr = JSON.parse(localStorage.getItem('object') || '{}');
+  const [price, setPrice] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let priceHandler = 0
-    let countHandler = 0
+    let priceHandler = 0;
+    let countHandler = 0;
     for (const product of products) {
       if (Object.keys(localArr).includes(product.id.toString())) {
-        priceHandler += product.price * localArr[product.id]
-        countHandler += localArr[product.id]
+        priceHandler += product.price * localArr[product.id];
+        countHandler += localArr[product.id];
       }
     }
-    setPrice(priceHandler)
-    setCount(countHandler)
-  }, [localArr])
+    setPrice(priceHandler);
+    setCount(countHandler);
+  }, [localArr]);
 
   return (
     <header className="header">
@@ -53,5 +53,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -1,15 +1,15 @@
-import './pagination.scss'
-import { ChangeEvent, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import './pagination.scss';
+import { ChangeEvent, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 interface IPagination {
-  setValue: (n: number) => void
-  setPage: (n: number) => void
-  prevPage: () => void
-  nextPage: () => void
-  page: number
-  totalPages: number
-  value: number
+  setValue: (n: number) => void;
+  setPage: (n: number) => void;
+  prevPage: () => void;
+  nextPage: () => void;
+  page: number;
+  totalPages: number;
+  value: number;
 }
 
 export default function Pagination({
@@ -21,29 +21,29 @@ export default function Pagination({
   totalPages,
   value,
 }: IPagination) {
-  const [, setPageParams] = useSearchParams()
+  const [, setPageParams] = useSearchParams();
   const inputCallback = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = +(e.target as HTMLInputElement).value
+    const newValue = +(e.target as HTMLInputElement).value;
     if (newValue > 0) {
-      setValue(newValue)
-      setPage(1)
-      const url = new URL(window.location.href)
-      url.searchParams.set('items', newValue.toString())
-      url.searchParams.set('page', '1')
-      setPageParams(url.searchParams)
+      setValue(newValue);
+      setPage(1);
+      const url = new URL(window.location.href);
+      url.searchParams.set('items', newValue.toString());
+      url.searchParams.set('page', '1');
+      setPageParams(url.searchParams);
     }
-  }
+  };
 
-  const [searchParams] = useSearchParams()
+  const [searchParams] = useSearchParams();
   useEffect(() => {
-    const currentItems = +(searchParams.get('items') || 3)
-    if (currentItems) setValue(currentItems)
-  }, [setValue, searchParams])
+    const currentItems = +(searchParams.get('items') || 3);
+    if (currentItems) setValue(currentItems);
+  }, [setValue, searchParams]);
 
   if (totalPages < page) {
-    const url = new URL(window.location.href)
-    url.searchParams.set('page', totalPages.toString())
-    setPageParams(url.searchParams)
+    const url = new URL(window.location.href);
+    url.searchParams.set('page', totalPages.toString());
+    setPageParams(url.searchParams);
   }
   return (
     <div className="cart-page__pagination pagination">
@@ -64,5 +64,5 @@ export default function Pagination({
         {'>'}
       </button>
     </div>
-  )
+  );
 }
