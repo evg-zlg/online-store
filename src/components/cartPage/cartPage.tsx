@@ -8,11 +8,9 @@ import TotalPrice from '../totalPrice/totalPrice';
 
 export default function CartPage({
   appCallback,
-  active,
   setActive,
 }: {
   appCallback: (a: number, b: number) => void;
-  active: boolean;
   setActive: (bool: boolean) => void;
 }) {
   const url = new URL(window.location.href);

@@ -8,13 +8,13 @@ import { getCategories, getTags, getFilteredProduct } from '../utility/utility';
 import { useEffect } from 'react';
 
 interface IProductsPageProps {
-  numHandler: (num: number) => void;
+  countInCartHandler: (num: number) => void;
   changeBannerIndex: () => void;
   bannerIndex: number;
 }
 
 export default function ProductsPage({
-  numHandler,
+  countInCartHandler,
   changeBannerIndex,
   bannerIndex,
 }: IProductsPageProps) {
@@ -69,7 +69,7 @@ export default function ProductsPage({
               return (
                 <ProductCard
                   key={product.id}
-                  numHandler={numHandler}
+                  countInCartHandler={countInCartHandler}
                   product={product}
                 />
               );

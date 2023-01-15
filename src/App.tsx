@@ -8,7 +8,7 @@ import { Router } from './components/router/router';
 function App() {
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length;
   const [, setNum] = useState(initialNum);
-  const numHandler = (num: number): void => {
+  const countInCartHandler = (num: number): void => {
     setNum((prevState: number) => {
       return (prevState += num);
     });
@@ -35,10 +35,9 @@ function App() {
       <Header />
       <main className="main">
         <Router
-          numHandler={numHandler}
+          countInCartHandler={countInCartHandler}
           changeBannerIndex={changeBannerIndex}
           bannerIndex={bannerIndex}
-          active={modalActive}
           setActive={setmodalActive}
           appCallback={appCallback}
         />

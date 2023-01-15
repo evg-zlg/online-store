@@ -17,17 +17,17 @@ export function ProductCart({
   storageCallback,
   deleteItemCallback,
 }: ProductCartProps) {
-  const cartlocal = JSON.parse(localStorage.getItem('object') || '{}');
-  const [count, setCount] = useState(cartlocal[cartId]);
+  const cartLocal = JSON.parse(localStorage.getItem('object') || '{}');
+  const [count, setCount] = useState(cartLocal[cartId]);
 
   const handleDecrement = () => {
     if (count > 0) {
       if (count === 1) {
         deleteItemCallback(cartId);
-        const cartlocal = JSON.parse(localStorage.getItem('object') || '{}');
-        delete cartlocal[cartId];
-        localStorage.setItem('object', JSON.stringify(cartlocal));
-        storageCallback(cartlocal);
+        const cartLocal = JSON.parse(localStorage.getItem('object') || '{}');
+        delete cartLocal[cartId];
+        localStorage.setItem('object', JSON.stringify(cartLocal));
+        storageCallback(cartLocal);
       }
       setCount(() => count - 1);
     }
@@ -39,10 +39,10 @@ export function ProductCart({
   };
 
   useEffect(() => {
-    const cartlocal = JSON.parse(localStorage.getItem('object') || '{}');
-    cartlocal[cartId] = count;
-    localStorage.setItem('object', JSON.stringify(cartlocal));
-    storageCallback(cartlocal);
+    const cartLocal = JSON.parse(localStorage.getItem('object') || '{}');
+    cartLocal[cartId] = count;
+    localStorage.setItem('object', JSON.stringify(cartLocal));
+    storageCallback(cartLocal);
   }, [count, storageCallback, cartId]);
 
   return (

@@ -9,14 +9,12 @@ import BuyNowBtn from '../buyNowBtn/buyNowBtn';
 import { Carousel } from '../carousel/carousel';
 
 interface IProductItemProps {
-  numHandler: (num: number) => void;
-  active: boolean;
+  countInCartHandler: (num: number) => void;
   setActive: (bool: boolean) => void;
 }
 
 export function ProductItemPage({
-  numHandler,
-  active,
+  countInCartHandler,
   setActive,
 }: IProductItemProps) {
   const params = useParams();
@@ -65,9 +63,9 @@ export function ProductItemPage({
               <h2 className="info__title">{product.name}</h2>
               <div className="info__price">{product.price} руб.</div>
               <div className="product-page__button button">
-                <AddToCartBtn onClick={numHandler} id={product.id} />
+                <AddToCartBtn onClick={countInCartHandler} id={product.id} />
                 <NavLink to={'/cart'} onClick={() => setActive(true)}>
-                  <BuyNowBtn onClick={numHandler} id={product.id} />
+                  <BuyNowBtn onClick={countInCartHandler} id={product.id} />
                 </NavLink>
               </div>
               <div className="info__category">
