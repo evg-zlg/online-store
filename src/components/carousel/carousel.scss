@@ -1,10 +1,9 @@
 .carousel {
-
   &__small-box {
     position: relative;
     height: 100%;
   }
-  
+
   &__zoom {
     position: absolute;
     top: 20px;
@@ -58,7 +57,7 @@
     img {
       object-fit: contain;
     }
-  } 
+  }
 
   &__close-btn {
     position: absolute;
@@ -80,7 +79,7 @@
 
   &__left-btn,
   &__right-btn {
-    position: absolute; 
+    position: absolute;
     top: 0;
     height: 100%;
     background: none;
@@ -94,9 +93,9 @@
     &:hover {
       opacity: 1;
     }
-  } 
+  }
 
-  &__left-btn{
+  &__left-btn {
     left: 0;
     padding: 0 200px 0 20px;
   }
@@ -104,5 +103,5 @@
   &__right-btn {
     right: 0;
     padding: 0 20px 0 200px;
-  } 
+  }
 }
