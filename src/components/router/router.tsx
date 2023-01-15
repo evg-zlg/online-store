@@ -8,6 +8,7 @@ interface IRoutesProps {
   countInCartHandler: (num: number) => void;
   changeBannerIndex: () => void;
   bannerIndex: number;
+  active: boolean;
   setActive: (bool: boolean) => void;
   appCallback: (a: number, b: number) => void;
 }
@@ -16,6 +17,7 @@ const Router = ({
   countInCartHandler,
   bannerIndex,
   changeBannerIndex,
+  active,
   setActive,
   appCallback,
 }: IRoutesProps) => {

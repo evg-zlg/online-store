@@ -38,6 +38,7 @@ function App() {
           countInCartHandler={countInCartHandler}
           changeBannerIndex={changeBannerIndex}
           bannerIndex={bannerIndex}
+          active={modalActive}
           setActive={setmodalActive}
           appCallback={appCallback}
         />
