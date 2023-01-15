@@ -65,19 +65,9 @@
     transition: all 0.5s ease;
     min-width: 152px;
 
-
-    // &--hasVideo {
-    //   background-color: brown;
-    //   mask-image: url('./video-icon.png');
-    //   
-    //   mask-repeat: no-repeat;
-    //   mask-position: 95% center;
-    // }
-
-    &:hover{
+    &:hover {
       opacity: 0.8;
     }
-
   }
   &__video-icon {
     position: absolute;

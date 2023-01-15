@@ -22,14 +22,14 @@
     display: block;
     position: relative;
   }
-  
+
   &__left,
-  &__right {    
+  &__right {
     appearance: none;
     width: 100%;
     outline: none;
     height: 2px;
-    border: none;  
+    border: none;
     background-color: rgb(48, 48, 48);
     pointer-events: none;
     position: absolute;
@@ -45,27 +45,12 @@
       cursor: pointer;
       pointer-events: all;
       z-index: 1;
-
-      // &::before {
-      //       content: ' ';
-      //       display: block;
-      //       position: absolute;
-      //       top: 13px;
-      //       left: 100%;
-      //       width: 2000px;
-      //       height: 2px;
-      // }
-
-   }
-
+    }
   }
 
   &__left {
-
   }
 
   &__right {
-
   }
-
 }

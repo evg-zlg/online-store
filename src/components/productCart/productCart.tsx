@@ -55,11 +55,6 @@ export function ProductCart({
           images={products[cartId - 1].images}
           currentImage={products[cartId - 1].images[0]}
         />
-        {/* <img
-          className="item__img"
-          src={require('../../data' + products[cartId - 1].images[0].slice(1))}
-          alt={products[cartId - 1].name}
-        ></img> */}
         <NavLink className="item__link" to={'/item/' + cartId}>
           <div className="item__name">{products[cartId - 1].name}</div>
         </NavLink>
