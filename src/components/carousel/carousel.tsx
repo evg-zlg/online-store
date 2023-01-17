@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import './carousel.scss';
 
 interface ICarouselProps {
@@ -8,7 +8,7 @@ interface ICarouselProps {
   className: string;
 }
 
-export const Carousel = ({
+export const Carousel: FC<ICarouselProps> = ({
   images,
   alt,
   className,

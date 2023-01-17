@@ -1,12 +1,12 @@
 import { IProduct } from '../../types';
 import { products } from '../../data/data';
 
-const deleteParam = (param: string, str: string) => {
+const deleteParam = (param: string, str: string): string => {
   const params = str.split('.');
   console.log('param', param, 'str', str);
   return params.filter((el) => el !== param).join('.');
 };
-const getMaxPriceFilteredProducts = (filteredProducts: IProduct[]) => {
+const getMaxPriceFilteredProducts = (filteredProducts: IProduct[]): number => {
   if (filteredProducts.length === 0) {
     return getMaxPrice(products);
   }
@@ -15,7 +15,7 @@ const getMaxPriceFilteredProducts = (filteredProducts: IProduct[]) => {
   return newProducts.sort((a, b) => a.price - b.price)[newProducts.length - 1]
     .price;
 };
-const getMinPriceFilteredProducts = (filteredProducts: IProduct[]) => {
+const getMinPriceFilteredProducts = (filteredProducts: IProduct[]): number => {
   if (filteredProducts.length === 0) {
     return getMinPrice(products);
   }
@@ -23,31 +23,31 @@ const getMinPriceFilteredProducts = (filteredProducts: IProduct[]) => {
   newProducts.push(...filteredProducts);
   return newProducts.sort((a, b) => a.price - b.price)[0].price;
 };
-const getMaxPrice = (products: IProduct[]) => {
+const getMaxPrice = (products: IProduct[]): number => {
   if (products.length === 0) return 0;
   const newProducts = [];
   newProducts.push(...products);
   return newProducts.sort((a, b) => a.price - b.price)[newProducts.length - 1]
     .price;
 };
-const getMinPrice = (products: IProduct[]) => {
+const getMinPrice = (products: IProduct[]): number => {
   if (products.length === 0) return 0;
   const newProducts = [];
   newProducts.push(...products);
   return newProducts.sort((a, b) => a.price - b.price)[0].price;
 };
-const getMaxStock = () => {
+const getMaxStock = (): number => {
   const newProducts = [];
   newProducts.push(...products);
   return newProducts.sort((a, b) => a.count - b.count)[newProducts.length - 1]
     .count;
 };
-const getMinStock = () => {
+const getMinStock = (): number => {
   const newProducts = [];
   newProducts.push(...products);
   return newProducts.sort((a, b) => a.count - b.count)[0].count;
 };
-const getMaxStockFilteredProducts = (filteredProducts: IProduct[]) => {
+const getMaxStockFilteredProducts = (filteredProducts: IProduct[]): number => {
   if (filteredProducts.length === 0) {
     return getMaxStock();
   }
@@ -56,7 +56,7 @@ const getMaxStockFilteredProducts = (filteredProducts: IProduct[]) => {
   return newProducts.sort((a, b) => a.count - b.count)[newProducts.length - 1]
     .count;
 };
-const getMinStockFilteredProducts = (filteredProducts: IProduct[]) => {
+const getMinStockFilteredProducts = (filteredProducts: IProduct[]): number => {
   if (filteredProducts.length === 0) {
     return getMinPrice(products);
   }
@@ -64,7 +64,7 @@ const getMinStockFilteredProducts = (filteredProducts: IProduct[]) => {
   newProducts.push(...filteredProducts);
   return newProducts.sort((a, b) => a.count - b.count)[0].count;
 };
-const getCategories = () => {
+const getCategories = (): string[] => {
   const categories: string[] = [];
   products.forEach((product) => {
     if (!categories.join('').includes(product.category)) {
@@ -73,7 +73,7 @@ const getCategories = () => {
   });
   return categories;
 };
-const getTags = () => {
+const getTags = (): string[] => {
   const tags: string[] = [];
   products.forEach((product) => {
     product.tags.forEach((tag) => {
@@ -84,7 +84,7 @@ const getTags = () => {
   });
   return tags;
 };
-const getElementNameByIndex = (i: number, type: string) => {
+const getElementNameByIndex = (i: number, type: string): string => {
   let result: string = '';
   type === 'categories'
     ? (result = getCategories()[i])
@@ -102,7 +102,7 @@ const deduplicateArray = (arr: IProduct[]): IProduct[] => {
   });
   return result;
 };
-const getFilteredProduct = (searchParams: URLSearchParams) => {
+const getFilteredProduct = (searchParams: URLSearchParams): IProduct[] => {
   let filteredProducts: IProduct[] = [];
   //include in filtered
   if (searchParams.has('categories') && searchParams.has('tags')) {
@@ -238,7 +238,7 @@ const getFilteredProduct = (searchParams: URLSearchParams) => {
   }
   return newFilteredProducts;
 };
-const changeBannerIndex = (currentIndex: number) => {
+const changeBannerIndex = (currentIndex: number): number => {
   console.log('actual number:', currentIndex);
   return currentIndex === 0 ? 1 : 0;
 };

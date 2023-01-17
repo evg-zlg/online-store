@@ -1,11 +1,11 @@
 import './App.scss';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import ModalWindow from './components/modalWindow/modalWindow';
 import { Router } from './components/router/router';
 
-function App() {
+function App(): ReactElement {
   const initialNum = JSON.parse(localStorage.getItem('cart') || '[]').length;
   const [, setNum] = useState(initialNum);
   const countInCartHandler = (num: number): void => {

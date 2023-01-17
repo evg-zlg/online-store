@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { ProductItemPage } from '../productItemPage/productItemPage';
-import ProductsPage from '../productsPage/productsPage';
+import { ProductsPage } from '../productsPage/productsPage';
 import CartPage from '../cartPage/cartPage';
 import { NotFoundPage404 } from '../notFoundPage404/notFoundPage404';
+import { FC } from 'react';
 
 interface IRoutesProps {
   countInCartHandler: (num: number) => void;
@@ -13,7 +14,7 @@ interface IRoutesProps {
   appCallback: (a: number, b: number) => void;
 }
 
-const Router = ({
+export const Router: FC<IRoutesProps> = ({
   countInCartHandler,
   bannerIndex,
   changeBannerIndex,
@@ -51,5 +52,3 @@ const Router = ({
     </Routes>
   );
 };
-
-export { Router };

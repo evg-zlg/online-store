@@ -1,13 +1,13 @@
 import './productViewControl.scss';
 import { useSearchParams } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
 interface IProductViewControlProps {
   className: string;
   countFilteredProducts: number;
 }
 
-export const ProductViewControl = ({
+export const ProductViewControl: FC<IProductViewControlProps> = ({
   className,
   countFilteredProducts,
 }: IProductViewControlProps) => {
@@ -52,7 +52,7 @@ export const ProductViewControl = ({
     setSearchParams(url.searchParams);
     return str;
   }
-  function handleSelect(e: React.ChangeEvent<HTMLSelectElement>) {
+  function selectHandler(e: React.ChangeEvent<HTMLSelectElement>) {
     const url = new URL(window.location.href);
     const value = e.target.value;
     setSelect(value);
@@ -66,7 +66,7 @@ export const ProductViewControl = ({
       <select
         className="view-control__select"
         value={select}
-        onChange={handleSelect}
+        onChange={selectHandler}
       >
         <option value="none">Сортировать по умолчанию</option>
         <option value="price-ask">По возрастанию цены</option>

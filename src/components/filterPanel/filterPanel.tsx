@@ -22,7 +22,7 @@ interface IFilterPanelProps {
   tags: string[];
 }
 
-export const FilterPanel = ({
+export const FilterPanel: React.FC<IFilterPanelProps> = ({
   filteredProducts,
   categories,
   tags,

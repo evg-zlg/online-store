@@ -5,7 +5,7 @@ import { FilterPanel } from '../filterPanel/filterPanel';
 import { IProduct } from '../../types';
 import { useSearchParams } from 'react-router-dom';
 import { getCategories, getTags, getFilteredProduct } from '../utility/utility';
-import { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 
 interface IProductsPageProps {
   countInCartHandler: (num: number) => void;
@@ -13,11 +13,11 @@ interface IProductsPageProps {
   bannerIndex: number;
 }
 
-export default function ProductsPage({
+export const ProductsPage: FC<IProductsPageProps> = ({
   countInCartHandler,
   changeBannerIndex,
   bannerIndex,
-}: IProductsPageProps) {
+}: IProductsPageProps) => {
   const [searchParams] = useSearchParams();
   const categories = getCategories();
   const tags = getTags();
@@ -84,4 +84,4 @@ export default function ProductsPage({
       </div>
     </section>
   );
-}
+};
