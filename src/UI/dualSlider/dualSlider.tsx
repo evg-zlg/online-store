@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './dualSlider.scss';
 
@@ -13,7 +14,7 @@ interface IDualSliderProps {
   currency?: string;
 }
 
-export const DualSlider = ({
+export const DualSlider: FC<IDualSliderProps> = ({
   className,
   minValue,
   maxValue,

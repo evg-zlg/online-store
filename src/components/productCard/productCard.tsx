@@ -1,18 +1,19 @@
 import { IProduct } from '../../types';
 import { NavLink } from 'react-router-dom';
 import './productCard.scss';
-import AddToCartBtn from '../addToCartBtn/addToCartBtn';
-import { Carousel } from '../carousel/carousel';
+import AddToCartBtn from '../../UI/addToCartBtn/addToCartBtn';
+import { Carousel } from '../../UI/carousel/carousel';
+import { FC } from 'react';
 
 interface IProductCardProps {
   product: IProduct;
   countInCartHandler: (num: number) => void;
 }
 
-export function ProductCard({
+export const ProductCard: FC<IProductCardProps> = ({
   product,
   countInCartHandler,
-}: IProductCardProps) {
+}: IProductCardProps) => {
   return (
     <div className="card">
       <NavLink className="card__link-title" to={'/item/' + product.id}>
@@ -46,4 +47,4 @@ export function ProductCard({
       </div>
     </div>
   );
-}
+};

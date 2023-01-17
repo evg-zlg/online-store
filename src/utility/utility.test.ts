@@ -1,5 +1,5 @@
 import { deleteParam, getMaxPrice, getMinPrice } from './utility'
-import { IProduct } from '../../types'
+import { IProduct } from '../types'
 
 //deleteParam function for change query params
 

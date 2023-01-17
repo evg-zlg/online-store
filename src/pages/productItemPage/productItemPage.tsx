@@ -2,21 +2,21 @@ import './productItemPage.scss';
 import { useParams } from 'react-router-dom';
 import { IProduct } from '../../types';
 import { products } from '../../data/data';
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import AddToCartBtn from '../addToCartBtn/addToCartBtn';
-import BuyNowBtn from '../buyNowBtn/buyNowBtn';
-import { Carousel } from '../carousel/carousel';
+import AddToCartBtn from '../../UI/addToCartBtn/addToCartBtn';
+import BuyNowBtn from '../../UI/buyNowBtn/buyNowBtn';
+import { Carousel } from '../../UI/carousel/carousel';
 
 interface IProductItemProps {
   countInCartHandler: (num: number) => void;
   setActive: (bool: boolean) => void;
 }
 
-export function ProductItemPage({
+export const ProductItemPage: FC<IProductItemProps> = ({
   countInCartHandler,
   setActive,
-}: IProductItemProps) {
+}: IProductItemProps) => {
   const params = useParams();
   const product: IProduct = products.filter(
     (el) => el.id === Number(params.id),
@@ -98,4 +98,4 @@ export function ProductItemPage({
       {!hasProduct && <h1>Товар {params.id} не найден</h1>}
     </>
   );
-}
+};
