@@ -1,8 +1,8 @@
 import { IProduct } from '../../types';
 import { NavLink } from 'react-router-dom';
 import './productCard.scss';
-import AddToCartBtn from '../addToCartBtn/addToCartBtn';
-import { Carousel } from '../carousel/carousel';
+import AddToCartBtn from '../../UI/addToCartBtn/addToCartBtn';
+import { Carousel } from '../../UI/carousel/carousel';
 import { FC } from 'react';
 
 interface IProductCardProps {

@@ -1,10 +1,14 @@
 import './productsPage.scss';
-import { ProductCard } from '../productCard/productCard';
-import { ProductViewControl } from '../productViewControl/productViewControl';
-import { FilterPanel } from '../filterPanel/filterPanel';
+import { ProductCard } from '../../components/productCard/productCard';
+import { ProductViewControl } from '../../components/productViewControl/productViewControl';
+import { FilterPanel } from '../../components/filterPanel/filterPanel';
 import { IProduct } from '../../types';
 import { useSearchParams } from 'react-router-dom';
-import { getCategories, getTags, getFilteredProduct } from '../utility/utility';
+import {
+  getCategories,
+  getTags,
+  getFilteredProduct,
+} from '../../utility/utility';
 import { useEffect, FC } from 'react';
 
 interface IProductsPageProps {

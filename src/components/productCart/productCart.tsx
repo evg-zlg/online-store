@@ -2,7 +2,7 @@ import './productCart.scss';
 import { products } from '../../data/data';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Carousel } from '../carousel/carousel';
+import { Carousel } from '../../UI/carousel/carousel';
 
 interface ProductCartProps {
   cartId: number;

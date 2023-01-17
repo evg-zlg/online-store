@@ -2,7 +2,7 @@ import './categoryItem.scss';
 import { IProduct } from '../../types';
 import { useSearchParams } from 'react-router-dom';
 import { products } from '../../data/data';
-import { deleteParam } from '../utility/utility';
+import { deleteParam } from '../../utility/utility';
 import { useState, useEffect, FC } from 'react';
 
 interface ICategoryItemProps {

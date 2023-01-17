@@ -1,10 +1,10 @@
 import './cartPage.scss';
-import { ProductCart } from '../productCart/productCart';
+import { ProductCart } from '../../components/productCart/productCart';
 import { ChangeEvent, useState } from 'react';
 import { products } from '../../data/data';
-import usePagination from '../pagination/usePagination';
-import Pagination from '../pagination/pagination';
-import TotalPrice from '../totalPrice/totalPrice';
+import usePagination from '../../components/pagination/usePagination';
+import Pagination from '../../components/pagination/pagination';
+import TotalPrice from '../../components/totalPrice/totalPrice';
 
 export default function CartPage({
   appCallback,

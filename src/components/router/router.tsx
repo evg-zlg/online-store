@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import { ProductItemPage } from '../productItemPage/productItemPage';
-import { ProductsPage } from '../productsPage/productsPage';
-import CartPage from '../cartPage/cartPage';
-import { NotFoundPage404 } from '../notFoundPage404/notFoundPage404';
+import { ProductItemPage } from '../../pages/productItemPage/productItemPage';
+import { ProductsPage } from '../../pages/productsPage/productsPage';
+import CartPage from '../../pages/cartPage/cartPage';
+import { NotFoundPage404 } from '../../pages/notFoundPage404/notFoundPage404';
 import { FC } from 'react';
 
 interface IRoutesProps {

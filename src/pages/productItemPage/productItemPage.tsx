@@ -4,9 +4,9 @@ import { IProduct } from '../../types';
 import { products } from '../../data/data';
 import { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import AddToCartBtn from '../addToCartBtn/addToCartBtn';
-import BuyNowBtn from '../buyNowBtn/buyNowBtn';
-import { Carousel } from '../carousel/carousel';
+import AddToCartBtn from '../../UI/addToCartBtn/addToCartBtn';
+import BuyNowBtn from '../../UI/buyNowBtn/buyNowBtn';
+import { Carousel } from '../../UI/carousel/carousel';
 
 interface IProductItemProps {
   countInCartHandler: (num: number) => void;

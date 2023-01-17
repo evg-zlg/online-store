@@ -1,5 +1,5 @@
-import { IProduct } from '../../types';
-import { products } from '../../data/data';
+import { IProduct } from '../types';
+import { products } from '../data/data';
 
 const deleteParam = (param: string, str: string): string => {
   const params = str.split('.');
