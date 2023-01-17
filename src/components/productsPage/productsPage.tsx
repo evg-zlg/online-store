@@ -28,6 +28,7 @@ export default function ProductsPage({
   const filteredProducts = getFilteredProduct(searchParams);
   useEffect(() => {
     changeBannerIndex();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <section className="products-page">
