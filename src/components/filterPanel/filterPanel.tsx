@@ -1,10 +1,10 @@
-import './filterPanel.scss'
-import { IProduct } from '../../types'
-import { CategoryItem } from '../categoryItem/categoryItem'
-import { useSearchParams } from 'react-router-dom'
-import { useState } from 'react'
-import { DualSlider } from '../dualSlider/dualSlider'
-import { products } from '../../data/data'
+import './filterPanel.scss';
+import { IProduct } from '../../types';
+import { CategoryItem } from '../categoryItem/categoryItem';
+import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+import { DualSlider } from '../dualSlider/dualSlider';
+import { products } from '../../data/data';
 import {
   getMaxPriceFilteredProducts,
   getMinPriceFilteredProducts,
@@ -14,12 +14,12 @@ import {
   getMinStock,
   getMaxStockFilteredProducts,
   getMinStockFilteredProducts,
-} from '../utility/utility'
+} from '../utility/utility';
 
 interface IFilterPanelProps {
-  filteredProducts: IProduct[]
-  categories: string[]
-  tags: string[]
+  filteredProducts: IProduct[];
+  categories: string[];
+  tags: string[];
 }
 
 export const FilterPanel = ({
@@ -27,32 +27,32 @@ export const FilterPanel = ({
   categories,
   tags,
 }: IFilterPanelProps) => {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [copyText, setCopyText] = useState('Копировать ссылку')
-  const [copyClass, setCopyClass] = useState('filter__copy')
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [copyText, setCopyText] = useState('Копировать ссылку');
+  const [copyClass, setCopyClass] = useState('filter__copy');
   const resetHandler = () => {
     if (searchParams) {
     }
-    const url = new URL(window.location.href)
-    url.searchParams.delete('categories')
-    url.searchParams.delete('tags')
-    url.searchParams.delete('search')
-    url.searchParams.delete('maxprice')
-    url.searchParams.delete('minprice')
-    url.searchParams.delete('minstock')
-    url.searchParams.delete('maxstock')
-    setSearchParams(url.searchParams)
-  }
+    const url = new URL(window.location.href);
+    url.searchParams.delete('categories');
+    url.searchParams.delete('tags');
+    url.searchParams.delete('search');
+    url.searchParams.delete('maxprice');
+    url.searchParams.delete('minprice');
+    url.searchParams.delete('minstock');
+    url.searchParams.delete('maxstock');
+    setSearchParams(url.searchParams);
+  };
   const copyHandler = () => {
-    const url = new URL(window.location.href)
-    navigator.clipboard.writeText(url.href)
-    setCopyText('Ссылка скопированна')
-    setCopyClass('filter__copy filter__copy--copied')
+    const url = new URL(window.location.href);
+    navigator.clipboard.writeText(url.href);
+    setCopyText('Ссылка скопированна');
+    setCopyClass('filter__copy filter__copy--copied');
     setTimeout(() => {
-      setCopyClass('filter__copy')
-      setCopyText('Скопировать ссылку')
-    }, 1500)
-  }
+      setCopyClass('filter__copy');
+      setCopyText('Скопировать ссылку');
+    }, 1500);
+  };
   return (
     <section className="filter">
       <div className="filter__buttons">
@@ -74,7 +74,7 @@ export const FilterPanel = ({
               index={index}
               productCurrent={filteredProducts}
             />
-          )
+          );
         })}
       </div>
       <div className="filter__tags tags">
@@ -89,7 +89,7 @@ export const FilterPanel = ({
                 index={index}
                 productCurrent={filteredProducts}
               />
-            )
+            );
           })}
         </div>
       </div>
@@ -116,5 +116,5 @@ export const FilterPanel = ({
         currency={''}
       />
     </section>
-  )
-}
+  );
+};

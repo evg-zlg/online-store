@@ -1,16 +1,18 @@
-import { IProduct } from '../../types'
-import { NavLink } from 'react-router-dom'
-import './productCard.scss'
-import AddToCartBtn from '../addToCartBtn/addToCartBtn'
-import { Carousel } from '../carousel/carousel'
+import { IProduct } from '../../types';
+import { NavLink } from 'react-router-dom';
+import './productCard.scss';
+import AddToCartBtn from '../addToCartBtn/addToCartBtn';
+import { Carousel } from '../carousel/carousel';
 
 interface IProductCardProps {
-  product: IProduct
-
-  numHandler: (num: number) => void
+  product: IProduct;
+  countInCartHandler: (num: number) => void;
 }
 
-export function ProductCard({ product, numHandler }: IProductCardProps) {
+export function ProductCard({
+  product,
+  countInCartHandler,
+}: IProductCardProps) {
   return (
     <div className="card">
       <NavLink className="card__link-title" to={'/item/' + product.id}>
@@ -27,7 +29,7 @@ export function ProductCard({ product, numHandler }: IProductCardProps) {
         <p className="card__count">Остаток: {product.count}</p>
       </div>
       <div className="card__buttons">
-        <AddToCartBtn onClick={numHandler} id={product.id} />
+        <AddToCartBtn onClick={countInCartHandler} id={product.id} />
         <NavLink className="card__link-inf" to={'/item/' + product.id}>
           <button className={'card__btn-inf'}>Подробней</button>
           {product.video && <div className="card__video-icon"></div>}
@@ -39,9 +41,9 @@ export function ProductCard({ product, numHandler }: IProductCardProps) {
             <p key={tag} className="card__tag">
               {tag.slice(0, 1).toUpperCase() + tag.slice(1).toLowerCase()}
             </p>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }

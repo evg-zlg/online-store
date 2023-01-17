@@ -1,24 +1,22 @@
-import './cartPage.scss'
-import { ProductCart } from '../productCart/productCart'
-import { ChangeEvent, useState } from 'react'
-import { products } from '../../data/data'
-import usePagination from '../pagination/usePagination'
-import Pagination from '../pagination/pagination'
-import TotalPrice from '../totalPrice/totalPrice'
+import './cartPage.scss';
+import { ProductCart } from '../productCart/productCart';
+import { ChangeEvent, useState } from 'react';
+import { products } from '../../data/data';
+import usePagination from '../pagination/usePagination';
+import Pagination from '../pagination/pagination';
+import TotalPrice from '../totalPrice/totalPrice';
 
 export default function CartPage({
   appCallback,
-  active,
   setActive,
 }: {
-  appCallback: (a: number, b: number) => void
-  active: boolean
-  setActive: (bool: boolean) => void
+  appCallback: (a: number, b: number) => void;
+  setActive: (bool: boolean) => void;
 }) {
-  const url = new URL(window.location.href)
-  let currentItem = +(url.searchParams.get('items') || 3)
-  if (currentItem) currentItem = 3
-  const [value, setValue] = useState(currentItem || 3)
+  const url = new URL(window.location.href);
+  let currentItem = +(url.searchParams.get('items') || 3);
+  if (currentItem) currentItem = 3;
+  const [value, setValue] = useState(currentItem || 3);
   const {
     firstItemIndex,
     lastItemIndex,
@@ -30,78 +28,80 @@ export default function CartPage({
   } = usePagination({
     itemPerPage: +value,
     count: JSON.parse(localStorage.getItem('cart') || '[]').length,
-  })
+  });
 
-  const [totalPrice, setTotalPrice] = useState(0)
-  const [totalCount, setTotalCount] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
 
   let [localArr, setLocalArr] = useState(
     JSON.parse(localStorage.getItem('cart') || '[]'),
-  )
+  );
   const deleteItemCallback = (id: number) => {
-    const newLocalArr = localArr.filter((productid: number) => productid !== id)
-    localStorage.setItem('cart', JSON.stringify(newLocalArr))
-    const objectParse = JSON.parse(localStorage.getItem('object') || '{}')
-    delete objectParse[id]
-    localStorage.setItem('object', JSON.stringify(objectParse))
-    setLocalArr(newLocalArr)
-  }
+    const newLocalArr = localArr.filter(
+      (productid: number) => productid !== id,
+    );
+    localStorage.setItem('cart', JSON.stringify(newLocalArr));
+    const objectParse = JSON.parse(localStorage.getItem('object') || '{}');
+    delete objectParse[id];
+    localStorage.setItem('object', JSON.stringify(objectParse));
+    setLocalArr(newLocalArr);
+  };
   const storageCallback = (storage: Record<string, number>) => {
-    let price = 0
-    let count = 0
+    let price = 0;
+    let count = 0;
     for (const product of products) {
       if (Object.keys(storage).includes(product.id.toString())) {
-        price += product.price * storage[product.id]
-        count += storage[product.id]
+        price += product.price * storage[product.id];
+        count += storage[product.id];
       }
     }
-    setTotalPrice(price)
-    setTotalCount(count)
-    appCallback(price, count)
-  }
+    setTotalPrice(price);
+    setTotalCount(count);
+    appCallback(price, count);
+  };
 
-  const [promo, setPromo] = useState('')
-  const [promoError, setPromoError] = useState(false)
+  const [promo, setPromo] = useState('');
+  const [promoError, setPromoError] = useState(false);
 
   const promoVerify = (e: ChangeEvent<HTMLInputElement>) => {
-    let error = false
-    const newPromoValue = e.target.value
-    let promoCodeRS = 'RS'
-    let promoCodeEPM = 'EPM'
+    let error = false;
+    const newPromoValue = e.target.value;
+    let promoCodeRS = 'RS';
+    let promoCodeEPM = 'EPM';
     if (newPromoValue === promoCodeRS || newPromoValue === promoCodeEPM) {
-      error = false
+      error = false;
     } else {
-      error = true
+      error = true;
     }
-    setPromoError(error)
-  }
+    setPromoError(error);
+  };
 
   const handleDiscount = (e: ChangeEvent<HTMLInputElement>) => {
-    promoVerify(e)
-    setPromo(e.target.value)
-  }
-  let discountInit = JSON.parse(localStorage.getItem('discount') || '[]')
-  const [discount, setDiscount] = useState(discountInit as string[])
+    promoVerify(e);
+    setPromo(e.target.value);
+  };
+  let discountInit = JSON.parse(localStorage.getItem('discount') || '[]');
+  const [discount, setDiscount] = useState(discountInit as string[]);
 
   const handleApplyDiscount = () => {
-    if (discount.includes(promo)) return
-    const newDiscount = [...discount, promo]
-    setDiscount(newDiscount)
-    localStorage.setItem('discount', JSON.stringify(newDiscount))
-  }
+    if (discount.includes(promo)) return;
+    const newDiscount = [...discount, promo];
+    setDiscount(newDiscount);
+    localStorage.setItem('discount', JSON.stringify(newDiscount));
+  };
 
   const deletePromo = (elem: string) => {
-    const newDiscount = [...discount.filter((promoName) => promoName !== elem)]
-    setDiscount(newDiscount)
-    localStorage.setItem('discount', JSON.stringify(newDiscount))
-  }
+    const newDiscount = [...discount.filter((promoName) => promoName !== elem)];
+    setDiscount(newDiscount);
+    localStorage.setItem('discount', JSON.stringify(newDiscount));
+  };
 
   if (JSON.parse(localStorage.getItem('cart') || '[]').length === 0) {
     return (
       <>
         <div className="cart-page__empty">Корзина пуста</div>
       </>
-    )
+    );
   } else
     return (
       <>
@@ -129,7 +129,7 @@ export default function CartPage({
                 </div>
                 {localArr.map((id: number, index: number) => {
                   if (index + 1 <= firstItemIndex || index + 1 > lastItemIndex)
-                    return null
+                    return null;
                   return (
                     <ProductCart
                       key={id}
@@ -138,7 +138,7 @@ export default function CartPage({
                       storageCallback={storageCallback}
                       deleteItemCallback={deleteItemCallback}
                     />
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -171,9 +171,9 @@ export default function CartPage({
                 )}
                 {!!discount.length &&
                   discount.map((promoName) => {
-                    let discountValue = ''
-                    if (promoName === 'RS') discountValue = '10%'
-                    if (promoName === 'EPM') discountValue = '20%'
+                    let discountValue = '';
+                    if (promoName === 'RS') discountValue = '10%';
+                    if (promoName === 'EPM') discountValue = '20%';
                     return (
                       <div className="discount__category" key={promoName}>
                         <span className="discount__name">{promoName}</span>
@@ -185,7 +185,7 @@ export default function CartPage({
                           Удалить
                         </button>
                       </div>
-                    )
+                    );
                   })}
               </div>
               <button className="summary__btn" onClick={() => setActive(true)}>
@@ -195,5 +195,5 @@ export default function CartPage({
           </div>
         </section>
       </>
-    )
+    );
 }
