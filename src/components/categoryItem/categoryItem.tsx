@@ -6,10 +6,10 @@ import { deleteParam } from '../utility/utility'
 import { useState, useEffect } from 'react'
 
 interface ICategoryItemProps {
-  item: string
-  productCurrent: IProduct[]
-  type: string
-  index?: number
+  item: string;
+  productCurrent: IProduct[];
+  type: string;
+  index?: number;
 }
 
 export const CategoryItem = ({
@@ -44,19 +44,19 @@ export const CategoryItem = ({
     })
   }, [item, type])
   function clickCheckboxHandler() {
-    const url = new URL(window.location.href)
+    const url = new URL(window.location.href);
     if (searchParams.has(type)) {
-      let params = url.searchParams.get(type)
+      let params = url.searchParams.get(type);
       params?.includes(String(index))
         ? (params = deleteParam(String(index), params))
-        : (params += `.${index}`)
+        : (params += `.${index}`);
       params
         ? url.searchParams.set(type, params)
-        : url.searchParams.delete(type)
+        : url.searchParams.delete(type);
     } else {
-      url.searchParams.append(type, String(index))
+      url.searchParams.append(type, String(index));
     }
-    setSearchParams(url.searchParams)
+    setSearchParams(url.searchParams);
   }
   return (
     <li className="list__item">
@@ -73,5 +73,5 @@ export const CategoryItem = ({
       </label>
       <label className="list__results">{`(${productCurrentCount}/${productTotalCount})`}</label>
     </li>
-  )
-}
+  );
+};

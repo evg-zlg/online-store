@@ -1,4 +1,4 @@
-import { IProduct } from '../types'
+import { IProduct } from '../types';
 
 export const products: IProduct[] = [
   {
@@ -677,4 +677,4 @@ export const products: IProduct[] = [
     count: 1,
     tags: ['настенный декор', 'декор детской', 'идея подарка', 'новый год'],
   },
-]
+];
