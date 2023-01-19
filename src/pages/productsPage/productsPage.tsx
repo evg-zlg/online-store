@@ -1,7 +1,7 @@
 import './productsPage.scss';
-import { ProductCard } from '../../components/productCard/productCard';
-import { ProductViewControl } from '../../components/productViewControl/productViewControl';
-import { FilterPanel } from '../../components/filterPanel/filterPanel';
+import { ProductCard } from './components/productCard/productCard';
+import { ProductViewControl } from './components/productViewControl/productViewControl';
+import { FilterPanel } from './components/filterPanel/filterPanel';
 import { IProduct } from '../../types';
 import { useSearchParams } from 'react-router-dom';
 import {

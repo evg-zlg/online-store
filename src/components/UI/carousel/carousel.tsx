@@ -50,7 +50,7 @@ export const Carousel: FC<ICarouselProps> = ({
           ></button>
           <img
             className="carousel__img"
-            src={require('../../data' + currentImage.slice(1))}
+            src={require('../../../data' + currentImage.slice(1))}
             alt={alt}
           ></img>
         </div>
@@ -69,7 +69,7 @@ export const Carousel: FC<ICarouselProps> = ({
             >{`>`}</button>
             <img
               className="carousel__img"
-              src={require('../../data' + images[currentImgIndex].slice(1))}
+              src={require('../../../data' + images[currentImgIndex].slice(1))}
               alt={alt}
               onClick={handleClickBigImg}
             ></img>

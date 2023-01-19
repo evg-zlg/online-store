@@ -2,7 +2,7 @@ import './App.scss';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import { FC, useState } from 'react';
-import ModalWindow from './components/modalWindow/modalWindow';
+import ModalWindow from './pages/cartPage/components/modalWindow/modalWindow';
 import { Router } from './components/router/router';
 
 export const App: FC = () => {
