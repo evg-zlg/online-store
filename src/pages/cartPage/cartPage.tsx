@@ -3,16 +3,15 @@ import { ProductCart } from './components/productCart/productCart';
 import { ChangeEvent, useState } from 'react';
 import { products } from '../../data/data';
 import usePagination from './components/pagination/usePagination';
-import Pagination from './components/pagination/pagination';
+import { Pagination } from './components/pagination/pagination';
 import TotalPrice from '../../components/totalPrice/totalPrice';
 
-export default function CartPage({
-  appCallback,
-  setActive,
-}: {
+interface ICartPage {
   appCallback: (a: number, b: number) => void;
   setActive: (bool: boolean) => void;
-}) {
+}
+
+export const CartPage: React.FC<ICartPage> = ({ appCallback, setActive }) => {
   const url = new URL(window.location.href);
   let currentItem = +(url.searchParams.get('items') || 3);
   if (currentItem) currentItem = 3;
@@ -196,4 +195,4 @@ export default function CartPage({
         </section>
       </>
     );
-}
+};

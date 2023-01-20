@@ -1,6 +1,7 @@
 import './footer.scss';
+import { FC } from 'react';
 
-export default function Footer() {
+export const Footer: FC = () => {
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -34,4 +35,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};

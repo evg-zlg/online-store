@@ -2,8 +2,9 @@ import './header.scss';
 import { NavLink } from 'react-router-dom';
 import { products } from '../../data/data';
 import { useState, useEffect } from 'react';
+import { FC } from 'react';
 
-export default function Header() {
+export const Header: FC = () => {
   const localArr = JSON.parse(localStorage.getItem('object') || '{}');
   const [price, setPrice] = useState(0);
   const [count, setCount] = useState(0);
@@ -54,4 +55,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};

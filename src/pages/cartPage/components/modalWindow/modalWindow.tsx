@@ -14,7 +14,7 @@ enum BankImg {
   'bank-card__img bank-card__img--master',
 }
 
-export default function ModalWindow({ active, setActive }: IModalWindow) {
+export const ModalWindow: React.FC<IModalWindow> = ({ active, setActive }) => {
   const navigate = useNavigate();
   const [orderReady, setOrderReady] = useState(false);
   const [bankCardClass, setBankCardClass] = useState(0);
@@ -416,4 +416,4 @@ export default function ModalWindow({ active, setActive }: IModalWindow) {
       </section>
     </>
   );
-}
+};

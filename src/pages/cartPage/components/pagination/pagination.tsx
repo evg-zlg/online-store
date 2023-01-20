@@ -12,7 +12,7 @@ interface IPagination {
   value: number;
 }
 
-export default function Pagination({
+export const Pagination: React.FC<IPagination> = ({
   setValue,
   setPage,
   prevPage,
@@ -20,7 +20,7 @@ export default function Pagination({
   page,
   totalPages,
   value,
-}: IPagination) {
+}) => {
   const [, setPageParams] = useSearchParams();
   const inputCallback = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = +(e.target as HTMLInputElement).value;
@@ -65,4 +65,4 @@ export default function Pagination({
       </button>
     </div>
   );
-}
+};
