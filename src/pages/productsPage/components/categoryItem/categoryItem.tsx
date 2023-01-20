@@ -19,9 +19,9 @@ export const CategoryItem: FC<ICategoryItemProps> = ({
   index,
 }: ICategoryItemProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [checked, setChecked] = useState(
-    searchParams.get(type)?.includes(String(index)) || false,
-  );
+  const [checked, setChecked] = useState(() => {
+    return searchParams.get(type)?.includes(String(index)) || false;
+  });
   const [productCurrentCount, setProductCurrentCount] = useState(0);
   const [productTotalCount, setProductTotalCount] = useState(0);
   useEffect(() => {
@@ -43,6 +43,11 @@ export const CategoryItem: FC<ICategoryItemProps> = ({
             .length;
     });
   }, [item, type]);
+  useEffect(() => {
+    setChecked(() => {
+      return searchParams.get(type)?.includes(String(index)) || false;
+    });
+  }, [productCurrent, index, searchParams, type]);
   function clickCheckboxHandler() {
     const url = new URL(window.location.href);
     if (searchParams.has(type)) {
