@@ -1,10 +1,10 @@
 import './filterPanel.scss';
-import { IProduct } from '../../types';
+import { IProduct } from '../../../../types';
 import { CategoryItem } from '../categoryItem/categoryItem';
 import { useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
-import { DualSlider } from '../../UI/dualSlider/dualSlider';
-import { products } from '../../data/data';
+import { DualSlider } from '../../../../components/UI/dualSlider/dualSlider';
+import { products } from '../../../../data/data';
 import {
   getMaxPriceFilteredProducts,
   getMinPriceFilteredProducts,
@@ -14,7 +14,7 @@ import {
   getMinStock,
   getMaxStockFilteredProducts,
   getMinStockFilteredProducts,
-} from '../../utility/utility';
+} from '../../../../utility/utility';
 
 interface IFilterPanelProps {
   filteredProducts: IProduct[];
