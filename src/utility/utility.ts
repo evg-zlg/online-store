@@ -3,7 +3,6 @@ import { products } from '../data/data';
 
 const deleteParam = (param: string, str: string): string => {
   const params = str.split('.');
-  console.log('param', param, 'str', str);
   return params.filter((el) => el !== param).join('.');
 };
 const getMaxPriceFilteredProducts = (filteredProducts: IProduct[]): number => {
@@ -239,7 +238,6 @@ const getFilteredProduct = (searchParams: URLSearchParams): IProduct[] => {
   return newFilteredProducts;
 };
 const changeBannerIndex = (currentIndex: number): number => {
-  console.log('actual number:', currentIndex);
   return currentIndex === 0 ? 1 : 0;
 };
 export {

@@ -18,7 +18,7 @@ export const products: IProduct[] = [
       './images/azhur-2.jpg',
       './images/azhur-3.jpg',
     ],
-    count: 1,
+    count: 2,
     tags: ['настенный декор', 'идея подарка'],
   },
   {
