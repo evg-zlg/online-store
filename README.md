@@ -23,6 +23,7 @@ This app was made by two developers.
 ## Technology stack
 App developed with technology: 
 - react
+- ts
 - scss
 
 ## Development
