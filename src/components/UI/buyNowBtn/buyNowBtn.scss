@@ -1,0 +1,19 @@
+.button {
+  margin-bottom: 10px;
+  display: flex;
+  column-gap: 10px;
+
+  &__buy {
+    background-color: #825b46;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 25px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

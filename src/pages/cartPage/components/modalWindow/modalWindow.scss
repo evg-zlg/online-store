@@ -1,0 +1,190 @@
+.checkout-window {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transform: scale(0);
+
+  &__title {
+    background-color: #5a6b47;
+    padding: 30px 50px;
+    color: white;
+    border-radius: 10px;
+  }
+}
+
+.checkout-window--active {
+  transform: scale(1);
+}
+
+.popup {
+  width: 50%;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  position: relative;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  &__close {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 11;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: 25px;
+    color: #5a6b47;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+
+.close__line {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 1.7px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  &:first-child {
+    transform: translateY(500%) rotate(45deg);
+  }
+  &:last-child {
+    transform: translateY(500%) rotate(-45deg);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  &__error {
+    font-size: 14px;
+    display: inline-block;
+    color: red;
+  }
+
+  &__card {
+    width: 45%;
+    padding: 10px 10px 10px 30px;
+    border-radius: 10px;
+
+    background: linear-gradient(
+      133deg,
+      rgba(84, 84, 84, 1) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(84, 84, 84, 0.5) 100%
+    );
+  }
+
+  &__btn {
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #5a6b47;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.input {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(137, 144, 148);
+  margin-bottom: 10px;
+}
+
+.bank-card {
+  &__img {
+    width: 100px;
+    height: 50px;
+    background-image: url('./card-img.svg');
+    background-size: 100px 50px;
+    background-repeat: no-repeat;
+
+    &--amEx {
+      background-image: url('./american-express.svg');
+    }
+    &--visa {
+      background-image: url('./visa.svg');
+    }
+    &--master {
+      background-image: url('./mastercard.svg');
+    }
+  }
+
+  &__element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  &__main-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__title {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  &__error {
+    display: inline-block;
+    color: red;
+  }
+
+  &__input {
+    padding: 10px 0;
+    border: none;
+    border: none;
+    background: none;
+    font-stretch: condensed;
+    font-size: 25px;
+    width: 100%;
+    &:focus {
+      outline: 0;
+      outline-offset: 0;
+    }
+  }
+}

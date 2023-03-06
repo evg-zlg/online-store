@@ -1,0 +1,19 @@
+.button {
+  margin-bottom: 10px;
+  display: flex;
+  column-gap: 10px;
+
+  &__add {
+    background-color: #5a6b47;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

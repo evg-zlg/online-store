@@ -1,0 +1,56 @@
+.view-control {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &__select {
+    border: none;
+    outline: none;
+    background-color: rgb(241, 241, 241);
+    padding: 8px 5px;
+    cursor: pointer;
+  }
+
+  &__search {
+    height: 30px;
+    padding: 0 5px;
+    outline: none;
+  }
+
+  &__found {
+    font-weight: 500;
+  }
+
+  &__views {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__list-btn,
+  &__grid-btn {
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #3d3836de;
+    mask-size: contain;
+    transition: all ease 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+      background-color: #5a6b47;
+    }
+
+    &--active {
+      background-color: #5a6b47;
+    }
+  }
+  &__list-btn {
+    mask-image: url('./list-btn-icon.svg');
+  }
+  &__grid-btn {
+    mask-image: url('./grid-btn-icon.svg');
+  }
+}
